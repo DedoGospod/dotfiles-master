@@ -9,6 +9,6 @@ Install instructions (Arch)
 
 If any error messages occur, delete the pre-existing config with the following command:
 
-"rm -rf (config)" eg. rm -rf .config/kitty/kitty.conf)
+"rm -rf (config)" eg. rm -rf .config/kitty/kitty.conf
 
-once the directory is deleted, use the stow command once again. eg. stow kitty)
+once the directory is deleted, use the stow command once again. eg. stow kitty
