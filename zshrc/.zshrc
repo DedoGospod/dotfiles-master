@@ -4,6 +4,9 @@ eval "$(starship init zsh)"
 # Initialize zoxide for Fish (fast directory navigation)
 eval "$(zoxide init zsh)"
 
+# Enable syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Set the default text editor to Neovim
 export EDITOR="nvim"
 # Use the same editor for sudo commands
