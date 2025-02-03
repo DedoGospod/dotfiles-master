@@ -3,7 +3,7 @@ My personal dotfiles
 
 Install instructions (Arch)
 
-1. Pacman -S stow
+1. pacman -S stow
 2. cd dotfiles-master
 3. stow (program) eg. stow kitty
 
