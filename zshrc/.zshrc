@@ -55,13 +55,17 @@ alias kssh='kitty +kitten ssh' # Use kitty's SSH kitten
 
 # Quick access to applications
 alias y='yazi'             # Quick access to yazi
-alias vi='nvim'            # Quick access to nvim
+alias nv='nvim'            # Quick access to nvim
 
 # System commands
 alias rb='reboot'          # Reboot the system
 
+# Start and stop daemons 
+alias dockerstart='sudo systemctl start docker docker.socket'  
+alias dockerstop='sudo systemctl stop docker docker.socket'
+
 # Alias for config files
-alias zshrc='nvim ~/.config/zsh/.zshrc'          # Edit zsh config
+alias zshrc='nvim /home/dylan/.zshrc'            # Edit zsh config
 alias hypr='nvim ~/.config/hypr/hyprland.conf'   # Edit Hyprland config
 alias grub='sudo nvim /etc/default/grub'         # Edit GRUB config
 
@@ -69,5 +73,4 @@ alias grub='sudo nvim /etc/default/grub'         # Edit GRUB config
 if [ "$(tty)" = "/dev/tty1" ]; then
     exec Hyprland
 fi
-
 
