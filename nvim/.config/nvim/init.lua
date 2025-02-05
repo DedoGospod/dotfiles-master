@@ -1,11 +1,11 @@
 
-# Lazy pkg manager
+--Lazy pkg manager
 require("config.lazy")
 
-# Catppuccin theme
+--Catppuccin theme
 vim.cmd.colorscheme "catppuccin"
 
-# Allow hyprlang to recognise hyprland files 
+--Allow hyprlang to recognise hyprland files 
 vim.filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
