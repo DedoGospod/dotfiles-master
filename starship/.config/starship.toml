@@ -108,71 +108,70 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol $branch ](fg:text bg:green)]($style)'
+format = '[[ $symbol $branch ](fg:text bg:surface0)]($style)'
 
 [git_status]
 style = "bg:teal"
-format = '[[($all_status$ahead_behind )](fg:text bg:green)]($style)'
+format = '[[($all_status$ahead_behind )](fg:text bg:surface0)]($style)'
 
 [nodejs]
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [c]
 symbol = " "
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [rust]
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [php]
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [java]
 symbol = " "
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [kotlin]
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [haskell]
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [python]
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:text bg:teal)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:surface0)]($style)'
 
 [docker_context]
 symbol = ""
 style = "bg:mantle"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+format = '[[ $symbol( $context) ](fg:#83a598 bg:surface0)]($style)'
 
 [time]
 disabled = true
 time_format = "%R"
-style = "bg:peach"
+style = "bg:surface0"
 #format = '[[  $time ](fg:mantle bg:purple)]($style)'
 
 [line_break]
 disabled = false
-
 
 [character]
 disabled = false
@@ -181,4 +180,4 @@ error_symbol = '[❯](bold fg:red)'
 vimcmd_symbol = '[](bold fg:creen)'
 vimcmd_replace_one_symbol = '[](bold fg:purple)'
 vimcmd_replace_symbol = '[](bold fg:purple)'
-vimcmd_visual_symbol = '[](bold fg:l
+vimcmd_visual_symbol = '[](bold fg:lavender)'
