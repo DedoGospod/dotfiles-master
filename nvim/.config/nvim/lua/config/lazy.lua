@@ -67,6 +67,10 @@ require("mason").setup({
   install_root_dir = vim.fn.stdpath("data") .. "/mason",
 })
 
+-- Turn on line numbers
+vim.wo.number = true
+
+
 
 --KEYMAPPINGS
 
@@ -82,5 +86,3 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set('n', '<C-n>', function()
   require('nvim-tree.api').tree.toggle() 
 end, { desc = 'Toggle file tree' })
-
-
