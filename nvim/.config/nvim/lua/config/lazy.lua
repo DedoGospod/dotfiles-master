@@ -12,13 +12,14 @@ vim.opt.timeoutlen = 300
 vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
--- Highlight when yanking text
+-- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
+})
 
 
 -- Bootstrap lazy.nvim
