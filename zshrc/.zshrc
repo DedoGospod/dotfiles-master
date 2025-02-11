@@ -61,7 +61,7 @@ alias nv='nvim'            # Quick access to nvim
 alias rb='reboot'          # Reboot the system
 
 # Trash-cli
-alias rm='trash'
+alias rm='trash -v'
 
 # Start and stop daemons 
 alias dockerstart='sudo systemctl start docker docker.socket'  
