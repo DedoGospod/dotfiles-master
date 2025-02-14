@@ -11,6 +11,7 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
+vim.opt.showmode = false
 
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -56,7 +57,7 @@ require("lazy").setup({
 
 -- Telescope 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
@@ -122,7 +123,7 @@ lspconfig.lua_ls.setup {
 -- Automatically install missing servers with mason
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "basedpyright", "rust_analyzer", }, -- Add more as needed
+  ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls" }, -- Add more as needed
 })
 
 -- Completion setup (nvim-cmp)
