@@ -22,9 +22,6 @@ SAVEHIST=50000            # Maximum number of commands saved to the history file
 # Append commands to the history file as they are executed (instead of on shell exit)
 setopt inc_append_history
 
-# Add asdf completions to the Zsh completion system
-fpath=(${ASDF_DIR}/completions $fpath)
-
 # Initialize Zsh completions
 autoload -Uz compinit && compinit
 
