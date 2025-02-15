@@ -29,4 +29,5 @@ stow kitty
 Repeat for Other Programs: Repeat the stow command for other programs as needed. For example:
 
 stow nvim
+
 stow zsh
