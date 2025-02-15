@@ -6,6 +6,7 @@ Follow these steps to install and manage your dotfiles using stow:
    
 Open your terminal and run the following command to clone your dotfiles repository:
 
+
 git clone https://github.com/dedogospod/dotfiles-master.git
 
 2. Install stow
