@@ -1,7 +1,6 @@
--- [SETTINGS]
+-- Basic settings
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = false
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.breakindent = true
@@ -13,67 +12,38 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.showmode = false
 
--- Highlight when yanking (copying) text
+-- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", "https://github.com/folke/lazy.nvim.git", lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
-
--- Setup lazy.nvim
+-- Plugin setup with lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
     { import = "plugins" },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   },
   checker = { enabled = true },
 })
 
-
-
--- [KEYMAPPINGS]
-
--- Telescope 
+-- Key mappings
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
+vim.keymap.set('n', '<C-n>', function() require('nvim-tree.api').tree.toggle() end, { desc = 'Toggle file tree' })
 
-
-
--- [CONFIGURATIONS]
-
-
--- NVIM TREE 
-vim.keymap.set('n', '<C-n>', function()
-  require('nvim-tree.api').tree.toggle()
-end, { desc = 'Toggle file tree' })
-
-
--- TELESCOPE
+-- Telescope configuration
 require('telescope').setup {
   defaults = {
     vimgrep_arguments = {
@@ -88,58 +58,36 @@ require('telescope').setup {
     },
   },
   pickers = {
-    find_files = {
-      hidden = true,
-    },
+    find_files = { hidden = true },
   },
 }
 
--- LSP Setup with nvim-lspconfig
+-- LSP setup
 local lspconfig = require('lspconfig')
-
--- Example: Python (pyright)
-lspconfig.basedpyright.setup {}
-
--- Example: JavaScript and TypeScript (tsserver)
---lspconfig.tsserver.setup {} (This isnt maintained)
-
--- Example: Go (gopls)
-lspconfig.gopls.setup {}
-
--- Example: Rust (rust_analyzer)
-lspconfig.rust_analyzer.setup {}
-
--- Example: Lua (sumneko_lua)
-lspconfig.lua_ls.setup {
+lspconfig.basedpyright.setup {} -- Python
+lspconfig.gopls.setup {} -- Go
+lspconfig.rust_analyzer.setup {} -- Rust
+lspconfig.lua_ls.setup { -- Lua
   settings = {
     Lua = {
-      diagnostics = {
-        globals = { 'vim' },  -- to let Lua know that `vim` is a global variable
-      },
+      diagnostics = { globals = { 'vim' } },
     },
   },
 }
 
--- Automatically install missing servers with mason
+-- Mason for automatic LSP installation
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls" }, -- Add more as needed
+  ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls" },
 })
 
--- Completion setup (nvim-cmp)
+-- Completion (nvim-cmp)
 local cmp = require('cmp')
-
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
+  snippet = { expand = function(args) require('luasnip').lsp_expand(args.body) end },
   mapping = cmp.mapping.preset.insert({
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
   }),
@@ -151,12 +99,7 @@ cmp.setup({
   },
 })
 
--- Trouble plugin for LSP diagnostics
-require("trouble").setup()
-
--- Lualine setup for status line
+-- Lualine status bar
 require("lualine").setup {
-  options = {
-    theme = 'catppuccin',
-  },
+  options = { theme = 'catppuccin' },
 }
