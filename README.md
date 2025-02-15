@@ -12,7 +12,7 @@ stow is a tool to manage symlinks for your dotfiles. Install it using:
 
 sudo pacman -S stow
 
-3.Navigate to the Dotfiles Directory
+3. Navigate to the Dotfiles Directory
 Move into the cloned repository:
 
 cd dotfiles-master
