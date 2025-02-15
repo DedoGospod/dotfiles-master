@@ -2,11 +2,7 @@ Dotfiles Installation Guide (Arch Linux)
 
 Follow these steps to install and manage your dotfiles using stow:
 
-1. Clone the Dotfiles Repository
-   
-Open your terminal and run the following command to clone your dotfiles repository:
-
-
+1. Clone the Dotfiles Repository: Open your terminal and run the following command to clone your dotfiles repository:
 
 git clone https://github.com/dedogospod/dotfiles-master.git
 
@@ -14,7 +10,7 @@ git clone https://github.com/dedogospod/dotfiles-master.git
 
 sudo pacman -S stow
 
-3. Navigate to the Dotfiles Directory
+3. Navigate to the Dotfiles Directory:
 
 cd dotfiles-master
 
@@ -30,8 +26,7 @@ Then, re-run the stow command:
 
 stow kitty
 
-Repeat for Other Programs
-Repeat the stow command for other programs as needed. For example:
+Repeat for Other Programs: Repeat the stow command for other programs as needed. For example:
 
 stow nvim
 stow zsh
