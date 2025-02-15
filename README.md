@@ -2,22 +2,22 @@ Dotfiles Installation Guide (Arch Linux)
 
 Follow these steps to install and manage your dotfiles using stow:
 
-Clone the Dotfiles Repository
+1. Clone the Dotfiles Repository
 Open your terminal and run the following command to clone your dotfiles repository:
 
 git clone https://github.com/dedogospod/dotfiles-master.git
 
-Install stow
+2. Install stow
 stow is a tool to manage symlinks for your dotfiles. Install it using:
 
 sudo pacman -S stow
 
-Navigate to the Dotfiles Directory
+3.Navigate to the Dotfiles Directory
 Move into the cloned repository:
 
 cd dotfiles-master
 
-Apply Dotfiles for a Specific Program
+4. Apply Dotfiles for a Specific Program
 Use stow to create symlinks for the configuration of a specific program. For example, to set up kitty configurations, run:
 
 stow kitty
