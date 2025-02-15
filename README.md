@@ -16,15 +16,15 @@ cd dotfiles-master
 
 stow kitty
 
-Resolve Conflicts (if any): If you encounter errors due to pre-existing configuration files, remove the conflicting files or directories. For example, if kitty's config conflicts, run:
+5. Resolve Conflicts (if any): If you encounter errors due to pre-existing configuration files, remove the conflicting files or directories. For example, if kitty's config conflicts, run:
 
 rm -rf ~/.config/kitty/kitty.conf
 
-Then, re-run the stow command:
+6. Then, re-run the stow command:
 
 stow kitty
 
-Repeat for Other Programs: Repeat the stow command for other programs as needed. For example:
+7. Repeat for Other Programs: Repeat the stow command for other programs as needed. For example:
 
 stow nvim                                                                                        
 stow zsh
