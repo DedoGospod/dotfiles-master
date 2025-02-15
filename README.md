@@ -1,14 +1,37 @@
-# dotfiles-master
-My personal dotfiles
+Dotfiles Installation Guide (Arch Linux)
+Follow these steps to install and manage your dotfiles using stow:
 
-Install instructions (Arch)
-1. git clone https://github.com/dedogospod/dotfiles-master.git
-2. pacman -S stow
-3. cd dotfiles-master
-4. stow (program) eg. stow kitty
+Clone the Dotfiles Repository
+Open your terminal and run the following command to clone your dotfiles repository:
 
-If any error messages occur, delete the pre-existing config with the following command:
+git clone https://github.com/dedogospod/dotfiles-master.git
 
-"rm -rf (config)" eg. rm -rf .config/kitty/kitty.conf
+Install stow
+stow is a tool to manage symlinks for your dotfiles. Install it using:
 
-once the directory is deleted, use the stow command once again. eg. stow kitty
+sudo pacman -S stow
+
+Navigate to the Dotfiles Directory
+Move into the cloned repository:
+
+cd dotfiles-master
+
+Apply Dotfiles for a Specific Program
+Use stow to create symlinks for the configuration of a specific program. For example, to set up kitty configurations, run:
+
+stow kitty
+
+Resolve Conflicts (if any)
+If you encounter errors due to pre-existing configuration files, remove the conflicting files or directories. For example, if kitty's config conflicts, run:
+
+rm -rf ~/.config/kitty/kitty.conf
+
+Then, re-run the stow command:
+
+stow kitty
+
+Repeat for Other Programs
+Repeat the stow command for other programs as needed. For example:
+
+stow nvim
+stow zsh
