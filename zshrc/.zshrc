@@ -11,13 +11,15 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 export EDITOR="nvim"
 # Use the same editor for sudo commands
 export SUDO_EDITOR="$EDITOR"
-# Set the PostgreSQL host to the local socket file
-export PGHOST="/var/run/postgresql"
+
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+
 
 # Configure shell history settings
 HISTFILE=~/.history       # File where command history is stored
 HISTSIZE=10000            # Maximum number of commands stored in memory
-SAVEHIST=50000            # Maximum number of commands saved to the history file
+SAVEHIST=5000             # Maximum number of commands saved to the history file
 
 # Append commands to the history file as they are executed (instead of on shell exit)
 setopt inc_append_history
@@ -39,6 +41,7 @@ alias pacman='sudo pacman' # Always use sudo with pacman
 alias cp='cp -i'           # Confirm before overwriting
 alias mv='mv -i'           # Confirm before overwriting
 alias mkdir='mkdir -p'     # Create parent directories as needed
+alias rm='trash -v'        # Recoverable trash can
 
 # Listing files
 alias lsh='ls -A'          # List all files except . and ..
@@ -57,12 +60,11 @@ alias nv='nvim'            # Quick access to nvim
 # System commands
 alias rb='reboot'          # Reboot the system
 
-# Trash-cli
-alias rm='trash -v'
+# Cleanup
+alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
 
-# Start and stop daemons 
-alias dockerstart='sudo systemctl start docker docker.socket'  
-alias dockerstop='sudo systemctl stop docker docker.socket'
+# Debugging/Reverse engineering
+alias pince='z appimages && sudo -E ./PINCE-x86_64.AppImage'
 
 # Alias for config files
 alias zshrc='nvim /home/dylan/.zshrc'            # Edit zsh config
