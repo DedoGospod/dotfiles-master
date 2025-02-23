@@ -20,6 +20,7 @@ return {
 	    "nvim-neotest/nvim-nio",
 	    "mfussenegger/nvim-lint",
 	    "mhartington/formatter.nvim",
+	    "windwp/nvim-autopairs",
         },
     },
 }
