@@ -1,7 +1,7 @@
 # Initialize Starship prompt for Zsh (a fast and customizable shell prompt)
 eval "$(starship init zsh)"
 
-# Initialize zoxide for Fish (fast directory navigation)
+# Initialize zoxide for zsh (fast directory navigation)
 eval "$(zoxide init zsh)"
 
 # Enable syntax highlighting
