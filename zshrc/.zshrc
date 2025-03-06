@@ -14,7 +14,7 @@ export SUDO_EDITOR="$EDITOR"
 
 export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland
-
+export MANPAGER='nvim +Man!'            # Opens man pages in neovim
 
 # Configure shell history settings
 HISTFILE=~/.history       # File where command history is stored
