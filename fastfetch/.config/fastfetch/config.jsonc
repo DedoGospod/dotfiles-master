@@ -1,8 +1,8 @@
 {
     "logo": {
         "type": "file",
-	"color": {"1": "yellow"},        
-	"source": "~/.config/fastfetch/logo.txt",
+        "color": {"1": "white"},
+        "source": "~/.config/fastfetch/logo.txt",
         "height": 15,
         "width": 30,
         "padding": {
@@ -15,11 +15,11 @@
         "break",
         {
             "type": "custom",
-            "format": "\u001b[32m┌──────────────────────Hardware──────────────────────┐"
+            "format": "\u001b[32m╭──────────────────────Hardware──────────────────────╮"
         },
         {
             "type": "cpu",
-            "key": "│ ├ CPU",
+            "key": "│ ┌ CPU",
             "keyColor": "green"
         },
         {
@@ -33,17 +33,22 @@
             "keyColor": "green"
         },
         {
+            "type": "display",
+            "key": "│ └󰍹 Display",
+            "keyColor": "green"
+        },
+        {
             "type": "custom",
-            "format": "\u001b[32m└────────────────────────────────────────────────────┘"
+            "format": "\u001b[32m╰────────────────────────────────────────────────────╯"
         },
         "break",
         {
             "type": "custom",
-            "format": "\u001b[34m┌──────────────────────Software──────────────────────┐"
+            "format": "\u001b[34m╭──────────────────────Software──────────────────────╮"
         },
         {
             "type": "os",
-            "key": "│  OS",
+            "key": "│ ┌ OS",
             "keyColor": "blue"
         },
         {
@@ -63,16 +68,16 @@
         },
         {
             "type": "custom",
-            "format": "\u001b[34m└────────────────────────────────────────────────────┘"
+            "format": "\u001b[34m╰────────────────────────────────────────────────────╯"
         },
         "break",
         {
             "type": "custom",
-            "format": "\u001b[31m┌──────────────────────System────────────────────────┐"
+            "format": "\u001b[31m╭──────────────────────System────────────────────────╮"
         },
         {
             "type": "uptime",
-            "key": "│ ├󰅐 Uptime",
+            "key": "│ ┌󰅐 Uptime",
             "keyColor": "red"
         },
         {
@@ -82,11 +87,8 @@
         },
         {
             "type": "custom",
-            "format": "\u001b[31m└────────────────────────────────────────────────────┘"
+            "format": "\u001b[31m╰────────────────────────────────────────────────────╯"
         },
         "break"
     ]
 }
-
-
-
