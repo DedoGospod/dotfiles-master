@@ -1,78 +1,99 @@
-# Initialize Starship prompt for Zsh (a fast and customizable shell prompt)
+# ======================
+# Shell Initialization
+# ======================
+
+# Initialize Starship prompt (fast and customizable shell prompt)
 eval "$(starship init zsh)"
 
-# Initialize zoxide for zsh (fast directory navigation)
+# Initialize zoxide (fast directory navigation)
 eval "$(zoxide init zsh)"
 
-# Enable syntax highlighting
+# Enable Zsh syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Set the default text editor to Neovim
-export EDITOR="nvim"
-# Use the same editor for sudo commands
-export SUDO_EDITOR="$EDITOR"
-
-export XDG_CURRENT_DESKTOP=Hyprland
-export XDG_SESSION_TYPE=wayland
-export MANPAGER='nvim +Man!'            # Opens man pages in neovim
-
-# Configure shell history settings
-HISTFILE=~/.history       # File where command history is stored
-HISTSIZE=10000            # Maximum number of commands stored in memory
-SAVEHIST=5000             # Maximum number of commands saved to the history file
-
-# Append commands to the history file as they are executed (instead of on shell exit)
-setopt inc_append_history
 
 # Initialize Zsh completions
 autoload -Uz compinit && compinit
 
-# Load fzf (a fuzzy finder) configuration if it exists
+# Load fzf (fuzzy finder) configuration if it exists
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Allows sudo to be used with alias'
-alias sudo='sudo '
 
-# Package management
-alias yay='paru'           # Use paru as a drop-in replacement for yay
-alias pacman='sudo pacman' # Always use sudo with pacman
+# ======================
+# Environment Variables
+# ======================
 
-# File operations
-alias cp='cp -i'           # Confirm before overwriting
-alias mv='mv -i'           # Confirm before overwriting
-alias mkdir='mkdir -p'     # Create parent directories as needed
-alias rm='trash -v'        # Recoverable trash can
+# Set default text editor to Neovim
+export EDITOR="nvim"
+export SUDO_EDITOR="$EDITOR"  # Use Neovim for sudo commands
 
-# Listing files
-alias lsh='ls -A'          # List all files except . and ..
+# Configure XDG environment for Hyprland
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
 
-# Terminal utilities
-alias cls='clear'          # Clear the terminal screen
-alias top='sudo btop'      # Use btop instead of top
+# Use Neovim as the man page viewer
+export MANPAGER='nvim +Man!'
 
-# SSH and remote access
-alias kssh='kitty +kitten ssh' # Use kitty's SSH kitten
 
-# Quick access to applications
-alias y='yazi'             # Quick access to yazi
-alias nv='nvim'            # Quick access to nvim
+# ======================
+# Shell History Settings
+# ======================
 
-# System commands
-alias rb='reboot'          # Reboot the system
+HISTFILE=~/.history  # File where command history is stored
+HISTSIZE=10000       # Maximum number of commands stored in memory
+SAVEHIST=5000        # Maximum number of commands saved to the history file
 
-# Cleanup
+# Append commands to history as they are executed (instead of on shell exit)
+setopt inc_append_history
+
+
+# ======================
+# Aliases
+# ======================
+
+# Package Management
+alias yay='paru'            # Use paru as a drop-in replacement for yay
+alias pacman='sudo pacman'  # Always use sudo with pacman
+alias updatemirrors='sudo reflector --verbose --country Australia --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+
+# File Operations
+alias cp='cp -i'            # Confirm before overwriting
+alias mv='mv -i'            # Confirm before overwriting
+alias mkdir='mkdir -p'      # Create parent directories as needed
+alias rm='trash -v'         # Recoverable trash can
+alias lsh='ls -A'           # List all files except . and ..
+alias ls='ls --color=auto'  # Colorize ls output
+
+# Terminal Utilities
+alias cls='clear'           # Clear the terminal screen
+
+# SSH and Remote Access
+alias kssh='kitty +kitten ssh'  # Use kitty's SSH kitten
+
+# Quick Access to Applications
+alias y='yazi'              # Quick access to yazi
+alias nv='nvim'             # Quick access to nvim
+
+# System Commands
+alias rb='reboot'           # Reboot the system
 alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
 
-# Debugging/Reverse engineering
+# Debugging/Reverse Engineering
 alias pince='z appimages && sudo -E ./PINCE-x86_64.AppImage'
 
-# Alias for config files
-alias zshrc='nvim /home/dylan/.zshrc'            # Edit zsh config
-alias hypr='nvim ~/.config/hypr/hyprland.conf'   # Edit Hyprland config
-alias grub='sudo nvim /etc/default/grub'         # Edit GRUB config
+# Config File Shortcuts
+alias zshrc='nvim ~/.zshrc'            # Edit Zsh config
+alias hypr='nvim ~/.config/hypr/hyprland.conf'  # Edit Hyprland config
+alias grub='sudo nvim /etc/default/grub'  # Edit GRUB config
+
+# Allow sudo to be used with aliases
+alias sudo='sudo '
+
+
+# ======================
+# Auto-Start Hyprland
+# ======================
 
 # Auto-start Hyprland on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
     exec Hyprland
 fi
-
