@@ -65,6 +65,7 @@ alias ls='ls --color=auto'  # Colorize ls output
 
 # Terminal Utilities
 alias cls='clear'           # Clear the terminal screen
+alias top='btop'            # Use Btop as a drop in replacement for top
 
 # SSH and Remote Access
 alias kssh='kitty +kitten ssh'  # Use kitty's SSH kitten
@@ -76,9 +77,6 @@ alias nv='nvim'             # Quick access to nvim
 # System Commands
 alias rb='reboot'           # Reboot the system
 alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
-
-# Debugging/Reverse Engineering
-alias pince='z appimages && sudo -E ./PINCE-x86_64.AppImage'
 
 # Config File Shortcuts
 alias zshrc='nvim ~/.zshrc'            # Edit Zsh config
