@@ -154,3 +154,4 @@ function set_inactive()
 end
 
 mp.add_key_binding(nil, "toggle-seeker", function() if active then set_inactive() else set_active() end end)
+
