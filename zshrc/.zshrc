@@ -33,6 +33,14 @@ export XDG_SESSION_TYPE=wayland
 # Use Neovim as the man page viewer
 export MANPAGER='nvim +Man!'
 
+# Dark mode for applications
+export QT_QPA_PLATFORMTHEME=qt6ct
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+
+# Remove "Recent" section from Nautilus.
+gsettings set org.gnome.desktop.privacy remember-recent-files false
+
 
 # ======================
 # Shell History Settings
@@ -77,6 +85,9 @@ alias nv='nvim'             # Quick access to nvim
 # System Commands
 alias rb='reboot'           # Reboot the system
 alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
+
+# Debugging/Reverse Engineering
+alias pince='z appimages && sudo -E ./PINCE-x86_64.AppImage'
 
 # Config File Shortcuts
 alias zshrc='nvim ~/.zshrc'            # Edit Zsh config
