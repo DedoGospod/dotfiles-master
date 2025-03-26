@@ -46,6 +46,8 @@ pacman_packages=(
   dbus
   stow
   flatpak
+  ttf-cascadia-code
+  ttf-ubuntu-font-family
 )
 
 echo "Installing pacman packages..."
