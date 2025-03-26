@@ -42,7 +42,7 @@ aur_packages=(
 )
 
 echo "Installing AUR packages..."
-yay -S --noconfirm "${aur_packages[@]}" || exit 1
+paru -S --noconfirm "${aur_packages[@]}" || exit 1
 
 # Set zsh as the default shell
 echo "Setting zsh as the default shell..."
