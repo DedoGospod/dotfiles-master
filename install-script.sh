@@ -45,6 +45,7 @@ pacman_packages=(
   btop
   dbus
   stow
+  flatpak
 )
 
 echo "Installing pacman packages..."
@@ -56,6 +57,7 @@ aur_packages=(
   adwaita-dark
   hyprshot
   sway-audio-idle-inhibit-git
+  brave-bin
 )
 
 echo "Installing AUR packages..."
