@@ -48,6 +48,7 @@ pacman_packages=(
   flatpak
   ttf-cascadia-code
   ttf-ubuntu-font-family
+  ttf-font-awesome
 )
 
 echo "Installing pacman packages..."
