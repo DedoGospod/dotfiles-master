@@ -45,6 +45,12 @@ pacman_packages=(
   btop
   dbus
   stow
+  qemu
+  libvirt
+  virt-manager
+  qemu-full
+  dnsmasq
+  bridge-utils
 )
 
 echo "Installing pacman packages..."
