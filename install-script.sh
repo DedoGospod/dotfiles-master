@@ -3,10 +3,6 @@
 # Enable error checking for all commands
 set -e
 
-# Update the system and install pacman packages
-echo "Updating system..."
-sudo pacman -Syu --noconfirm
-
 # Install paru if not already installed
 if ! command -v paru &> /dev/null; then
     echo "Installing paru..."
@@ -16,8 +12,9 @@ if ! command -v paru &> /dev/null; then
     rm -rf /tmp/paru
 fi
 
-# Refresh package databases (critical for fresh paru installs)
-sudo pacman -Sy
+# Update the system and install pacman packages
+echo "Updating system..."
+sudo pacman -Syu --noconfirm
 
 # List of pacman packages (your original list)
 pacman_packages=(
