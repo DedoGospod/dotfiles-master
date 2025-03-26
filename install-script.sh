@@ -55,6 +55,7 @@ aur_packages=(
   trash-cli
   adwaita-dark
   hyprshot
+  sway-audio-idle-inhibit-git
 )
 
 echo "Installing AUR packages..."
