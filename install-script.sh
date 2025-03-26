@@ -1,21 +1,25 @@
 #!/bin/bash
 
+# Enable error checking for all commands
+set -e
+
 # Update the system and install pacman packages
 echo "Updating system..."
-sudo pacman -Syu --noconfirm || exit 1
+sudo pacman -Syu --noconfirm
 
 # Install paru if not already installed
 if ! command -v paru &> /dev/null; then
     echo "Installing paru..."
-    sudo pacman -S --needed --noconfirm base-devel git || exit 1
-    git clone https://aur.archlinux.org/paru.git /tmp/paru || exit 1
-    cd /tmp/paru || exit 1
-    makepkg -si --noconfirm || exit 1
-    cd || exit 1
-    rm -rf /tmp/paru || exit 1
+    sudo pacman -S --needed --noconfirm base-devel git
+    git clone https://aur.archlinux.org/paru.git /tmp/paru
+    (cd /tmp/paru && makepkg -si --noconfirm)
+    rm -rf /tmp/paru
 fi
 
-# List of pacman packages
+# Refresh package databases (critical for fresh paru installs)
+sudo pacman -Sy
+
+# List of pacman packages (your original list)
 pacman_packages=(
   hyprland
   kitty
@@ -30,7 +34,6 @@ pacman_packages=(
   zsh
   nautilus
   swaync
-  sway-audio-idle-inhibit
   xdg-desktop-portal-gtk
   xdg-desktop-portal-hyprland
   hyprpolkitagent
@@ -39,24 +42,26 @@ pacman_packages=(
   zsh-syntax-highlighting
   fzf
   qt6ct
-  adwaita-dark
   btop
   dbus
+  stow
 )
 
 echo "Installing pacman packages..."
-sudo pacman -S --noconfirm "${pacman_packages[@]}" || exit 1
+sudo pacman -S --needed --noconfirm "${pacman_packages[@]}"
 
-# List of AUR packages
+# List of AUR packages (your original list)
 aur_packages=(
   trash-cli
+  adwaita-dark
+  hyprshot
 )
 
 echo "Installing AUR packages..."
-paru -S --noconfirm "${aur_packages[@]}" || exit 1
+paru -S --needed --noconfirm "${aur_packages[@]}"
 
 # Set zsh as the default shell
 echo "Setting zsh as the default shell..."
-chsh -s $(which zsh) || exit 1
+chsh -s "$(which zsh)"
 
-echo "Installation and setup complete!"
+echo "Installation complete!"
