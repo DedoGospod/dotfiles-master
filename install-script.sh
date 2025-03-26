@@ -47,6 +47,7 @@ pacman_packages=(
   ttf-cascadia-code
   ttf-ubuntu-font-family
   ttf-font-awesome
+  pavucontrol
 )
 
 echo "Installing pacman packages..."
