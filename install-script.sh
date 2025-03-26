@@ -16,7 +16,7 @@ fi
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
-# List of pacman packages (your original list)
+# List of pacman packages 
 pacman_packages=(
   hyprland
   kitty
@@ -52,7 +52,7 @@ pacman_packages=(
 echo "Installing pacman packages..."
 sudo pacman -S --needed --noconfirm "${pacman_packages[@]}"
 
-# List of AUR packages (your original list)
+# List of AUR packages
 aur_packages=(
   trash-cli
   adwaita-dark
