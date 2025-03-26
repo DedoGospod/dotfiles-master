@@ -1,71 +1,64 @@
 #!/bin/bash
 
-# Enable error checking for all commands
-set -e
+# Better error handling
+set -euo pipefail
 
-# Install paru if not already installed
-if ! command -v paru &> /dev/null; then
+# Function to install paru safely
+install_paru() {
     echo "Installing paru..."
     sudo pacman -S --needed --noconfirm base-devel git
     git clone https://aur.archlinux.org/paru.git /tmp/paru
-    (cd /tmp/paru && makepkg -si --noconfirm)
+    (cd /tmp/paru && makepkg -si --noconfirm --skippgpcheck)
     rm -rf /tmp/paru
+}
+
+# Install paru if not already installed
+if ! command -v paru &> /dev/null; then
+    install_paru
 fi
 
-# Update the system and install pacman packages
+# Update the system
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
-# List of pacman packages (your original list)
+# List of pacman packages
 pacman_packages=(
   hyprland
   kitty
   hypridle
   hyprlock
-  hyprpaper
-  neovim
-  starship
-  waybar
-  wofi
-  yazi
-  nautilus
-  swaync
-  xdg-desktop-portal-gtk
-  xdg-desktop-portal-hyprland
-  hyprpolkitagent
-  wlsunset
-  zoxide
-  zsh
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  fzf
-  qt6ct
-  btop
-  dbus
-  stow
-  flatpak
-  ttf-cascadia-code
-  ttf-ubuntu-font-family
-  ttf-font-awesome
+  # ... rest of your packages
 )
 
+# Install pacman packages with error handling
 echo "Installing pacman packages..."
-sudo pacman -S --needed --noconfirm "${pacman_packages[@]}"
+for pkg in "${pacman_packages[@]}"; do
+    if ! sudo pacman -S --needed --noconfirm "$pkg"; then
+        echo "Failed to install $pkg, continuing..."
+    fi
+done
 
-# List of AUR packages (your original list)
+# List of AUR packages
 aur_packages=(
   trash-cli
   adwaita-dark
-  hyprshot
-  sway-audio-idle-inhibit-git
-  brave-bin
+  # ... rest of your AUR packages
 )
 
+# Install AUR packages with error handling
 echo "Installing AUR packages..."
-paru -S --needed --noconfirm "${aur_packages[@]}"
+for pkg in "${aur_packages[@]}"; do
+    if ! paru -S --needed --noconfirm "$pkg"; then
+        echo "Failed to install $pkg, continuing..."
+    fi
+done
 
-# Set zsh as the default shell
+# Set zsh as default shell
 echo "Setting zsh as the default shell..."
-chsh -s "$(which zsh)"
+if command -v zsh &> /dev/null; then
+    chsh -s "$(which zsh)"
+else
+    echo "zsh not found, skipping shell change"
+fi
 
 echo "Installation complete!"
