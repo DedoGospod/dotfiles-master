@@ -31,7 +31,6 @@ pacman_packages=(
   waybar
   wofi
   yazi
-  zsh
   nautilus
   swaync
   xdg-desktop-portal-gtk
@@ -39,7 +38,9 @@ pacman_packages=(
   hyprpolkitagent
   wlsunset
   zoxide
+  zsh
   zsh-syntax-highlighting
+  zsh-autosuggestions
   fzf
   qt6ct
   btop
