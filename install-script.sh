@@ -4,6 +4,17 @@
 echo "Updating system..."
 sudo pacman -Syu --noconfirm || exit 1
 
+# Install paru if not already installed
+if ! command -v paru &> /dev/null; then
+    echo "Installing paru..."
+    sudo pacman -S --needed --noconfirm base-devel git || exit 1
+    git clone https://aur.archlinux.org/paru.git /tmp/paru || exit 1
+    cd /tmp/paru || exit 1
+    makepkg -si --noconfirm || exit 1
+    cd || exit 1
+    rm -rf /tmp/paru || exit 1
+fi
+
 # List of pacman packages
 pacman_packages=(
   hyprland
