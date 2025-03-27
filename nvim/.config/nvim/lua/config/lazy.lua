@@ -19,17 +19,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Sync clipboard between OS and Neovim.
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", "https://github.com/folke/lazy.nvim.git", lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
-
--- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
 
 -- Plugin setup with lazy.nvim
 require("lazy").setup({
