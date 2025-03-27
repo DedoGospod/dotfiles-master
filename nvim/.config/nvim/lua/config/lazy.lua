@@ -26,6 +26,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Sync clipboard between OS and Neovim.
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
 -- Plugin setup with lazy.nvim
 require("lazy").setup({
   spec = {
