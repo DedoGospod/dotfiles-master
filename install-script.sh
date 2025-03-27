@@ -48,6 +48,7 @@ pacman_packages=(
   ttf-ubuntu-font-family
   ttf-font-awesome
   pavucontrol
+  ripgrep
 )
 
 echo "Installing pacman packages..."
