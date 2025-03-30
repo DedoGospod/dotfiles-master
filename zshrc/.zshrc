@@ -14,6 +14,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Initialize Zsh completions
 autoload -Uz compinit && compinit
 
+# Enable zsh autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Load fzf (fuzzy finder) configuration if it exists
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
