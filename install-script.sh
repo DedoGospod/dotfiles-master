@@ -54,7 +54,8 @@ pacman_packages=(
   linux-headers
   linux-zen
   linux-zen-headers
-
+  libva-nvidia-driver
+  nvidia-dkms
 )
 
 echo "Installing pacman packages..."
