@@ -49,6 +49,8 @@ pacman_packages=(
   ttf-font-awesome
   pavucontrol
   ripgrep
+  mpv
+  fastfetch
 )
 
 echo "Installing pacman packages..."
