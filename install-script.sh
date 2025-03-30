@@ -51,6 +51,10 @@ pacman_packages=(
   ripgrep
   mpv
   fastfetch
+  linux-headers
+  linux-zen
+  linux-zen-headers
+
 )
 
 echo "Installing pacman packages..."
