@@ -1,16 +1,16 @@
 -- Basic settings
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-vim.opt.number = true
-vim.opt.mouse = 'a'
-vim.opt.breakindent = true
-vim.opt.undofile = true
-vim.opt.signcolumn = 'yes'
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.inccommand = 'split'
-vim.opt.cursorline = true
-vim.opt.showmode = false
+vim.g.mapleader = ' '       -- Set global leader key to space for custom mappings
+vim.g.maplocalleader = ' '  -- Set local leader key to space for buffer-specific mappings
+vim.opt.number = true       -- Show line numbers
+vim.opt.mouse = 'a'         -- Enable mouse support in all modes
+vim.opt.breakindent = true  -- Preserve indentation when wrapping text
+vim.opt.undofile = true     -- Maintain undo history between sessions
+vim.opt.signcolumn = 'yes'  -- Always show sign column (for git/LSP markers)
+vim.opt.updatetime = 250    -- Time (ms) for CursorHold events and swap file writes
+vim.opt.timeoutlen = 300    -- Time (ms) to wait for mapped key sequences
+vim.opt.inccommand = 'split'-- Show live command preview in split window
+vim.opt.cursorline = true   -- Highlight current line
+vim.opt.showmode = false    -- Hide mode indicator (since it's in statusline)
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
