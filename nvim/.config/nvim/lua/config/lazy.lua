@@ -93,7 +93,6 @@ cmp.setup({
 mapping = cmp.mapping.preset.insert({
     ['<Down>'] = cmp.mapping.select_next_item(),
     ['<Up>'] = cmp.mapping.select_prev_item(),
-    ['<Enter>'] = cmp.mapping.confirm({ select = true }),
 }),
   sources = {
     { name = 'nvim_lsp' },
