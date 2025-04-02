@@ -43,7 +43,7 @@ require("lazy").setup({
 -- Key mappings
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
+vim.keymap.set('n', '<C-g>', builtin.live_grep, { desc = 'Live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
 vim.keymap.set('n', '<C-n>', function() require('nvim-tree.api').tree.toggle() end, { desc = 'Toggle file tree' })
