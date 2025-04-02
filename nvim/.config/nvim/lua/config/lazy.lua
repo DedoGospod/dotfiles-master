@@ -69,7 +69,7 @@ require('telescope').setup {
 
 -- LSP Configuration
 local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()  -- Add this
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Add capabilities to each LSP setup:
 lspconfig.basedpyright.setup { capabilities = capabilities }
@@ -84,7 +84,7 @@ lspconfig.lua_ls.setup {
   },
 }
 
--- Mason setup
+-- Mason setup for automatic LSP configuration
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls" },
