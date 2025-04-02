@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Sync clipboard between OS and Neovim.
+-- Sync clipboard between OS and Neovim (remove if you want them to remain independent)
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
@@ -40,7 +40,7 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
--- Key mappings
+-- Key mappings for telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find files' })
 vim.keymap.set('n', '<C-g>', builtin.live_grep, { desc = 'Live grep' })
@@ -69,10 +69,10 @@ require('telescope').setup {
 
 -- LSP setup
 local lspconfig = require('lspconfig')
-lspconfig.basedpyright.setup {} -- Python
-lspconfig.gopls.setup {} -- Go
+lspconfig.basedpyright.setup {}  -- Python
+lspconfig.gopls.setup {}         -- Go
 lspconfig.rust_analyzer.setup {} -- Rust
-lspconfig.lua_ls.setup { -- Lua
+lspconfig.lua_ls.setup {         -- Lua
   settings = {
     Lua = {
       diagnostics = { globals = { 'vim' } },
@@ -94,7 +94,7 @@ mapping = cmp.mapping.preset.insert({
     ['<Down>'] = cmp.mapping.select_next_item(),
     ['<Up>'] = cmp.mapping.select_prev_item(),
     ['<Enter>'] = cmp.mapping.confirm({ select = true }),
-  }),
+}),
   sources = {
     { name = 'nvim_lsp' },
     { name = 'buffer' },
@@ -102,6 +102,14 @@ mapping = cmp.mapping.preset.insert({
     { name = 'luasnip' },
   },
 })
+
+-- nvim-cmp autopairs (bracket/parenthesis completion)
+local npairs = require('nvim-autopairs')
+npairs.setup({
+  check_ts = true, -- enable treesitter
+})
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
 -- Lualine status bar
 require("lualine").setup {
