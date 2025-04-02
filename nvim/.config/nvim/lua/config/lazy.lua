@@ -100,6 +100,10 @@ mapping = cmp.mapping.preset.insert({
     { name = 'path' },
     { name = 'luasnip' },
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+    },
 })
 
 -- nvim-cmp autopairs (bracket/parenthesis completion)
