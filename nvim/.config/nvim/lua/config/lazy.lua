@@ -83,11 +83,17 @@ lspconfig.lua_ls.setup {
     },
   },
 }
-
 -- Mason setup for automatic LSP configuration
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls" },
+})
+
+-- Detailed error messages
+vim.api.nvim_create_autocmd('CursorHold', {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focusable = false })
+  end
 })
 
 -- Completion (nvim-cmp)
