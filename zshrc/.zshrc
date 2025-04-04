@@ -89,13 +89,12 @@ alias nv='nvim'             # Quick access to nvim
 alias rb='reboot'           # Reboot the system
 alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
 
-# Debugging/Reverse Engineering
-alias pince='z appimages && sudo -E ./PINCE-x86_64.AppImage'
-
 # Config File Shortcuts
 alias zshrc='nvim ~/.zshrc'            # Edit Zsh config
 alias hypr='nvim ~/.config/hypr/hyprland.conf'  # Edit Hyprland config
 alias grub='sudo nvim /etc/default/grub'  # Edit GRUB config
+alias espansorules='nvim .config/espanso/match/base.yml' # Edit Espanso config
+
 
 # Allow sudo to be used with aliases
 alias sudo='sudo '
