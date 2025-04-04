@@ -68,6 +68,7 @@ aur_packages=(
   hyprshot
   sway-audio-idle-inhibit-git
   brave-bin
+  espanso-wayland
 )
 
 echo "Installing AUR packages..."
