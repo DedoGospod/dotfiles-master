@@ -57,6 +57,7 @@ pacman_packages=(
   libva-nvidia-driver
   nvidia-dkms
   wl-clipboard
+  ffmpegthumbnailer
 )
 
 echo "Installing pacman packages..."
