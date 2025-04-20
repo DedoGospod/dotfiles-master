@@ -75,6 +75,14 @@ aur_packages=(
 echo "Installing AUR packages..."
 paru -S --needed --noconfirm "${aur_packages[@]}"
 
+# Install Flatpak apps (e.g., Spotify, Discord, etc.)
+flatpak_apps=(
+  flathub it.mijorus.gearlever
+)
+
+echo "Installing Flatpak apps..."
+flatpak install -y flathub "${flatpak_apps[@]}"
+
 # Set zsh as the default shell
 echo "Setting zsh as the default shell..."
 chsh -s "$(which zsh)"
