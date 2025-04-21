@@ -79,6 +79,7 @@ paru -S --needed --noconfirm "${aur_packages[@]}"
 flatpak_apps=(
   com.obsproject.Studio
   com.obsproject.Studio.Plugin.SceneSwitcher
+  it.mijorus.gearlever
 )
 
 echo "Installing Flatpak apps..."
