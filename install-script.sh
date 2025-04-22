@@ -77,9 +77,8 @@ paru -S --needed --noconfirm "${aur_packages[@]}"
 
 # Install Flatpak apps (e.g., Spotify, Discord, etc.)
 flatpak_apps=(
-  com.obsproject.Studio
-  com.obsproject.Studio.Plugin.SceneSwitcher
   it.mijorus.gearlever
+  com.github.tchx84.Flatseal
 )
 
 echo "Installing Flatpak apps..."
