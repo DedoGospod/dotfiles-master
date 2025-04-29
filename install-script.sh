@@ -79,6 +79,7 @@ paru -S --needed --noconfirm "${aur_packages[@]}"
 flatpak_apps=(
   it.mijorus.gearlever
   com.github.tchx84.Flatseal
+  com.stremio.Stremio
 )
 
 echo "Installing Flatpak apps..."
