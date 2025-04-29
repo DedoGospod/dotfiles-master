@@ -29,21 +29,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 export EDITOR="nvim"
 export SUDO_EDITOR="$EDITOR"  # Use Neovim for sudo commands
 
-# Configure XDG environment for Hyprland
-export XDG_CURRENT_DESKTOP=Hyprland
-export XDG_SESSION_TYPE=wayland
-
 # Use Neovim as the man page viewer
 export MANPAGER='nvim +Man!'
-
-# Dark mode for applications
-export QT_QPA_PLATFORMTHEME=qt6ct
-gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
-gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-
-# Remove "Recent" section from Nautilus.
-gsettings set org.gnome.desktop.privacy remember-recent-files false
-
 
 # ======================
 # Shell History Settings
@@ -93,8 +80,6 @@ alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
 alias zshrc='nvim ~/.zshrc'            # Edit Zsh config
 alias hypr='nvim ~/.config/hypr/hyprland.conf'  # Edit Hyprland config
 alias grub='sudo nvim /etc/default/grub'  # Edit GRUB config
-alias espansorules='nvim .config/espanso/match/base.yml' # Edit Espanso config
-
 
 # Allow sudo to be used with aliases
 alias sudo='sudo '
