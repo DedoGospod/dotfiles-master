@@ -58,6 +58,7 @@ pacman_packages=(
   nvidia-dkms
   wl-clipboard
   ffmpegthumbnailer
+  ncdu
 )
 
 echo "Installing pacman packages..."
