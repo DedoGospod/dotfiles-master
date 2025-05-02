@@ -57,6 +57,7 @@ pacman_packages=(
   linux-zen-headers
   libva-nvidia-driver
   nvidia-dkms
+  ffmpeg
   ffmpegthumbnailer
   ncdu
 )
