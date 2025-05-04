@@ -90,19 +90,6 @@ lspconfig.lua_ls.setup {
   },
 }
 
--- Detailed error messages
-vim.api.nvim_create_autocmd('CursorHold', {
-  callback = function()
-    vim.diagnostic.open_float(nil, {
-      focusable = false,
-      border = "rounded",
-      style = "minimal",
-      source = "always",
-      header = "",
-    })
-  end
-})
-
 -- Completion (nvim-cmp)
 local cmp = require('cmp')
 cmp.setup({
