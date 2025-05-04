@@ -23,7 +23,6 @@ setopt inc_append_history                        # Save commands to history imme
 
 # Completion cache location (XDG-compliant)
 export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"  # Cache file for completions
-mkdir -p "${XDG_CACHE_HOME}/zsh"                # Ensure zsh cache directory exists
 
 # ======================
 # Shell Initialization
@@ -108,4 +107,9 @@ alias grub='sudo nvim /etc/default/grub'        # Edit GRUB config
 # Only if not running in a virtual machine (detected by systemd-detect-virt)
 if [ "$(tty)" = "/dev/tty1" ] && ! systemd-detect-virt -q; then
     exec Hyprland  # Replace shell with Hyprland
+fi
+
+# Auto-start Gamescope on TTY6
+if [[ $(tty) == "/dev/tty6" ]]; then
+    ~/.local/bin/launch-gamescope.sh
 fi
