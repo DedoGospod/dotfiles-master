@@ -20,7 +20,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load fzf (fuzzy finder) configuration if it exists
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
 # ======================
 # Environment Variables
 # ======================
@@ -32,6 +31,15 @@ export SUDO_EDITOR="$EDITOR"  # Use Neovim for sudo commands
 # Use Neovim as the man page viewer
 export MANPAGER='nvim +Man!'
 
+# Prepend ~/.local/bin to PATH for custom scripts/tools
+export PATH="$HOME/.local/bin:$PATH"
+
+# set up XDG folders
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # ======================
 # Shell History Settings
 # ======================
@@ -42,7 +50,6 @@ SAVEHIST=5000        # Maximum number of commands saved to the history file
 
 # Append commands to history as they are executed (instead of on shell exit)
 setopt inc_append_history
-
 
 # ======================
 # Aliases
@@ -64,6 +71,7 @@ alias ls='ls --color=auto'  # Colorize ls output
 # Terminal Utilities
 alias cls='clear'           # Clear the terminal screen
 alias top='btop'            # Use Btop as a drop in replacement for top
+alias h="history | grep"    # Search command line history
 
 # SSH and Remote Access
 alias kssh='kitty +kitten ssh'  # Use kitty's SSH kitten
@@ -84,6 +92,8 @@ alias grub='sudo nvim /etc/default/grub'  # Edit GRUB config
 # Allow sudo to be used with aliases
 alias sudo='sudo '
 
+# Application shortcuts
+alias songrec='flatpak run com.github.marinm.songrec'
 
 # ======================
 # Auto-Start Hyprland
