@@ -1,105 +1,108 @@
 # ======================
+# XDG Base Directory Enforcement 
+# ======================
+
+# Set XDG paths (critical for clean $HOME)
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# Ensure directories exist
+mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
+
+# ======================
+# ZSH Configuration
+# ======================
+
+# History settings (XDG-compliant)
+export HISTFILE="${XDG_STATE_HOME}/zsh/history"  # Fixed path conflict (removed duplicate)
+HISTSIZE=10000
+SAVEHIST=5000
+setopt inc_append_history
+
+# Completion cache (XDG-compliant)
+export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
+mkdir -p "${XDG_CACHE_HOME}/zsh"
+
+# ======================
 # Shell Initialization
 # ======================
 
-# Initialize Starship prompt (fast and customizable shell prompt)
-eval "$(starship init zsh)"
+# Initialize completions (with XDG path)
+autoload -Uz compinit
+compinit -d "${ZSH_COMPDUMP}"  # Explicitly use our custom path
 
-# Initialize zoxide (fast directory navigation)
-eval "$(zoxide init zsh)"
+# Load plugins (with existence checks)
+plugin_dir="/usr/share/zsh/plugins"
+[ -f "$plugin_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
+    source "$plugin_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[ -f "$plugin_dir/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && \
+    source "$plugin_dir/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-# Enable Zsh syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Initialize tools
+eval "$(starship init zsh)"  # Prompt
+eval "$(zoxide init zsh)"    # Directory navigation
 
-# Initialize Zsh completions
-autoload -Uz compinit && compinit
-
-# Enable zsh autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Load fzf (fuzzy finder) configuration if it exists
+# FZF (fuzzy finder)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ======================
 # Environment Variables
 # ======================
 
-# Set default text editor to Neovim
+# Editors
 export EDITOR="nvim"
-export SUDO_EDITOR="$EDITOR"  # Use Neovim for sudo commands
-
-# Use Neovim as the man page viewer
+export SUDO_EDITOR="$EDITOR"
 export MANPAGER='nvim +Man!'
 
-# Prepend ~/.local/bin to PATH for custom scripts/tools
+# PATH modifications
 export PATH="$HOME/.local/bin:$PATH"
 
-# set up XDG folders
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
+# Application-specific XDG paths
+export CARGO_HOME="$XDG_DATA_HOME/cargo"               # Rust
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"                # GnuPG
+export PYTHONHISTORY="$XDG_STATE_HOME/python/history"  # Python
 
-# ======================
-# Shell History Settings
-# ======================
+# ========
+# Aliases 
+# ========
 
-HISTFILE=~/.history  # File where command history is stored
-HISTSIZE=10000       # Maximum number of commands stored in memory
-SAVEHIST=5000        # Maximum number of commands saved to the history file
-
-# Append commands to history as they are executed (instead of on shell exit)
-setopt inc_append_history
-
-# ======================
-# Aliases
-# ======================
-
-# Package Management
-alias yay='paru'            # Use paru as a drop-in replacement for yay
-alias pacman='sudo pacman'  # Always use sudo with pacman
+# System
+alias sudo='sudo '  # Allow sudo with aliases
+alias rb='reboot'
 alias updatemirrors='sudo reflector --verbose --country Australia --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
-
-# File Operations
-alias cp='cp -i'            # Confirm before overwriting
-alias mv='mv -i'            # Confirm before overwriting
-alias mkdir='mkdir -p'      # Create parent directories as needed
-alias rm='trash -v'         # Recoverable trash can
-alias lsh='ls -A'           # List all files except . and ..
-alias ls='ls --color=auto'  # Colorize ls output
-
-# Terminal Utilities
-alias cls='clear'           # Clear the terminal screen
-alias top='btop'            # Use Btop as a drop in replacement for top
-alias h="history | grep"    # Search command line history
-
-# SSH and Remote Access
-alias kssh='kitty +kitten ssh'  # Use kitty's SSH kitten
-
-# Quick Access to Applications
-alias y='yazi'              # Quick access to yazi
-alias nv='nvim'             # Quick access to nvim
-
-# System Commands
-alias rb='reboot'           # Reboot the system
 alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
 
-# Config File Shortcuts
-alias zshrc='nvim ~/.zshrc'            # Edit Zsh config
-alias hypr='nvim ~/.config/hypr/hyprland.conf'  # Edit Hyprland config
-alias grub='sudo nvim /etc/default/grub'  # Edit GRUB config
+# Package Management
+alias yay='paru'
+alias pacman='sudo pacman'
 
-# Allow sudo to be used with aliases
-alias sudo='sudo '
+# Files
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='trash -v'  # Requires trash-cli
+alias mkdir='mkdir -p'
+alias ls='ls --color=auto'
+alias lsh='ls -A'
 
-# Application shortcuts
+# Apps
+alias nv='nvim'
+alias y='yazi'
+alias top='btop'
+alias cls='clear'
+alias kssh='kitty +kitten ssh'
 alias songrec='flatpak run com.github.marinm.songrec'
+
+# Configs
+alias zshrc='nvim ~/.zshrc'
+alias hypr='nvim ~/.config/hypr/hyprland.conf'
+alias grub='sudo nvim /etc/default/grub'
 
 # ======================
 # Auto-Start Hyprland
 # ======================
 
-# Auto-start Hyprland on tty1 login
-if [ "$(tty)" = "/dev/tty1" ]; then
+if [ "$(tty)" = "/dev/tty1" ] && ! systemd-detect-virt -q; then
     exec Hyprland
 fi
