@@ -67,6 +67,12 @@ require('telescope').setup {
   },
 }
 
+-- Mason setup for automatic LSP configuration
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls" }
+})
+
 -- LSP Configuration
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -83,11 +89,6 @@ lspconfig.lua_ls.setup {
     },
   },
 }
--- Mason setup for automatic LSP configuration
-require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls" },
-})
 
 -- Detailed error messages
 vim.api.nvim_create_autocmd('CursorHold', {
@@ -108,6 +109,7 @@ cmp.setup({
   snippet = { expand = function(args) require('luasnip').lsp_expand(args.body) end },
 mapping = cmp.mapping.preset.insert({
     ['<Down>'] = cmp.mapping.select_next_item(),
+    ['<Tab>'] = cmp.mapping.select_next_item(),
     ['<Up>'] = cmp.mapping.select_prev_item(),
 }),
   sources = {
