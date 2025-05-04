@@ -8,8 +8,7 @@ export XDG_CONFIG_HOME="$HOME/.config"       # User-specific configuration files
 export XDG_STATE_HOME="$HOME/.local/state"   # User-specific state files (logs, history)
 export XDG_CACHE_HOME="$HOME/.cache"         # User-specific non-essential cached files
 
-# Create these directories if they don't exist
-# The -p flag prevents errors if directories already exist
+# Create these directories if they don't exist (-p flag prevents errors if directories already exist)
 mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 
 # ======================
@@ -88,7 +87,7 @@ alias ls='ls --color=auto'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
 
 # Apps
-alias nv='nvim'             			       # Neovim shortcut
+alias nv='nvim'             # Neovim shortcut
 alias y='yazi'              			       # Terminal file manager
 alias top='btop'           			       # Modern system monitor
 alias cls='clear'          			       # Clear screen
