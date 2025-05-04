@@ -124,7 +124,7 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
--- Show virtual lines
+-- Show virtual error lines
 vim.diagnostic.config({ virtual_lines = true })
 
 -- Lualine status bar
