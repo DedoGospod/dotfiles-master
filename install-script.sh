@@ -51,14 +51,14 @@ pacman_packages=(
   pavucontrol
   ripgrep
   mpv
+  ffmpeg
+  ffmpegthumbnailer
   fastfetch
   linux-headers
   linux-zen
   linux-zen-headers
   libva-nvidia-driver
   nvidia-dkms
-  ffmpeg
-  ffmpegthumbnailer
   ncdu
 )
 
