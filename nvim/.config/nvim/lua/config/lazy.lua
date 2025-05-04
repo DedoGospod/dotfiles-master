@@ -132,6 +132,14 @@ npairs.setup({
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
+-- Disable virtual_text since it's redundant due to lsp_lines.
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
+-- Show virtual lines
+vim.diagnostic.config({ virtual_lines = true })
+
 -- Lualine status bar
 require("lualine").setup {
   options = { theme = 'catppuccin' },
