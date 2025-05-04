@@ -85,6 +85,7 @@ alias rm='trash -v'         # Safe delete using trash-cli
 alias mkdir='mkdir -p'      # Create parent directories automatically
 alias ls='ls --color=auto'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
+alias h'history | grep'     # Search history for a specific terminal command
 
 # Apps
 alias nv='nvim'             # Neovim shortcut
