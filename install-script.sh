@@ -77,7 +77,7 @@ aur_packages=(
 echo "Installing AUR packages..."
 paru -S --needed --noconfirm "${aur_packages[@]}"
 
-# Install Flatpak apps (e.g., Spotify, Discord, etc.)
+# Install Flatpak apps
 flatpak_apps=(
   it.mijorus.gearlever
   com.github.tchx84.Flatseal
