@@ -75,7 +75,7 @@ lspconfig.rust_analyzer.setup { capabilities = capabilities }
 lspconfig.gopls.setup { capabilities = capabilities }
 lspconfig.bashls.setup { capabilities = capabilities }
 lspconfig.html.setup { capabilities = capabilities }
-lspconfig.zls.setuo { capabilities = capabilities }
+lspconfig.zls.setup { capabilities = capabilities }
 lspconfig.ts_ls.setup { capabilities = capabilities }
 lspconfig.clangd.setup { capabilities = capabilities }
 lspconfig.lua_ls.setup {
