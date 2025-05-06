@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Sync clipboard between OS and Neovim (remove if you want them to remain independent)
+-- Sync clipboard between OS and Neovim 
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
@@ -118,6 +118,12 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
+-- Debugger UI for nvim-dap (shows variables, stacks, etc.)
+require("dapui").setup()
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end  -- Auto-open on debug start
+dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end -- Auto-close on exit
+
 -- Show virtual error lines
 vim.diagnostic.config({ virtual_lines = true })
 
@@ -140,4 +146,4 @@ vim.keymap.set('n', '<C-n>', function() require('nvim-tree.api').tree.toggle() e
 
 -- Compiler.nvim keymappings
 vim.api.nvim_set_keymap('n', '<F9>', "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })           -- Open compiler
-vim.api.nvim_set_keymap('n', '<F10>', "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true }) -- Toggle compiler results
+vim.api.nvim_set_keymap('n', '<F10>', "<cmd>CompilerT
