@@ -62,7 +62,7 @@ require('telescope').setup {
 -- Mason setup for automatic LSP configuration
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls" }
+  ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls", "gopls" }
 })
 
 -- LSP Configuration
