@@ -18,7 +18,7 @@ mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 # History settings configured to be XDG-compliant
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"  # Store history in XDG state directory
 HISTSIZE=10000                                   # Number of commands kept in memory
-SAVEHIST=5000                                    # Number of commands saved to HISTFILE
+SAVEHIST=5000                             # Number of commands saved to HISTFILE
 setopt inc_append_history                        # Save commands to history immediately
 
 # Completion cache location (XDG-compliant)
@@ -43,8 +43,9 @@ plugin_dir="/usr/share/zsh/plugins"
 eval "$(starship init zsh)"  # Custom shell prompt 
 eval "$(zoxide init zsh)"    # Initialize zoxide
 
-# FZF (fuzzy finder) integration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# FZF key bindings and completion
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
 # ======================
 # Environment Variables
