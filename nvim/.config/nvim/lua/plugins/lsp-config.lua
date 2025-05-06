@@ -10,8 +10,6 @@ return {
             lint.linters_by_ft = {
                 -- Standard shell files
                 sh = { "shellcheck" },
-                -- .zsh files
-                zsh = { "shellcheck" },
                 -- .bashrc or similar Bash-style config files
                 bashrc = { "shellcheck" },
                 -- .env files (commonly used for environment variables)
