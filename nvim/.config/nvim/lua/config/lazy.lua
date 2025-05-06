@@ -62,7 +62,7 @@ require('telescope').setup {
 -- Mason setup for automatic LSP configuration
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "basedpyright", "rust_analyzer", "lua_ls", "gopls", "bashls", "html" }
+  ensure_installed = { "basedpyright", "rust_analyzer", "gopls", "bashls", "html", "zls", "ts_ls", "clangd", "lua_ls" }
 })
 
 -- LSP Configuration
@@ -71,10 +71,13 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Add capabilities to each LSP setup:
 lspconfig.basedpyright.setup { capabilities = capabilities }
-lspconfig.bashls.setup {capabilities = capabilities }
-lspconfig.html.setup {capabilities = capabilities }
-lspconfig.gopls.setup { capabilities = capabilities }
 lspconfig.rust_analyzer.setup { capabilities = capabilities }
+lspconfig.gopls.setup { capabilities = capabilities }
+lspconfig.bashls.setup { capabilities = capabilities }
+lspconfig.html.setup { capabilities = capabilities }
+lspconfig.zls.setuo { capabilities = capabilities }
+lspconfig.ts_ls.setup { capabilities = capabilities }
+lspconfig.clangd.setup { capabilities = capabilities }
 lspconfig.lua_ls.setup {
   capabilities = capabilities,
   settings = {
