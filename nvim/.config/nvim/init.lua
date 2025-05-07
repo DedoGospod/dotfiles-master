@@ -8,7 +8,3 @@ vim.cmd.colorscheme("catppuccin")
 vim.filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
-
--- Remove "undefined global" diagnostic from configuration files
----@diagnostic disable: lowercase-global
-vim = vim or {}
