@@ -2,17 +2,12 @@ return {
     {
         "williamboman/mason.nvim",
         config = function()
-
             -- === nvim-lint setup ===
             local lint = require("lint")
             lint.linters_by_ft = {
-                -- Standard shell files
                 sh = { "shellcheck" },
-                -- .bashrc or similar Bash-style config files
                 bashrc = { "shellcheck" },
-                -- .env files (commonly used for environment variables)
                 env = { "shellcheck" },
-                -- You can add more types here if needed
             }
 
             -- Auto-run linting on save and file open
@@ -38,10 +33,16 @@ return {
             "mfussenegger/nvim-lint",
             "mhartington/formatter.nvim",
             "windwp/nvim-autopairs",
-	    "L3MON4D3/LuaSnip",
-	    "rafamadriz/friendly-snippets",
-	    "lsp_lines.nvim",
+            "L3MON4D3/LuaSnip",
+            "rafamadriz/friendly-snippets",
         },
     },
 
+    -- lsp_lines.nvim
+    {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+        end,
+    },
 }
