@@ -40,6 +40,8 @@ return {
             "mfussenegger/nvim-lint",
             "mhartington/formatter.nvim",
             "windwp/nvim-autopairs",
+	    "L3MON4D3/LuaSnip",
+	    "rafamadriz/friendly-snippets"
         },
     },
     {
