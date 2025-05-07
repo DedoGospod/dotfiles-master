@@ -1,29 +1,3 @@
--- Basic settings
-vim.g.mapleader = ' '       -- Set global leader key to space for custom mappings
-vim.g.maplocalleader = ' '  -- Set local leader key to space for buffer-specific mappings
-vim.opt.number = true       -- Show line numbers
-vim.opt.mouse = 'a'         -- Enable mouse support in all modes
-vim.opt.breakindent = true  -- Preserve indentation when wrapping text
-vim.opt.undofile = true     -- Maintain undo history between sessions
-vim.opt.signcolumn = 'yes'  -- Always show sign column (for git/LSP markers)
-vim.opt.updatetime = 250    -- Time (ms) for CursorHold events and swap file writes
-vim.opt.timeoutlen = 300    -- Time (ms) to wait for mapped key sequences
-vim.opt.inccommand = 'split'-- Show live command preview in split window
-vim.opt.cursorline = true   -- Highlight current line
-vim.opt.showmode = false    -- Hide mode indicator (since it's in statusline)
-
--- Highlight yanked text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
--- Sync clipboard between OS and Neovim 
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -116,19 +90,11 @@ npairs.setup({
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
--- Disable virtual_text since it's redundant due to lsp_lines.
-vim.diagnostic.config({
-  virtual_text = false,
-})
-
 -- Debugger UI for nvim-dap (shows variables, stacks, etc.)
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end  -- Auto-open on debug start
 dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end -- Auto-close on exit
-
--- Show virtual error lines
-vim.diagnostic.config({ virtual_lines = true })
 
 -- Lualine status bar
 require("lualine").setup {
