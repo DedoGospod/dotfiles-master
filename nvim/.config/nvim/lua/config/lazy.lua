@@ -96,3 +96,6 @@ require("lualine").setup {
 
 -- Require keymaps
 require("config.keymaps")
+
+-- Lsp lines
+require("lsp_lines").setup()
