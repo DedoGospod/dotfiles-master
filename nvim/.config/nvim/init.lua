@@ -12,6 +12,16 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.showmode = false
 
+-- Bootstrap lazy.nvim (ensure lazy.nvim is installed)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", "https://github.com/folke/lazy.nvim.git", lazypath })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Load plugin manager (lazy.nvim)
+require("config.lazy")  -- Assuming lazy config is inside `lua/config/lazy.lua`
+
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -19,13 +29,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Sync clipboard between OS and Neovim 
+-- Sync clipboard between OS and Neovim
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
-
--- Load plugin manager
-require("config.lazy")
 
 -- Disable virtual_text since it's redundant due to lsp_lines
 vim.diagnostic.config({
