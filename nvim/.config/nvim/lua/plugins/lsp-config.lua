@@ -2,8 +2,6 @@ return {
     {
         "williamboman/mason.nvim",
         config = function()
-            require("mason").setup()
-            require("mason-lspconfig").setup()
 
             -- === nvim-lint setup ===
             local lint = require("lint")
@@ -41,13 +39,9 @@ return {
             "mhartington/formatter.nvim",
             "windwp/nvim-autopairs",
 	    "L3MON4D3/LuaSnip",
-	    "rafamadriz/friendly-snippets"
+	    "rafamadriz/friendly-snippets",
+	    "lsp_lines.nvim",
         },
     },
-    {
-        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-        config = function()
-            require("lsp_lines").setup()
-        end,
-    },
+
 }
