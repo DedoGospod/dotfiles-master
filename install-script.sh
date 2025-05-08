@@ -77,6 +77,7 @@ pacman_packages=(
   linux-zen-headers
   ncdu
   networkmanager
+  reflector
 )
 
 # NVIDIA driver packages
