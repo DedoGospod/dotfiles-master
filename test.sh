@@ -139,13 +139,13 @@ chsh -s "$(which zsh)"
 # Stow dotfiles
 echo "Setting up dotfiles with GNU Stow..."
 
-# Assuming your dotfiles are in ~/.dotfiles and organized by application
+# Switch to dotfiles directory (if not already there)
 DOTFILES_DIR="$HOME/dotfiles-master"
 
 if [ -d "$DOTFILES_DIR" ]; then
     cd "$DOTFILES_DIR"
     
-    # List of directories to stow (each representing a package)
+# List of directories to stow (each representing a package)
     stow_packages=(
         backgrounds
         fastfetch
@@ -164,7 +164,8 @@ if [ -d "$DOTFILES_DIR" ]; then
         yazi
         zshrc
     )
-    
+
+    # Stows packages and shows errors if any fail
     for package in "${stow_packages[@]}"; do
         if [ -d "$package" ]; then
             echo "Stowing $package..."
@@ -177,4 +178,5 @@ else
     echo "Warning: Dotfiles directory $DOTFILES_DIR not found. Skipping stow."
 fi
 
+# Install complete
 echo "Installation complete!"
