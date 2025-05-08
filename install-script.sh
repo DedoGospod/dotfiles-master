@@ -86,6 +86,7 @@ flatpak_apps=(
   it.mijorus.gearlever
   com.github.tchx84.Flatseal
   com.stremio.Stremio
+  com.usebottles.bottles
 )
 
 echo "Installing Flatpak apps..."
