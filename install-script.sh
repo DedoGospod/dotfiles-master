@@ -81,6 +81,7 @@ pacman_packages=(
   npm
   nodejs
   unzip
+  clang
 )
 
 # NVIDIA driver packages
