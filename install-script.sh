@@ -1,10 +1,16 @@
 #!/bin/bash
 
 # Enable error checking for all commands
-#!/bin/bash
-
-# Enable error checking for all commands
 set -e
+
+# Set XDG paths according to the XDG Base Directory Specification
+export XDG_DATA_HOME="$HOME/.local/share"    # User-specific data files
+export XDG_CONFIG_HOME="$HOME/.config"       # User-specific configuration files
+export XDG_STATE_HOME="$HOME/.local/state"   # User-specific state files (logs, history)
+export XDG_CACHE_HOME="$HOME/.cache"         # User-specific non-essential cached files
+
+# Create the directories if they don't exist
+mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 
 # Install paru if not already installed
 if ! command -v paru &> /dev/null; then
@@ -121,7 +127,7 @@ flatpak_apps=(
 )
 
 echo "Installing Flatpak apps..."
-flatpak install -y flathub "${flatpak_apps[@]}"
+flatpak install -y --noninteractive flathub "${flatpak_apps[@]}"
 
 # Set zsh as the default shell
 echo "Setting zsh as the default shell..."
