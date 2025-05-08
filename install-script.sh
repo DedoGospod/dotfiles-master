@@ -78,6 +78,9 @@ pacman_packages=(
   ncdu
   networkmanager
   reflector
+  npm
+  nodejs
+  unzip
 )
 
 # NVIDIA driver packages
