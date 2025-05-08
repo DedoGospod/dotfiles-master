@@ -73,6 +73,7 @@ alias sudo='sudo '
 alias rb='reboot'
 alias updatemirrors='sudo reflector --verbose --country Australia --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
+alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 
 # Package Management
 alias yay='paru'             # Use paru as yay alternative
