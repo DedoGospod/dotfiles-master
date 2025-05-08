@@ -58,9 +58,12 @@ pacman_packages=(
   linux-headers
   linux-zen
   linux-zen-headers
-  libva-nvidia-driver
-  nvidia-dkms
   ncdu
+  libva-nvidia-driver         # Gaming related
+  nvidia-dkms                 # Gaming related
+  gamemode                    # Gaming related
+  gamescope                   # Gaming related
+  mangohud                    # Gaming related
 )
 
 echo "Installing pacman packages..."
