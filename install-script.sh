@@ -34,6 +34,7 @@ pacman_packages=(
   xdg-desktop-portal-hyprland
   hyprpolkitagent
   hyprland-qtutils
+  hyprutils
   wlsunset
   zoxide
   zsh
