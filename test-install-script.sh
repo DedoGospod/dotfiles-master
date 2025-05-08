@@ -75,7 +75,6 @@ nvidia_packages=(
   libva-nvidia-driver
   nvidia-dkms
   nvidia-utils
-  lib32-nvidia-utils
   nvidia-settings
   cuda
   egl-wayland
@@ -86,8 +85,6 @@ gaming_packages=(
   gamemode
   gamescope
   mangohud
-  steam
-  protonup-qt
 )
 
 # Conditionally add NVIDIA packages
