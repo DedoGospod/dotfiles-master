@@ -78,10 +78,11 @@ pacman_packages=(
   ncdu
   networkmanager
   reflector
-  npm
-  nodejs
-  unzip
-  clang
+  npm                 # For nvim    
+  nodejs              # For nvim
+  unzip               # For nvim    
+  clang               # For nvim    
+  go                  # For nvim
 )
 
 # NVIDIA driver packages
