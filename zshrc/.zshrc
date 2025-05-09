@@ -8,6 +8,11 @@ export XDG_CONFIG_HOME="$HOME/.config"       # User-specific configuration files
 export XDG_STATE_HOME="$HOME/.local/state"   # User-specific state files (logs, history)
 export XDG_CACHE_HOME="$HOME/.cache"         # User-specific non-essential cached files
 
+# Application-specific XDG paths
+export CARGO_HOME="$XDG_DATA_HOME/cargo"               # Rust package manager
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"                # GnuPG (encryption)
+export PYTHONHISTORY="$XDG_STATE_HOME/python/history"  # Python command history
+
 # Create these directories if they don't exist (-p flag prevents errors if directories already exist)
 mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 
@@ -16,6 +21,7 @@ mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 # ======================
 
 # History settings configured to be XDG-compliant
+mkdir -p "${XDG_STATE_HOME}/zsh"                 # Ensure zsh state directory exists 
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"  # Store history in XDG state directory
 HISTSIZE=10000                                   # Number of commands kept in memory
 SAVEHIST=5000                                    # Number of commands saved to HISTFILE
@@ -63,11 +69,6 @@ export MANPAGER='nvim +Man!'          # Use Neovim for man pages
 # PATH modifications
 export PATH="$HOME/.local/bin:$PATH"  # Add user-local binaries to PATH
 
-# Application-specific XDG paths
-export CARGO_HOME="$XDG_DATA_HOME/cargo"               # Rust package manager
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"                # GnuPG (encryption)
-export PYTHONHISTORY="$XDG_STATE_HOME/python/history"  # Python command history
-
 # ======================
 # Aliases 
 # ======================
@@ -114,6 +115,10 @@ alias grub='sudo nvim /etc/default/grub'               # Edit GRUB config
 if [ "$(tty)" = "/dev/tty1" ] && ! systemd-detect-virt -q; then
     exec Hyprland  # Replace shell with Hyprland
 fi
+
+# ======================
+# Auto-Start Gamescope
+# ======================
 
 # Auto-start Gamescope on tty6
 if [[ $(tty) == "/dev/tty6" ]]; then
