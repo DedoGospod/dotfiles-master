@@ -169,6 +169,7 @@ if [ -d "$DOTFILES_DIR" ]; then
         wofi
         yazi
         zshrc
+        gtk
     )
 
     # Stows packages and shows errors if any fail
