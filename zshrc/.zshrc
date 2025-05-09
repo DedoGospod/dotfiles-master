@@ -18,7 +18,7 @@ mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 # History settings configured to be XDG-compliant
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"  # Store history in XDG state directory
 HISTSIZE=10000                                   # Number of commands kept in memory
-SAVEHIST=5000                             # Number of commands saved to HISTFILE
+SAVEHIST=5000                                    # Number of commands saved to HISTFILE
 setopt inc_append_history                        # Save commands to history immediately
 
 # Completion cache location (XDG-compliant)
@@ -87,19 +87,21 @@ alias mkdir='mkdir -p'      # Create parent directories automatically
 alias ls='ls --color=auto'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
 alias h='history | grep'    # Search history for a specific terminal command
+alias zl='__zoxide_z && ls' # Jump directories and list contents  
+
 
 # Apps
-alias nv='nvim'             # Neovim shortcut
+alias nv='nvim'                                # Neovim shortcut
 alias y='yazi'              			       # Terminal file manager
-alias top='btop'           			       # Modern system monitor
-alias cls='clear'          			       # Clear screen
-alias kssh='kitty +kitten ssh'                         # SSH with kitty terminal features
-alias songrec='flatpak run com.github.marinm.songrec'  # Song recognition app
+alias top='btop'           			           # Modern system monitor
+alias cls='clear'          			           # Clear screen
+alias kssh='kitty +kitten ssh'                 # SSH with kitty terminal features
 
 # Configs
 alias zshrc='nvim ~/.zshrc'                     # Edit zsh config
 alias hypr='nvim ~/.config/hypr/hyprland.conf'  # Edit Hyprland config
 alias grub='sudo nvim /etc/default/grub'        # Edit GRUB config
+
 
 # ======================
 # Auto-Start Hyprland
