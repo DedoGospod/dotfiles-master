@@ -87,8 +87,7 @@ alias mkdir='mkdir -p'      # Create parent directories automatically
 alias ls='ls --color=auto'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
 alias h='history | grep'    # Search history for a specific terminal command
-alias zl='__zoxide_z && ls' # Jump directories and list contents  
-
+zl() { z "$@" && ls; }      # Automatically do an ls after each zl command
 
 # Apps
 alias nv='nvim'                                # Neovim shortcut
