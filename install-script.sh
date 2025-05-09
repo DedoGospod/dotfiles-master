@@ -151,7 +151,7 @@ DOTFILES_DIR="$HOME/dotfiles-master"
 if [ -d "$DOTFILES_DIR" ]; then
     cd "$DOTFILES_DIR"
     
-# List of directories to stow
+    # List of directories to stow
     stow_packages=(
         backgrounds
         fastfetch
