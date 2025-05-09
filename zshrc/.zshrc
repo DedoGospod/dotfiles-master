@@ -71,7 +71,7 @@ export PYTHONHISTORY="$XDG_STATE_HOME/python/history"  # Python command history
 # System
 alias sudo='sudo '  
 alias rb='reboot'
-alias updatemirrors='sudo reflector --verbose --country Australia --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias updatemirrors='sudo reflector --verbose --country $(curl -s https://ipinfo.io/country | tr -d "\n") --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias cleanflatpak='flatpak uninstall --unused && flatpak repair'
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 
