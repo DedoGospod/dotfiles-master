@@ -92,7 +92,7 @@ alias mkdir='mkdir -p'      # Create parent directories automatically
 alias ls='ls --color=auto'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
 alias h='history -i | grep' # Search history for a specific terminal command
-alias history="history -i"  # Always show history with readable dates
+alias his="history -i"      # Always show history with readable dates
 zl() { z "$@" && ls; }      # Automatically do an ls after each zl command
 
 # Apps
