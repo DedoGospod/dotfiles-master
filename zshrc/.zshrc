@@ -12,6 +12,8 @@ export XDG_CACHE_HOME="$HOME/.cache"         # User-specific non-essential cache
 export CARGO_HOME="$XDG_DATA_HOME/cargo"               # Rust package manager
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"                # GnuPG (encryption)
 export PYTHONHISTORY="$XDG_STATE_HOME/python/history"  # Python command history
+export HISTFILE="${XDG_STATE_HOME}/zsh/history"                       # Store zsh history
+export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"  # Store zsh cache file for completions
 
 # Create these directories if they don't exist (-p flag prevents errors if directories already exist)
 mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
@@ -23,10 +25,6 @@ mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 # Create zsh-specifc XDG directories
 mkdir -p "${XDG_STATE_HOME}/zsh"                 # Ensure zsh state directory exists 
 mkdir -p "${XDG_CACHE_HOME}/zsh"                 # Ensures zsh cache directory exists
-
-# Set custom paths for zsh files
-export HISTFILE="${XDG_STATE_HOME}/zsh/history"                       # Store history in XDG state directory
-export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"  # Cache file for completions
 
 # History settings configured to be XDG-compliant
 HISTSIZE=10000                                   # Number of commands kept in memory
