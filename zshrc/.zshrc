@@ -68,6 +68,7 @@ export VISUAL="$EDITOR"               # Set VISUAL to nvim for applications that
 export MANPAGER='nvim +Man!'          # Use Neovim for man pages
 
 # PATH modifications
+mkdir -p "$HOME/.local/bin"           # Create user-local path 
 export PATH="$HOME/.local/bin:$PATH"  # Add user-local binaries to PATH
 
 # ======================
