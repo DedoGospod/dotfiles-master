@@ -39,7 +39,7 @@ setopt hist_ignore_all_dups                      # Avoid saving any duplicate co
 export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"  # Cache file for completions
 
 # Initialize ZSH completion system
-autoload -Uz compinit
+autoload -Uz compinit 
 compinit -d "${ZSH_COMPDUMP}"  # Explicitly use our custom XDG-compliant path
 
 # ======================
