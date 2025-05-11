@@ -19,6 +19,8 @@ mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 # Create zsh-specifc XDG directories
 mkdir -p "${XDG_STATE_HOME}/zsh"                 # Ensure zsh state directory exists 
 mkdir -p "${XDG_CACHE_HOME}/zsh"                 # Ensures zsh cache directory exists
+mkdir -p "${XDG_CONFIG_HOME}/zsh"                # Zsh Configuration Files
+mkdir -p "${XDG_DATA_HOME}/zsh"                  # Zsh Persistent Data
 
 # ======================
 # ZSH Configuration
