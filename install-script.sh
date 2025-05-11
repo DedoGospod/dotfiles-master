@@ -96,6 +96,7 @@ pacman_packages=(
   unzip               # For nvim    
   clang               # For nvim    
   go                  # For nvim
+  shellcheck          # For nvim
 )
 
 # NVIDIA driver packages
