@@ -16,27 +16,27 @@ export PYTHONHISTORY="$XDG_STATE_HOME/python/history"  # Python command history
 # Create these directories if they don't exist (-p flag prevents errors if directories already exist)
 mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 
+# ======================
+# ZSH Configuration
+# ======================
+
 # Create zsh-specifc XDG directories
 mkdir -p "${XDG_STATE_HOME}/zsh"                 # Ensure zsh state directory exists 
 mkdir -p "${XDG_CACHE_HOME}/zsh"                 # Ensures zsh cache directory exists
 mkdir -p "${XDG_CONFIG_HOME}/zsh"                # Zsh Configuration Files
 mkdir -p "${XDG_DATA_HOME}/zsh"                  # Zsh Persistent Data
 
-# ======================
-# ZSH Configuration
-# ======================
+# Set custom paths for zsh files
+export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"  # Cache file for completions
+export HISTFILE="${XDG_STATE_HOME}/zsh/history"                       # Store history in XDG state directory
 
 # History settings configured to be XDG-compliant
-export HISTFILE="${XDG_STATE_HOME}/zsh/history"  # Store history in XDG state directory
 HISTSIZE=10000                                   # Number of commands kept in memory
 SAVEHIST=5000                                    # Number of commands saved to HISTFILE
 setopt inc_append_history                        # Save commands to history immediately
 setopt share_history                             # Sync history across sessions
 setopt extended_history                          # Save timestamps
 setopt hist_ignore_all_dups                      # Avoid saving any duplicate commands entirely
-
-# Completion cache location (XDG-compliant)
-export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"  # Cache file for completions
 
 # Initialize ZSH completion system
 autoload -Uz compinit 
