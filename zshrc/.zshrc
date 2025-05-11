@@ -16,12 +16,15 @@ export PYTHONHISTORY="$XDG_STATE_HOME/python/history"  # Python command history
 # Create these directories if they don't exist (-p flag prevents errors if directories already exist)
 mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 
+# Create zsh-specifc XDG directories
+mkdir -p "${XDG_STATE_HOME}/zsh"                 # Ensure zsh state directory exists 
+mkdir -p "${XDG_CACHE_HOME}/zsh"                 # Ensures zsh cache directory exists
+
 # ======================
 # ZSH Configuration
 # ======================
 
 # History settings configured to be XDG-compliant
-mkdir -p "${XDG_STATE_HOME}/zsh"                 # Ensure zsh state directory exists 
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"  # Store history in XDG state directory
 HISTSIZE=10000                                   # Number of commands kept in memory
 SAVEHIST=5000                                    # Number of commands saved to HISTFILE
@@ -92,7 +95,7 @@ alias mkdir='mkdir -p'      # Create parent directories automatically
 alias ls='ls --color=auto'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
 alias h='history -i | grep' # Search history for a specific terminal command
-alias his="history -i"      # Always show history with readable dates
+alias hist="history -i"     # Always show history with readable dates
 zl() { z "$@" && ls; }      # Automatically do an ls after each zl command
 
 # Apps
