@@ -1,19 +1,34 @@
---lspconfig.basedpyright.setup { capabilities = capabilities }
---lspconfig.rust_analyzer.setup { capabilities = capabilities }
---lspconfig.gopls.setup { capabilities = capabilities }
---lspconfig.bashls.setup { capabilities = capabilities }
---lspconfig.html.setup { capabilities = capabilities }
---lspconfig.zls.setup { capabilities = capabilities }
---lspconfig.ts_ls.setup { capabilities = capabilities }
---lspconfig.clangd.setup { capabilities = capabilities }
---lspconfig.lua_ls.setup {
---  capabilities = capabilities,
---  settings = {
---    Lua = {
---      diagnostics = { globals = { 'vim' } },
---    },
---  },
---}
+-- Plugin setup with lazy.nvim
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  },
+  checker = { enabled = true },
+})
+
+-- Require configs
+require("config.keymaps")    -- require keymaps
+require("config.mason-lsp")  -- require mason-lsp config
+
+-- Telescope configuration
+require('telescope').setup {
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+    },
+  },
+  pickers = {
+    find_files = { hidden = true },
+  },
+}
 
 -- Completion (nvim-cmp)
 local cmp = require('cmp')
@@ -77,8 +92,4 @@ require("lualine").setup {
   options = { theme = 'catppuccin' },
 }
 
--- Require keymaps
-require("config.keymaps")
-
-
--- ( DAP, LINTERS, AND FORMATTER HAVE NOT BEEN CONFIGURED YET, REMEMBER TO DO SO )
+-- ( DAP, LINTERS, AND FORMATTER HAVE NOT BEEN CONFIGURED YET, REMEMBER TO DO 
