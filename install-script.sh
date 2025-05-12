@@ -134,7 +134,6 @@ aur_packages=(
   adwaita-dark
   hyprshot
   sway-audio-idle-inhibit-git
-  brave-bin
 )
 
 echo "Installing AUR packages..."
@@ -146,6 +145,7 @@ flatpak_apps=(
   com.github.tchx84.Flatseal
   com.stremio.Stremio
   com.usebottles.bottles
+  com.brave.Browser
 )
 
 echo "Installing Flatpak apps..."
