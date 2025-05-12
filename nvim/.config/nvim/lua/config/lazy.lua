@@ -1,58 +1,19 @@
--- Plugin setup with lazy.nvim
-require("lazy").setup({
-  spec = {
-    { import = "plugins" },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  },
-  checker = { enabled = true },
-})
-
--- Telescope configuration
-require('telescope').setup {
-  defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      '--hidden',
-    },
-  },
-  pickers = {
-    find_files = { hidden = true },
-  },
-}
-
--- Mason setup for automatic LSP configuration
-require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = { "basedpyright", "rust_analyzer", "gopls", "bashls", "html", "zls", "ts_ls", "clangd", "lua_ls" }
-})
-
--- LSP Configuration
-local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- Add capabilities to each LSP setup:
-lspconfig.basedpyright.setup { capabilities = capabilities }
-lspconfig.rust_analyzer.setup { capabilities = capabilities }
-lspconfig.gopls.setup { capabilities = capabilities }
-lspconfig.bashls.setup { capabilities = capabilities }
-lspconfig.html.setup { capabilities = capabilities }
-lspconfig.zls.setup { capabilities = capabilities }
-lspconfig.ts_ls.setup { capabilities = capabilities }
-lspconfig.clangd.setup { capabilities = capabilities }
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = { globals = { 'vim' } },
-    },
-  },
-}
+--lspconfig.basedpyright.setup { capabilities = capabilities }
+--lspconfig.rust_analyzer.setup { capabilities = capabilities }
+--lspconfig.gopls.setup { capabilities = capabilities }
+--lspconfig.bashls.setup { capabilities = capabilities }
+--lspconfig.html.setup { capabilities = capabilities }
+--lspconfig.zls.setup { capabilities = capabilities }
+--lspconfig.ts_ls.setup { capabilities = capabilities }
+--lspconfig.clangd.setup { capabilities = capabilities }
+--lspconfig.lua_ls.setup {
+--  capabilities = capabilities,
+--  settings = {
+--    Lua = {
+--      diagnostics = { globals = { 'vim' } },
+--    },
+--  },
+--}
 
 -- Completion (nvim-cmp)
 local cmp = require('cmp')
@@ -78,10 +39,32 @@ mapping = cmp.mapping.preset.insert({
 -- nvim-cmp autopairs (bracket/parenthesis completion)
 local npairs = require('nvim-autopairs')
 npairs.setup({
-  check_ts = true, -- enable treesitter
+  check_ts = true,
 })
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
+-- nvim-treesitter configuration
+require("nvim-treesitter.configs").setup({
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true,
+  },
+  ensure_installed = {
+    "json", "javascript", "typescript", "tsx", "yaml", "html", "css", "markdown",
+    "markdown_inline", "bash", "lua", "vim", "dockerfile", "c", "c_sharp", "cpp",
+    "rust", "go", "hyprlang", "zig"
+  },
+})
+
+-- nvim-tree configuration
+require("nvim-tree").setup {
+  open_on_tab = false,
+  update_focused_file = { enable = true, update_cwd = true },
+}
 
 -- Debugger UI for nvim-dap (shows variables, stacks, etc.)
 require("dapui").setup()
@@ -96,3 +79,6 @@ require("lualine").setup {
 
 -- Require keymaps
 require("config.keymaps")
+
+
+-- ( DAP, LINTERS, AND FORMATTER HAVE NOT BEEN CONFIGURED YET, REMEMBER TO DO SO )
