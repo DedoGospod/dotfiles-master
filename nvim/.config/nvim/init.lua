@@ -22,9 +22,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugin manager (lazy.nvim)
 require("config.lazy")  -- Assuming lazy config is inside `lua/config/lazy.lua`
 
--- Jump to end of line with CTRL + e 
-vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = t })
-
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -49,4 +46,27 @@ vim.cmd.colorscheme("catppuccin")
 -- Filetype detection for Hyprland
 vim.filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
+
+-- Jump to end of line with CTRL + e 
+vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = true, noremap = true })
+
+-- LSP UI (Diagnostics - nvchad defaults)
+vim.diagnostic.config({
+  virtual_text = { spacing = 4, severity_sort = true },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity = {
+    hint = false,
+    information = false,
+  },
+})
+
+-- Formatting on Save (nvchad default)
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("LspFormat", { clear = true }),
+  callback = function()
+    vim.lsp.buf.format({ async = false }) -- Set async to false for synchronous formatting
+  end,
 })
