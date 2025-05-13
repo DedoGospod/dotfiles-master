@@ -47,3 +47,6 @@ vim.cmd.colorscheme("catppuccin")
 vim.filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
+
+-- Jump to end of line with CTRL + e 
+vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = t
