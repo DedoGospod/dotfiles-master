@@ -22,6 +22,9 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugin manager (lazy.nvim)
 require("config.lazy")  -- Assuming lazy config is inside `lua/config/lazy.lua`
 
+-- Jump to end of line with CTRL + e 
+vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = t
+
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -47,6 +50,3 @@ vim.cmd.colorscheme("catppuccin")
 vim.filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
-
--- Jump to end of line with CTRL + e 
-vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = t
