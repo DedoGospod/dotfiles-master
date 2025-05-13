@@ -20,7 +20,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Load plugin manager (lazy.nvim)
-require("config.lazy")  -- Assuming lazy config is inside `lua/config/lazy.lua`
+require("config.lazy")
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
