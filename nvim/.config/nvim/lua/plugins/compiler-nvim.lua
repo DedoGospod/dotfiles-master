@@ -4,8 +4,9 @@ return {
     cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
     dependencies = { "stevearc/overseer.nvim", "nvim-telescope/telescope.nvim" },
     opts = {},
+    lazy = true,
   },
-  { -- overseer.nvim (now lazy-loads on its own commands)
+  { -- overseer.nvim
     "stevearc/overseer.nvim",
     commit = "6271cab7ccc4ca840faa93f54440ffae3a3918bd",
     cmd = { "OverseerOpen", "OverseerToggle", "OverseerRun" }, -- Overseer's own commands
@@ -17,5 +18,6 @@ return {
         default_detail = 1,
       },
     },
+    lazy = true,
   },
 }
