@@ -91,10 +91,10 @@ alias cp='cp -i'            # Interactive copy
 alias mv='mv -i'            # Interactive move
 alias rm='trash -v'         # Safe delete using trash-cli
 alias mkdir='mkdir -p'      # Create parent directories automatically
-alias ls='ls --color=auto'  # Colorized ls output
+alias ls='ls -1 --color=always --group-directories-first'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
-alias h='history -i | grep' # Search history for a specific terminal command
-alias hist="history -i"     # Always show history with readable dates
+alias h='history 0 | grep' # Search history for a specific terminal command
+alias hist="history 0"     # Always show history with readable dates
 zl() { z "$@" && ls; }      # Automatically do an ls after each zl command
 
 # Apps
