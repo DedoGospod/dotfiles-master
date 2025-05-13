@@ -23,7 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 require("config.lazy")  -- Assuming lazy config is inside `lua/config/lazy.lua`
 
 -- Jump to end of line with CTRL + e 
-vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = t
+vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = t })
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
