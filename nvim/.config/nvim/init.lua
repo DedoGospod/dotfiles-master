@@ -51,7 +51,7 @@ vim.filetype.add({
 -- Jump to end of line with CTRL + e 
 vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = true, noremap = true })
 
--- LSP UI (Diagnostics - nvchad defaults)
+-- LSP UI (Diagnostics)
 vim.diagnostic.config({
   virtual_text = { spacing = 4, severity_sort = true },
   signs = true,
@@ -63,7 +63,7 @@ vim.diagnostic.config({
   },
 })
 
--- Formatting on Save (nvchad default)
+-- Formatting on Save
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = vim.api.nvim_create_augroup("LspFormat", { clear = true }),
   callback = function()
