@@ -36,8 +36,10 @@ end)
 
 -- Disable virtual_text since it's redundant due to lsp_lines
 vim.diagnostic.config({
-    virtual_text = false,  -- Disable inline text
-    virtual_lines = true,  -- Enable virtual lines below code for diagnostics
+	virtual_text = false, -- Disable inline text
+	virtual_lines = true, -- Enable virtual lines below code for diagnostics
+	signs = true,
+	underline = true,
 })
 
 -- Set colorscheme
@@ -50,18 +52,6 @@ vim.filetype.add({
 
 -- Jump to end of line with CTRL + e 
 vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = true, noremap = true })
-
--- LSP UI (Diagnostics)
-vim.diagnostic.config({
-  virtual_text = { spacing = 4, severity_sort = true },
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity = {
-    hint = false,
-    information = false,
-  },
-})
 
 -- Formatting on Save
 vim.api.nvim_create_autocmd("BufWritePre", {
