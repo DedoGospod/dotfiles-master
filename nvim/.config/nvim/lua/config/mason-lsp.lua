@@ -11,18 +11,21 @@ require("mason").setup({
     "ts_ls",
     "clangd",
     "lua_ls",
-
-    -- Formatters
-    "stylua",
-    "black",
-    "isort",
-    "rustfmt",
-    "prettier",
-    "shfmt",
-    "clang-format",
-    "gofmt",
-    -- "zigfmt", (find alternative, mason doesnt have this)
   },
+})
+
+require("mason-tool-installer").setup({
+    ensure_installed = {
+        "stylua",
+        "black",
+        "isort",
+        "rustfmt",
+        "prettier",
+        "shfmt",
+        "clang-format",
+        -- "gofmt", (find alternative, mason doesnt have this)
+	      -- zigfmt (find alternative, mason doesnt have this)
+    },
 })
 
 -- LSP Configuration
