@@ -15,11 +15,11 @@ return {
   { "hrsh7th/cmp-cmdline", dependencies = { "hrsh7th/nvim-cmp" } },
   { "hrsh7th/cmp-vsnip", dependencies = { "hrsh7th/nvim-cmp", "hrsh7th/vim-vsnip" } },
   { "hrsh7th/cmp-nvim-lsp", dependencies = { "hrsh7th/nvim-cmp", "neovim/nvim-lspconfig" } },
+  { "saadparwaiz1/cmp_luasnip", dependencies = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" } }, -- Corrected inclusion
 
   -- Snippets
   { "hrsh7th/vim-vsnip" },
   { "L3MON4D3/LuaSnip" },
-  { "saadparwaiz1/cmp_luasnip", dependencies = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" } },
   { "rafamadriz/friendly-snippets", dependencies = { "L3MON4D3/LuaSnip" } },
 
   -- Debugging
