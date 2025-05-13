@@ -9,9 +9,9 @@ export XDG_STATE_HOME="$HOME/.local/state"   # User-specific state files (logs, 
 export XDG_CACHE_HOME="$HOME/.cache"         # User-specific non-essential cached files
 
 # Application-specific XDG paths
-export CARGO_HOME="$XDG_DATA_HOME/cargo"               # Rust package manager
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"                # GnuPG (encryption)
-export PYTHONHISTORY="$XDG_STATE_HOME/python/history"  # Python command history
+export CARGO_HOME="$XDG_DATA_HOME/cargo"                              # Rust package manager
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"                               # GnuPG (encryption)
+export PYTHONHISTORY="$XDG_STATE_HOME/python/history"                 # Python command history
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"                       # Store zsh history
 export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"  # Store zsh cache file for completions
 
