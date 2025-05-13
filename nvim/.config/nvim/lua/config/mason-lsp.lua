@@ -24,7 +24,7 @@ require("mason-tool-installer").setup({
         "shfmt",
         "clang-format",
         -- "gofmt", (find alternative, mason doesnt have this)
-	      -- zigfmt (find alternative, mason doesnt have this)
+	-- zigfmt (find alternative, mason doesnt have this)
     },
 })
 
