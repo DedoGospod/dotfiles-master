@@ -1,12 +1,35 @@
--- Mason setup for automatic LSP configuration
-require("mason").setup()
+-- Mason setup to manage both LSPs and formatters
+require("mason").setup({
+  ensure_installed = {
+    -- Language Servers
+    "basedpyright",
+    "rust_analyzer",
+    "gopls",
+    "bashls",
+    "html",
+    "zls",
+    "ts_ls",
+    "clangd",
+    "lua_ls",
+
+    -- Formatters
+    "stylua",
+    "black",
+    "isort",
+    "rustfmt",
+    "prettier",
+    "shfmt",
+    "clang-format",
+    "gofmt",
+    -- "zigfmt", (find alternative, mason doesnt have this)
+  },
+})
 
 -- LSP Configuration
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason-lspconfig").setup({
-  ensure_installed = { "basedpyright", "rust_analyzer", "gopls", "bashls", "html", "zls", "ts_ls", "clangd", "lua_ls" },
   handlers = {
     function(server_name)
       if server_name == "lua_ls" then
@@ -90,7 +113,7 @@ require("mason-lspconfig").setup({
       elseif server_name == "zls" then
         lspconfig[server_name].setup {
           capabilities = capabilities,
-          -- Zig doesn't have many common LSP settings yet, but i might add formatter config here later
+          -- Zig doesn't have many common LSP settings yet, but i might add a formatter config here later
         }
       elseif server_name == "ts_ls" then
         lspconfig[server_name].setup {
@@ -118,11 +141,11 @@ require("mason-lspconfig").setup({
       elseif server_name == "clangd" then
         lspconfig[server_name].setup {
           capabilities = capabilities,
-          -- You might want to configure compileCommands.json path or other clangd flags here
+          -- Might want to configure compileCommands.json path or other clangd flags here
           -- settings = {
-          --   ["clangd"] = {
-          --     arguments = { "--compile-commands-dir=build" },
-          --   },
+          --    ["clangd"] = {
+          --      arguments = { "--compile-commands-dir=build" },
+          --    },
           -- },
         }
       else
