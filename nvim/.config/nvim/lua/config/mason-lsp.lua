@@ -1,7 +1,6 @@
 -- Mason setup to manage both LSPs and formatters
 require("mason").setup({
   ensure_installed = {
-    -- Language Servers
     "basedpyright",
     "rust_analyzer",
     "gopls",
@@ -15,17 +14,17 @@ require("mason").setup({
 })
 
 require("mason-tool-installer").setup({
-    ensure_installed = {
-        "stylua",
-        "black",
-        "isort",
-        "rustfmt",
-        "prettier",
-        "shfmt",
-        "clang-format",
-        -- "gofmt", (find alternative, mason doesnt have this)
-	-- zigfmt (find alternative, mason doesnt have this)
-    },
+  ensure_installed = {
+    "stylua",
+    "black",
+    "isort",
+    "rustfmt",
+    "prettier",
+    "shfmt",
+    "clang-format",
+    -- "gofmt", (find alternative)
+    -- "zigfmt", (find alternative)
+  },
 })
 
 -- LSP Configuration
@@ -41,8 +40,10 @@ require("mason-lspconfig").setup({
           settings = {
             Lua = {
               diagnostics = { globals = { 'vim' } },
-              workspace = { checkThirdParty = false }, -- Don't check libraries you didn't write
-              telemetry = { enable = false }, -- Opt-out of telemetry
+              workspace = { checkThirdParty = false },
+              telemetry = { enable = false },
+              completion = { callSnippet = "Replace" },
+              hint = { enable = true },
             },
           },
         }
@@ -52,9 +53,9 @@ require("mason-lspconfig").setup({
           settings = {
             python = {
               analysis = {
-                typeCheckingMode = "basic", -- Or "strict" for more rigorous checking
-                diagnosticMode = "openFilesOnly", -- Or "workspace" to check all project files
-                useLibraryCodeForTypes = true, -- Improve type inference
+                typeCheckingMode = "basic",
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true,
               },
             },
           },
@@ -65,12 +66,8 @@ require("mason-lspconfig").setup({
           settings = {
             ["rust-analyzer"] = {
               checkOnSave = true,
-              cargo = {
-                allFeatures = true, -- Enable all features by default
-              },
-              procMacro = {
-                enable = true, -- Enable procedural macro support
-              },
+              cargo = { allFeatures = true },
+              procMacro = { enable = true },
             },
           },
         }
@@ -86,8 +83,10 @@ require("mason-lspconfig").setup({
                 shadow = true,
                 unusedwrite = true,
               },
-              staticcheck = true, -- Enable staticcheck
-              usePlaceholders = true, -- Add placeholders for function arguments
+              staticcheck = true,
+              usePlaceholders = true,
+              gofumpt = true,
+              buildFlags = { "-tags", "integration" },
             },
           },
         }
@@ -95,9 +94,7 @@ require("mason-lspconfig").setup({
         lspconfig[server_name].setup {
           capabilities = capabilities,
           settings = {
-            bashIde = {
-              globExcludePatterns = { "**/node_modules/**" }, -- Example exclusion
-            },
+            bashIde = { globExcludePatterns = { "**/node_modules/**" } },
           },
         }
       elseif server_name == "html" then
@@ -105,56 +102,36 @@ require("mason-lspconfig").setup({
           capabilities = capabilities,
           settings = {
             html = {
-              format = {
-                enable = true,
-                indentInnerHtml = true,
-                wrapLineLength = 120,
-              },
+              format = { enable = true, indentInnerHtml = true, wrapLineLength = 120 },
             },
           },
         }
       elseif server_name == "zls" then
         lspconfig[server_name].setup {
           capabilities = capabilities,
-          -- Zig doesn't have many common LSP settings yet, but i might add a formatter config here later
+          -- Add Zig specific settings if needed later
         }
       elseif server_name == "ts_ls" then
         lspconfig[server_name].setup {
           capabilities = capabilities,
           settings = {
-            typescript = {
-              tsdk = {
-                enable = true,
-                autoSearchSystemTs = true,
-              },
-            },
-            javascript = {
-              tsdk = {
-                enable = true,
-                autoSearchSystemTs = true,
-              },
-            },
-            format = {
-              enable = true,
-              semicolons = "always",
-              singleQuote = true,
-            },
+            typescript = { tsdk = { enable = true, autoSearchSystemTs = true } },
+            javascript = { tsdk = { enable = true, autoSearchSystemTs = true } },
+            format = { enable = true, semicolons = "always", singleQuote = true },
           },
         }
       elseif server_name == "clangd" then
         lspconfig[server_name].setup {
           capabilities = capabilities,
-          -- Might want to configure compileCommands.json path or other clangd flags here
+          -- Configure compileCommands.json path or other clangd flags if needed
           -- settings = {
-          --    ["clangd"] = {
-          --      arguments = { "--compile-commands-dir=build" },
-          --    },
+          --   ["clangd"] = {
+          --     arguments = { "--compile-commands-dir=build" },
+          --   },
           -- },
         }
       else
-        lspconfig[server_name].setup {
-          capabilities = capabilities, -- Still apply default capabilities to other servers
-        }
+        lspconfig[server_name].setup { capabilities = capabilities }
       end
     end,
   },
