@@ -9,7 +9,7 @@ require("lazy").setup({
 
 -- Require configs
 require("config.keymaps")           -- Keymaps
-require("config.mason-lsp")         -- Mason-lsp config
+require("config.mason-lsp")         -- Mason/lsp config
 
 -- Telescope configuration
 require('telescope').setup {
@@ -86,5 +86,36 @@ npairs.setup({
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
+-- LSP lines setup
+require("lsp_lines").setup()
+
+
+-- Conform formatter setup
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+    python = { "isort", "black" },
+    rust = { "rustfmt", lsp_format = "fallback" },
+    javascript = { "prettierd", "prettier", stop_after_first = true },
+    typescript = { "prettierd", "prettier", stop_after_first = true },
+    go = { "gofmt" }, -- Or "gofumpt"
+    sh = { "shfmt" },
+    bash = { "shfmt" },
+    html = { "prettier" },
+    zig = { "zigfmt" }, -- Ensure 'zig' is in your PATH
+    c = { "clang-format" },
+    cpp = { "clang-format" },
+    objc = { "clang-format" },
+    objcpp = { "clang-format" },
+  },
+})
+
+-- nvim-lint setup
+local lint = require("lint")
+lint.linters_by_ft = {
+  sh = { "shellcheck" },
+  bashrc = { "shellcheck" },
+  env = { "shellcheck" },
+}
 
 -- ( DAP, LINTERS, AND FORMATTER HAVE NOT BEEN CONFIGURED YET, REMEMBER TO DO SO )
