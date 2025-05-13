@@ -13,3 +13,13 @@ vim.keymap.set('n', '<C-n>', function() require('nvim-tree.api').tree.toggle() e
 -- Compiler.nvim keymappings
 vim.api.nvim_set_keymap('n', '<F9>', "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })           -- Open compiler
 vim.api.nvim_set_keymap('n', '<F10>', "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true }) -- Toggle compiler results
+
+-- trouble.nvim keymaps
+keys = { -- Keep your keybindings!
+  { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+  { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+  { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
+  { "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP Definitions / references / ... (Trouble)" },
+  { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+  { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+}
