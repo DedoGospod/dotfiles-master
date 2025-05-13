@@ -2,6 +2,9 @@ return {
   -- Mason (must come before mason-lspconfig)
   { "williamboman/mason.nvim" },
 
+  -- Mason tool installer 
+  { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+
   -- mason-lspconfig (depends on mason.nvim)
   { "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim" } },
 
