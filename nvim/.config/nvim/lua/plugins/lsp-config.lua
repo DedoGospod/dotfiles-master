@@ -1,48 +1,48 @@
 return {
   -- Mason (must come before mason-lspconfig)
-  { "williamboman/mason.nvim" },
+  { "williamboman/mason.nvim", lazy = false },
 
-  -- Mason tool installer 
-  { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+  -- Mason tool installer
+  { "WhoIsSethDaniel/mason-tool-installer.nvim", lazy = false },
 
   -- mason-lspconfig (depends on mason.nvim)
-  { "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim" } },
+  { "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim" }, lazy = false },
 
   -- LSP Configuration (depends on mason and mason-lspconfig)
-  { "neovim/nvim-lspconfig" },
+  { "neovim/nvim-lspconfig", lazy = true, event = "BufReadPre" }, -- Lazy load on opening a buffer
 
   -- Completion (order matters for cmp)
-  { "hrsh7th/nvim-cmp" },
-  { "hrsh7th/cmp-buffer", dependencies = { "hrsh7th/nvim-cmp" } },
-  { "hrsh7th/cmp-path", dependencies = { "hrsh7th/nvim-cmp" } },
-  { "hrsh7th/cmp-cmdline", dependencies = { "hrsh7th/nvim-cmp" } },
-  { "hrsh7th/cmp-vsnip", dependencies = { "hrsh7th/nvim-cmp", "hrsh7th/vim-vsnip" } },
-  { "hrsh7th/cmp-nvim-lsp", dependencies = { "hrsh7th/nvim-cmp", "neovim/nvim-lspconfig" } },
-  { "saadparwaiz1/cmp_luasnip", dependencies = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" } }, -- Corrected inclusion
+  { "hrsh7th/nvim-cmp", lazy = false },
+  { "hrsh7th/cmp-buffer", dependencies = { "hrsh7th/nvim-cmp" }, lazy = true, event = "InsertEnter" },
+  { "hrsh7th/cmp-path", dependencies = { "hrsh7th/nvim-cmp" }, lazy = true, event = "InsertEnter" },
+  { "hrsh7th/cmp-cmdline", dependencies = { "hrsh7th/nvim-cmp" }, lazy = true, event = "CmdlineEnter" },
+  { "hrsh7th/cmp-vsnip", dependencies = { "hrsh7th/nvim-cmp", "hrsh7th/vim-vsnip" }, lazy = true, event = "InsertEnter" },
+  { "hrsh7th/cmp-nvim-lsp", dependencies = { "hrsh7th/nvim-cmp", "neovim/nvim-lspconfig" }, lazy = true, event = "InsertEnter" },
+  { "saadparwaiz1/cmp_luasnip", dependencies = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" }, lazy = true, event = "InsertEnter" },
 
   -- Snippets
-  { "hrsh7th/vim-vsnip" },
-  { "L3MON4D3/LuaSnip" },
-  { "rafamadriz/friendly-snippets", dependencies = { "L3MON4D3/LuaSnip" } },
+  { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
+  { "L3MON4D3/LuaSnip", lazy = true, event = "InsertEnter" },
+  { "rafamadriz/friendly-snippets", dependencies = { "L3MON4D3/LuaSnip" }, lazy = true, event = "InsertEnter" },
 
   -- Debugging
-  { "mfussenegger/nvim-dap" },
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+  { "mfussenegger/nvim-dap", lazy = true, cmd = "DapLaunch" },
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" }, lazy = true, cmd = "DapLaunch" },
 
   -- Testing
-  { "nvim-neotest/nvim-nio" }, -- Assuming this is the core neotest plugin
+  { "nvim-neotest/nvim-nio", lazy = true, cmd = "Neotest" },
 
   -- Linting
-  { "mfussenegger/nvim-lint" },
+  { "mfussenegger/nvim-lint", lazy = true, event = { "BufWritePost" } },
 
   -- Auto Pairs
-  { "windwp/nvim-autopairs" },
+  { "windwp/nvim-autopairs", lazy = true, event = { "InsertEnter", "CmdlineLeave" } },
 
   -- Formatting
-  { 'stevearc/conform.nvim' },
+  { 'stevearc/conform.nvim', lazy = true, event = { "BufWritePre" } },
 
   -- Utility/Other
-  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", dependencies = { "neovim/nvim-lspconfig" } },
+  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", dependencies = { "neovim/nvim-lspconfig" }, lazy = true, event = "BufReadPre" },
 
   -- Add any other plugins you have below
 }
