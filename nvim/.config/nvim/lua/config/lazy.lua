@@ -118,4 +118,4 @@ lint.linters_by_ft = {
   env = { "shellcheck" },
 }
 
--- ( DAP, LINTERS, AND FORMATTER HAVE NOT BEEN CONFIGURED YET, REMEMBER TO DO SO )
+-- ( DAP AND LINTERS CONFIGURED YET, REMEMBER TO DO SO )
