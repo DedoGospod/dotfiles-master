@@ -23,8 +23,7 @@ return {
 
 	-- Snippets
 	{ "hrsh7th/vim-vsnip",                            lazy = true,                                                    event = "InsertEnter" },
-	{ "L3MON4D3/LuaSnip",                             lazy = true,                                                    event = "InsertEnter" },
-	{ "rafamadriz/friendly-snippets",                 dependencies = { "L3MON4D3/LuaSnip" },                          lazy = true,                              event = "InsertEnter" },
+	{ "L3MON4D3/LuaSnip",                             dependencies = { "rafamadriz/friendly-snippets" },              lazy = true,                              event = "InsertEnter" },
 
 	-- Debugging
 	{ "mfussenegger/nvim-dap",                        lazy = true,                                                    cmd = "DapLaunch" },
