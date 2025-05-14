@@ -87,9 +87,6 @@ cmp.setup({
 	formatting = {
 		format = require('lspkind').format,
 	},
-	view = {
-		entries = { ['%'] = 'native', max_entries = 5 },
-	},
 })
 
 -- nvim-cmp autopairs (bracket/parenthesis completion)
