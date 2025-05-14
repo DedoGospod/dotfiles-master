@@ -57,6 +57,12 @@ require("lualine").setup {
 	options = { theme = 'catppuccin' },
 }
 
+-- Snipper engines
+require('luasnip.loaders.from_vscode').load()
+
+-- Snipper engines
+require('luasnip.loaders.from_vscode').load()
+
 -- Completion (nvim-cmp)
 local cmp = require('cmp')
 cmp.setup({
@@ -69,10 +75,10 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
 	}),
 	sources = {
-		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' },
+		--{ name = 'nvim_lsp' },
 		{ name = 'buffer' },
 		{ name = 'path' },
-		{ name = 'luasnip' },
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
@@ -81,10 +87,10 @@ cmp.setup({
 	formatting = {
 		format = require('lspkind').format,
 	},
+	view = {
+		entries = { ['%'] = 'native', max_entries = 5 },
+	},
 })
-
--- Snipper engines
-require('luasnip.loaders.from_vscode').load()
 
 -- nvim-cmp autopairs (bracket/parenthesis completion)
 local npairs = require('nvim-autopairs')
