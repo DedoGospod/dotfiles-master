@@ -57,11 +57,8 @@ require("lualine").setup {
 	options = { theme = 'catppuccin' },
 }
 
--- Snipper engines
-require('luasnip.loaders.from_vscode').load()
-
--- Snipper engines
-require('luasnip.loaders.from_vscode').load()
+-- Snippets
+require('luasnip.loaders.from_vscode').lazy_load()
 
 -- Completion (nvim-cmp)
 local cmp = require('cmp')
