@@ -11,7 +11,6 @@ export XDG_CACHE_HOME="$HOME/.cache"          # User-specific non-essential cach
 
 # Set application specific XDG paths
 echo "Setting application specific XDG paths"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"                                     # Rust package manager
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"                                      # GnuPG (encryption)
 export PYTHONHISTORY="$XDG_STATE_HOME/python/history"                        # Python command history
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"                              # Store zsh history
@@ -32,13 +31,15 @@ if ! command -v rustup &> /dev/null; then
     sudo pacman -S --noconfirm rustup  # Install rustup
     if [ $? -eq 0 ]; then
         echo "Rustup installed successfully via pacman."
-        # Source the cargo environment for the current script
-        # This makes rustc, cargo, and rustup available immediately.
-        if [ -f "$HOME/.cargo/env" ]; then
+        # Source the cargo environment
+        if [ -f "$HOME/.cargo/env" ]; then # Check default location
             source "$HOME/.cargo/env"
             echo "Rust environment sourced."
+        elif [ -f "$XDG_DATA_HOME/cargo/env" ]; then # Check the XDG location.
+            source "$XDG_DATA_HOME/cargo/env"
+            echo "Rust environment sourced."
         else
-            echo "Warning: $HOME/.cargo/env not found.  You may need to open a new terminal or run 'source $HOME/.cargo/env' manually."
+            echo "Warning: Cargo environment file not found. You may need to open a new terminal or run 'source $HOME/.cargo/env' manually."
         fi
         # Install the stable toolchain by default
         rustup default stable
