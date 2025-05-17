@@ -106,11 +106,11 @@ require("conform").setup({
         rust = { "rustfmt", lsp_format = "fallback" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
-        go = { "gofmt" }, -- Or "gofumpt"
+        go = { "gofmt" },
         sh = { "shfmt" },
         bash = { "shfmt" },
         html = { "prettier" },
-        zig = { "zigfmt" }, -- Ensure 'zig' is in your PATH
+        zig = { "zigfmt" },
         c = { "clang-format" },
         cpp = { "clang-format" },
         objc = { "clang-format" },
