@@ -62,20 +62,33 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 -- Completion (nvim-cmp)
 local cmp = require('cmp')
+local luasnip = require('luasnip')
+
 cmp.setup({
-    snippet = { expand = function(args) require('luasnip').lsp_expand(args.body) end },
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end
+    },
     mapping = cmp.mapping.preset.insert({
         ['<Down>'] = cmp.mapping.select_next_item(),
         ['<Tab>'] = cmp.mapping.select_next_item(),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
         ['<Up>'] = cmp.mapping.select_prev_item(),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
     }),
     sources = {
-        { name = 'luasnip' },
+        { name = 'luasnip',  max_item_count = 3 },
         { name = 'nvim_lsp', max_item_count = 3 },
-        { name = 'buffer' },
-        { name = 'path' },
+        { name = 'buffer',   max_item_count = 3 },
+        { name = 'path',     max_item_count = 3 },
     },
     window = {
         completion = cmp.config.window.bordered(),
@@ -110,7 +123,7 @@ require("conform").setup({
         sh = { "shfmt" },
         bash = { "shfmt" },
         html = { "prettier" },
-        zig = { "zigfmt" },
+        zig = { "zigfmt" }, -- Ensure 'zig' is in your PATH
         c = { "clang-format" },
         cpp = { "clang-format" },
         objc = { "clang-format" },
