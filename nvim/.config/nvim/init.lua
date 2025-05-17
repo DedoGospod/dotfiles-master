@@ -13,7 +13,7 @@ vim.opt.cursorline = true
 vim.opt.showmode = false
 
 -- Set global indentation settings
-vim.opt.shiftwidth = 2   -- Number of spaces to use for each step of indentation
+vim.opt.shiftwidth = 4   -- Number of spaces to use for each step of indentation
 vim.opt.tabstop = 2      -- Number of spaces a tab character counts for
 vim.opt.softtabstop = 2  -- Number of spaces inserted for <Tab> when 'expandtab' is set
 vim.opt.expandtab = true -- Convert tabs to spaces
