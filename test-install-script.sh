@@ -28,14 +28,23 @@ mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensure
 
 # Install rustup if not already installed
 if ! command -v rustup &> /dev/null; then
-    echo "Installing rustup..."
-    # The rustup script will ask for input. We pipe '1' for the default installation.
-    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
-    
-    # Source the cargo environment for the current script
-    # This makes rustc, cargo, and rustup available immediately.
-    source "$CARGO_HOME/env"
-    echo "Rustup installed and environment sourced."
+    echo "Installing rustup using pacman..."
+    sudo pacman -S --noconfirm rustup  # Install rustup
+    if [ $? -eq 0 ]; then
+        echo "Rustup installed successfully via pacman."
+        
+        # Source the cargo environment for the current script
+        # This makes rustc, cargo, and rustup available immediately.
+        source "$HOME/.cargo/env"
+        echo "Rust environment sourced."
+
+        # Install the stable toolchain by default
+        rustup default stable
+        echo "Stable toolchain installed."
+    else
+        echo "Failed to install rustup using pacman.  Exiting."
+        exit 1
+    fi
 else
     echo "Rustup is already installed."
 fi
