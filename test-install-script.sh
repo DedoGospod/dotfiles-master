@@ -30,7 +30,7 @@ mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensure
 if ! command -v rustup &> /dev/null; then
     echo "Installing rustup..."
     # The rustup script will ask for input. We pipe '1' for the default installation.
-    curl --proto '=https' --tlsv1.2 [https://sh.rustup.rs](https://sh.rustup.rs) -sSf | sh -s -- -y
+    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
     
     # Source the cargo environment for the current script
     # This makes rustc, cargo, and rustup available immediately.
