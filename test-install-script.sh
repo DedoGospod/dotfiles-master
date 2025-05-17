@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Enable error checking for all commands
 set -e
 
