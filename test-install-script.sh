@@ -26,6 +26,20 @@ echo "Creating zsh-specific XDG directories"
 mkdir -p "${XDG_STATE_HOME}/zsh"                                        # Ensure zsh state directory exists
 mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensures zsh cache directory exists
 
+# Install rustup if not already installed
+if ! command -v rustup &> /dev/null; then
+    echo "Installing rustup..."
+    # The rustup script will ask for input. We pipe '1' for the default installation.
+    curl --proto '=https' --tlsv1.2 [https://sh.rustup.rs](https://sh.rustup.rs) -sSf | sh -s -- -y
+    
+    # Source the cargo environment for the current script
+    # This makes rustc, cargo, and rustup available immediately.
+    source "$CARGO_HOME/env"
+    echo "Rustup installed and environment sourced."
+else
+    echo "Rustup is already installed."
+fi
+
 # Install paru if not already installed
 if ! command -v paru &> /dev/null; then
     echo "Installing paru..."
@@ -123,6 +137,7 @@ neovim_packages=(
     clang
     go
     shellcheck
+    zig
 )
 
 # Conditionally add NVIDIA packages
