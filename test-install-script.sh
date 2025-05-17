@@ -32,12 +32,14 @@ if ! command -v rustup &> /dev/null; then
     sudo pacman -S --noconfirm rustup  # Install rustup
     if [ $? -eq 0 ]; then
         echo "Rustup installed successfully via pacman."
-        
         # Source the cargo environment for the current script
         # This makes rustc, cargo, and rustup available immediately.
-        source "$HOME/.cargo/env"
-        echo "Rust environment sourced."
-
+        if [ -f "$HOME/.cargo/env" ]; then
+            source "$HOME/.cargo/env"
+            echo "Rust environment sourced."
+        else
+            echo "Warning: $HOME/.cargo/env not found.  You may need to open a new terminal or run 'source $HOME/.cargo/env' manually."
+        fi
         # Install the stable toolchain by default
         rustup default stable
         echo "Stable toolchain installed."
