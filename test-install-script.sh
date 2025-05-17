@@ -110,6 +110,8 @@ pacman_packages=(
     ncdu
     networkmanager
     reflector
+    timeshift
+    cronie
 )
 
 # NVIDIA driver packages
