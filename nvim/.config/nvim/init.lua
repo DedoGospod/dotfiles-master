@@ -12,10 +12,18 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.showmode = false
 
+-- Set global indentation settings
+vim.opt.shiftwidth = 2   -- Number of spaces to use for each step of indentation
+vim.opt.tabstop = 2      -- Number of spaces a tab character counts for
+vim.opt.softtabstop = 2  -- Number of spaces inserted for <Tab> when 'expandtab' is set
+vim.opt.expandtab = true -- Convert tabs to spaces
+vim.opt.wrap = false     -- Optional: Prevent line wrapping by default for all files
+
 -- Bootstrap lazy.nvim (ensure lazy.nvim is installed)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", "https://github.com/folke/lazy.nvim.git", lazypath })
+	vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", "https://github.com/folke/lazy.nvim.git",
+		lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -24,14 +32,14 @@ require("config.lazy")
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 -- Sync clipboard between OS and Neovim
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+	vim.opt.clipboard = 'unnamedplus'
 end)
 
 -- Disable virtual_text since it's redundant due to lsp_lines
@@ -47,16 +55,16 @@ vim.cmd.colorscheme("catppuccin")
 
 -- Filetype detection for Hyprland
 vim.filetype.add({
-  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
 
--- Jump to end of line with CTRL + e 
+-- Jump to end of line with CTRL + e (while in insert mode)
 vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = true, noremap = true })
 
 -- Formatting on Save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("LspFormat", { clear = true }),
-  callback = function()
-    vim.lsp.buf.format({ async = false }) -- Set async to false for synchronous formatting
-  end,
+	group = vim.api.nvim_create_augroup("LspFormat", { clear = true }),
+	callback = function()
+		vim.lsp.buf.format({ async = false }) -- Set async to false for synchronous formatting
+	end,
 })
