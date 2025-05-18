@@ -28,6 +28,14 @@ require('telescope').setup {
     pickers = {
         find_files = { hidden = true },
     },
+    extensions = {
+        fzf = {
+            fuzzy = true,                   -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- "smart_case", "ignore_case" or "respect_case"
+        }
+    }
 }
 
 -- nvim-treesitter configuration
