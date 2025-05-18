@@ -83,7 +83,7 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<Down>'] = cmp.mapping.select_next_item(),
-        ['<Tab>'] = cmp.mapping.select_next_item(),
+        ['<Tab>'] = cmp.mapping.select_next_item(), -- This is your current mapping
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
@@ -134,7 +134,7 @@ require("conform").setup({
         sh = { "shfmt" },
         bash = { "shfmt" },
         html = { "prettier" },
-        zig = { "zigfmt" }, -- Ensure 'zig' is in your PATH
+        zig = { "zigfmt" },
         c = { "clang-format" },
         cpp = { "clang-format" },
         objc = { "clang-format" },
