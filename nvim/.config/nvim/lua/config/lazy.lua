@@ -38,6 +38,9 @@ require('telescope').setup {
     }
 }
 
+-- Telescope fzf integration
+require('telescope').load_extension('fzf')
+
 -- nvim-treesitter configuration
 require("nvim-treesitter.configs").setup({
     highlight = {
