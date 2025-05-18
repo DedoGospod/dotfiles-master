@@ -150,4 +150,18 @@ lint.linters_by_ft = {
     env = { "shellcheck" },
 }
 
+require('toggleterm').setup({
+    direction = 'float',
+    float_opts = {
+        border = 'curved', -- 'single', 'double', 'shadow', 'none', 'curved'
+        winblend = 0,      -- Transparency (0 for opaque, 100 for fully transparent)
+    },
+    size = 20,
+    shell = 'zsh',
+    auto_scroll = true,
+    max_terminals = 1,
+    start_in_insert = true,
+    disable_auto_setting = true,
+})
+
 -- ( DAP AND LINTERS NOT CONFIGURED YET, REMEMBER TO DO SO )
