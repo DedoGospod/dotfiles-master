@@ -58,9 +58,6 @@ vim.filetype.add({
     pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
 
--- Jump to end of line
-vim.api.nvim_set_keymap('i', '<C-a>', '<End>', { silent = true, noremap = true }) -- ctrl + a (while in insert mode)
-
 -- Formatting on Save
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = vim.api.nvim_create_augroup("LspFormat", { clear = true }),
