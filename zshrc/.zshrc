@@ -34,6 +34,11 @@ setopt share_history                             # Sync history across sessions
 setopt extended_history                          # Save timestamps
 setopt hist_ignore_all_dups                      # Avoid saving any duplicate commands entirely
 
+# Invalid commands dont get stored in history (unsure if should keep)
+zshaddhistory() {
+  whence ${${(z)1}[1]} >| /dev/null || return 1
+}
+
 # Initialize ZSH completion system
 autoload -Uz compinit 
 compinit -d "${ZSH_COMPDUMP}"  # Explicitly use our custom XDG-compliant path
@@ -70,6 +75,7 @@ export MANPAGER='nvim +Man!'          # Use Neovim for man pages
 # PATH modifications
 mkdir -p "$HOME/.local/bin"           # Create user-local path 
 export PATH="$HOME/.local/bin:$PATH"  # Add user-local binaries to PATH
+export PATH="$PATH:/path/to/zig"      # Add zig to path for neovim
 
 # ======================
 # Aliases 
@@ -93,8 +99,8 @@ alias rm='trash -v'         # Safe delete using trash-cli
 alias mkdir='mkdir -p'      # Create parent directories automatically
 alias ls='ls -1 --color=always --group-directories-first'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
-alias h='history 0 | grep' # Search history for a specific terminal command
-alias hist="history 0"     # Always show history with readable dates
+alias h='history 0 | grep'  # Search history for a specific terminal command
+alias hist="history 0"      # Always show history with readable dates
 zl() { z "$@" && ls; }      # Automatically do an ls after each zl command
 
 # Apps
