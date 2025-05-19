@@ -16,7 +16,7 @@
         "network",
         "pulseaudio",
         "battery",
-	      "clock"
+	"clock"
     ],
     //Modules configuration
 
