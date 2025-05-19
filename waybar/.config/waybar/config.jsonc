@@ -12,10 +12,11 @@
         "hyprland/window"
     ],
     "modules-right": [
+        "idle_inhibitor",
         "network",
         "pulseaudio",
         "battery",
-	"clock"
+	      "clock"
     ],
     //Modules configuration
 
