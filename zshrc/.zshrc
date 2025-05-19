@@ -34,7 +34,7 @@ setopt share_history                             # Sync history across sessions
 setopt extended_history                          # Save timestamps
 setopt hist_ignore_all_dups                      # Avoid saving any duplicate commands entirely
 
-# Invalid commands dont get stored in history (unsure if should keep)
+# Invalid commands dont get stored in history
 zshaddhistory() {
   whence ${${(z)1}[1]} >| /dev/null || return 1
 }
@@ -116,19 +116,8 @@ alias hypr='nvim ~/.config/hypr/hyprland.conf'         # Edit Hyprland config
 alias grub='sudo nvim /etc/default/grub'               # Edit GRUB config
 
 # ======================
-# Auto-Start Hyprland
+# Auto-Start compositors 
 # ======================
 
-# Automatically start Hyprland when logging in on tty1 (unless in a virtual machine)
-if [ "$(tty)" = "/dev/tty1" ] && ! systemd-detect-virt -q; then
-    exec Hyprland  # Replace shell with Hyprland
-fi
-
-# ======================
-# Auto-Start Gamescope
-# ======================
-
-# Auto-start Gamescope on tty6
-if [[ $(tty) == "/dev/tty6" ]]; then
-    ~/.local/bin/launch-gamescope.sh
-fi
+[ "$(tty)" = "/dev/tty1" ] && exec uwsm start Hyprland          # Autostart hyprland on tty1
+[ "$(tty)" = "/dev/tty6" ] && ~/.local/bin/launch-gamescope.sh  # Autostart gamescope on tty6
