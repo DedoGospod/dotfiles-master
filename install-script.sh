@@ -80,8 +80,9 @@ read -r -p "Do you want to set up dotfiles with GNU Stow? (y/N): " stow_dotfiles
 
 # List of base pacman packages
 pacman_packages=(
-    hyprland
     kitty
+    uwsm
+    hyprland
     hypridle
     hyprlock
     hyprpaper
