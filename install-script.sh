@@ -248,5 +248,9 @@ else
     echo "Skipping dotfiles setup."
 fi
 
+# Enable hypridle
+echo "Enabling hypridle service..."
+systemctl --user enable --now hypridle.service
+
 # Installation complete
 echo "Installation complete!"
