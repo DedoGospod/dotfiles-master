@@ -248,13 +248,17 @@ else
     echo "Skipping dotfiles setup."
 fi
 
-# Enable hypridle
-echo "Enabling hypridle service..."
-systemctl --user enable --now hypridle.service
+# Disable systemd-networkd-wait-online service 
+echo "Disabling systemd-networkd-wait-online service..."
+sudo systemctl enable systemd-networkd-wait-online.service
 
 # Enable cronie.service
 echo "Enabling cronie service..." 
 sudo systemctl enable --now cronie.service
+
+# Enable hypridle
+echo "Enabling hypridle service..."
+systemctl --user enable --now hypridle.service
 
 # Installation complete
 echo "Installation complete!"
