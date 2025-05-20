@@ -250,7 +250,7 @@ fi
 
 # Disable systemd-networkd-wait-online service 
 echo "Disabling systemd-networkd-wait-online service..."
-sudo systemctl enable systemd-networkd-wait-online.service
+sudo systemctl disable --now systemd-networkd-wait-online.service
 
 # Enable cronie.service
 echo "Enabling cronie service..." 
