@@ -252,5 +252,9 @@ fi
 echo "Enabling hypridle service..."
 systemctl --user enable --now hypridle.service
 
+# Enable cronie.service
+echo "Enabling cronie service..." 
+sudo systemctl enable --now cronie.service
+
 # Installation complete
 echo "Installation complete!"
