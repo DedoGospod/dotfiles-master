@@ -262,5 +262,9 @@ sudo systemctl enable --now cronie.service
 echo "Enabling hypridle service..."
 systemctl --user enable --now hypridle.service
 
+# Enable polkitagent
+echo "Enabling hyprpolkitagent service..."
+systemctl --user enable --now hyprpolkitagent.service
+
 # Installation complete
 echo "Installation complete!"
