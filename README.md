@@ -6,10 +6,13 @@ Run install script for automatic setup (arch linux)
 - ./install-script.sh
 
 # For manual setup install stow
+
 Arch:
 - sudo pacman -S stow
+
 Debian: 
 - sudo apt install stow
+  
 Fedora:
 - sudo dnf install stow
 
