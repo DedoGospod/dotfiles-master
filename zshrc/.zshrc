@@ -75,7 +75,6 @@ export MANPAGER='nvim +Man!'          # Use Neovim for man pages
 # PATH modifications
 mkdir -p "$HOME/.local/bin"           # Create user-local path 
 export PATH="$HOME/.local/bin:$PATH"  # Add user-local binaries to PATH
-export PATH="$PATH:/path/to/zig"      # Add zig to path for neovim
 
 # ======================
 # Aliases 
