@@ -102,6 +102,7 @@ pacman_packages=(
     wlsunset
     zoxide
     zsh
+    zsh-completions
     zsh-syntax-highlighting
     zsh-autosuggestions
     fzf
