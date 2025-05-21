@@ -230,6 +230,7 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
             yazi
             zshrc
             gtk
+            systemd
         )
 
         # Stows packages and shows errors if any fail
