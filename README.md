@@ -20,6 +20,3 @@ Fedora:
 - cd dotfiles-master
 - ls (to list avaliable packages)
 - stow (package name)
-
-If any package already has a config file then:
-- rm -rf (package name) then stow package again
