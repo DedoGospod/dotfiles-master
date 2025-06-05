@@ -10,6 +10,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
 
 -- Neotree
+-- Neotree
 vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', {
     noremap = true,
     silent = true,
@@ -20,6 +21,12 @@ vim.keymap.set('n', '<C-o>', ':Neotree focus<CR>', {
     noremap = true,
     silent = true,
     desc = 'Focus Neo-tree'
+})
+
+vim.keymap.set('n', '<C-b>', ':Neotree buffers toggle<CR>', {
+    noremap = true,
+    silent = true,
+    desc = 'Toggle Neo-tree Buffers'
 })
 
 -- Compiler.nvim keymappings
