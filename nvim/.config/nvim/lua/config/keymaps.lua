@@ -2,7 +2,7 @@
 --   KEYMAPPINGS
 -- ----------------
 
--- Key mappings for telescope
+-- Telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find files' })
 vim.keymap.set('n', '<C-g>', builtin.live_grep, { desc = 'Live grep' })
@@ -22,11 +22,11 @@ vim.keymap.set('n', '<C-o>', ':Neotree focus<CR>', {
     desc = 'Focus Neo-tree'
 })
 
--- Compiler.nvim keymappings
+-- Compiler.nvim
 vim.keymap.set('n', '<F9>', "<cmd>CompilerOpen<cr>", { desc = 'Open compiler' })
 vim.keymap.set('n', '<F10>', "<cmd>CompilerToggleResults<cr>", { desc = 'Toggle compiler results' })
 
--- trouble.nvim keymaps
+-- trouble.nvim
 local trouble_keys = {
     { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",                        desc = "Diagnostics (Trouble)" },
     { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",           desc = "Buffer Diagnostics (Trouble)" },
@@ -40,7 +40,7 @@ for _, mapping in ipairs(trouble_keys) do
     vim.keymap.set('n', mapping[1], mapping[2], { desc = mapping.desc })
 end
 
--- Import the Comment.nvim API
+-- Comment.nvim
 local CommentAPI = require('Comment.api')
 vim.keymap.set('n', '<C-c>', function() CommentAPI.toggle.linewise.current() end, { desc = 'Toggle line comment' })
 
