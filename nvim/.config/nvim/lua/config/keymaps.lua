@@ -9,8 +9,18 @@ vim.keymap.set('n', '<C-g>', builtin.live_grep, { desc = 'Live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
 
--- Nvim-tree
-vim.keymap.set('n', '<C-n>', function() require('nvim-tree.api').tree.toggle() end, { desc = 'Toggle file tree' })
+-- Neotree
+vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', {
+    noremap = true,
+    silent = true,
+    desc = 'Toggle Neo-tree'
+})
+
+vim.keymap.set('n', '<C-o>', ':Neotree focus<CR>', {
+    noremap = true,
+    silent = true,
+    desc = 'Focus Neo-tree'
+})
 
 -- Compiler.nvim keymappings
 vim.keymap.set('n', '<F9>', "<cmd>CompilerOpen<cr>", { desc = 'Open compiler' })
