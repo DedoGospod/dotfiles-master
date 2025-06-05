@@ -23,12 +23,6 @@ vim.keymap.set('n', '<C-o>', ':Neotree focus<CR>', {
     desc = 'Focus Neo-tree'
 })
 
-vim.keymap.set('n', '<C-b>', ':Neotree buffers toggle<CR>', {
-    noremap = true,
-    silent = true,
-    desc = 'Toggle Neo-tree Buffers'
-})
-
 -- Compiler.nvim keymappings
 vim.keymap.set('n', '<F9>', "<cmd>CompilerOpen<cr>", { desc = 'Open compiler' })
 vim.keymap.set('n', '<F10>', "<cmd>CompilerToggleResults<cr>", { desc = 'Toggle compiler results' })
