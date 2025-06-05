@@ -10,7 +10,6 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
 
 -- Neotree
--- Neotree
 vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', {
     noremap = true,
     silent = true,
