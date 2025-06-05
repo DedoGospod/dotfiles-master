@@ -57,11 +57,15 @@ require("nvim-treesitter.configs").setup({
     },
 })
 
--- nvim-tree configuration
-require("nvim-tree").setup {
-    open_on_tab = false,
-    update_focused_file = { enable = true, update_cwd = true },
-}
+-- Neotree configuration
+require('neo-tree').setup({
+    filesystem = {
+        filtered_items = {
+            hide_dotfiles = false,
+            hide_gitignored = true,
+        },
+    },
+})
 
 -- Lualine status bar
 require("lualine").setup {
