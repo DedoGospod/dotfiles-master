@@ -111,7 +111,7 @@ pacman_packages=(
     dbus
     stow
     flatpak
-    ttf-cascadia-code
+    ttf-cascadia-code-nerd
     ttf-ubuntu-font-family
     ttf-font-awesome
     pavucontrol
