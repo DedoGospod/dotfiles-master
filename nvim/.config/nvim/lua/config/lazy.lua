@@ -11,6 +11,19 @@ require("lazy").setup({
 require("config.keymaps")   -- Keymaps
 require("config.mason-lsp") -- Mason/lsp config
 
+-- Neotree configuration
+require('neo-tree').setup({
+    window = {
+        auto_expand_width = true,
+    },
+    filesystem = {
+        filtered_items = {
+            hide_dotfiles = false,
+            hide_gitignored = true,
+        },
+    },
+})
+
 -- Telescope configuration
 require('telescope').setup {
     defaults = {
@@ -56,17 +69,6 @@ require("nvim-treesitter.configs").setup({
         "rust", "go", "hyprlang", "zig"
     },
 })
-
--- Neotree configuration
-require('neo-tree').setup({
-    filesystem = {
-        filtered_items = {
-            hide_dotfiles = false,
-            hide_gitignored = true,
-        },
-    },
-})
-
 -- Lualine status bar
 require("lualine").setup {
     options = { theme = 'catppuccin' },
