@@ -191,4 +191,4 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
     end,
 })
 
--- ( DAP AND LINTERS NOT CONFIGURED YET, REMEMBER TO DO SO )
+-- SETUP DAP SERVERS (NOT DONE YET)
