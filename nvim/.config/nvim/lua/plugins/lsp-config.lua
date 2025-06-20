@@ -28,6 +28,7 @@ return {
     -- Debugging
     { "mfussenegger/nvim-dap",                        lazy = true,                                                    cmd = "DapLaunch" },
     { "rcarriga/nvim-dap-ui",                         dependencies = { "mfussenegger/nvim-dap" },                     lazy = true,                              cmd = "DapLaunch" },
+    { "jay-babu/mason-nvim-dap.nvim",                 dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap", }, lazy = true, },
 
     -- Linting
     { "mfussenegger/nvim-lint",                       lazy = true,                                                    event = { "BufWritePost", "BufReadPost" } },
