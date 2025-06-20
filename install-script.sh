@@ -156,6 +156,7 @@ neovim_packages=(
     go
     shellcheck
     zig
+    luarocks
 )
 
 # Conditionally add NVIDIA packages
