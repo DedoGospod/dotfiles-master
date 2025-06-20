@@ -21,13 +21,19 @@ require("mason-tool-installer").setup({
         "clang-format",
         "crlfmt",
         -- Linters
-        "pylint",        -- python
-        "golangci-lint", -- GO
-        "shellcheck",    -- bash
-        "htmlhint",      -- html
-        "eslint_d",      -- ts_ls
-        "cpplint",       -- C/C++
-        "luacheck",      -- lua
+        "pylint",                    -- python
+        "golangci-lint",             -- GO
+        "shellcheck",                -- bash
+        "htmlhint",                  -- html
+        "eslint_d",                  -- ts_ls
+        "cpplint",                   -- C/C++
+        "luacheck",                  -- lua
+        -- DAPs
+        "debugpy",                   -- Python (for basedpyright)
+        "codelldb",                  -- Rust (for rust_analyzer) and Zig (for zls) and C/C++ (for clangd)
+        "delve",                     -- Go (for gopls)
+        "js-debug-adapter",          -- TypeScript/JavaScript (for ts_ls)
+        "local-lua-debugger-vscode", -- Lua (for lua_ls)
     },
     auto_update = true,
 })
