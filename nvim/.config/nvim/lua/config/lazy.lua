@@ -154,6 +154,41 @@ lint.linters_by_ft = {
     sh = { "shellcheck" },
     bashrc = { "shellcheck" },
     env = { "shellcheck" },
+    python = { "pylint" },
+    go = { "golangci_lint" },
+    html = { "htmlhint" },
+    javascript = { "eslint_d" },
+    javascriptreact = { "eslint_d" },
+    typescript = { "eslint_d" },
+    typescriptreact = { "eslint_d" },
+    c = { "cpplint" },
+    cpp = { "cpplint" },
+    lua = { "luacheck" },
 }
+
+-- Configure specific linters
+require("lint").linters.pylint.args = {
+    "--output-format=json",
+    "--reports=no",
+    "--msg-template='{path}:{line}:{column}:{msg_id}:{symbol}:{msg}'", -- Example for parsing
+    vim.api.nvim_buf_get_name(0)                                       -- Current file
+}
+
+-- For eslint_d, it's good practice to set ESLINT_D_PPID for proper daemon management
+vim.env.ESLINT_D_PPID = vim.fn.getpid()
+require("lint").linters.eslint_d.args = {
+    "--no-warn-ignored",
+    "--format=json", 
+    "--stdin",
+    "--stdin-filename",
+    function() return vim.api.nvim_buf_get_name(0) end,
+}
+
+-- Setup autocommands to run linting on relevant events
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+    callback = function()
+        require("lint").try_lint()
+    end,
+})
 
 -- ( DAP AND LINTERS NOT CONFIGURED YET, REMEMBER TO DO SO )
