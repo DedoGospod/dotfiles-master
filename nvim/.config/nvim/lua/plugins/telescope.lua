@@ -1,8 +1,11 @@
 return {
-    'nvim-telescope/telescope.nvim',
-    dependencies =
-    { 'nvim-lua/plenary.nvim' },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
-    cmd = 'Telescope',
-    lazy = true,
+  'nvim-telescope/telescope.nvim',
+  lazy = true,
+  cmd = 'Telescope',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    {
+         'nvim-telescope/telescope-fzf-native.nvim', build = 'make'
+    },
+  },
 }
