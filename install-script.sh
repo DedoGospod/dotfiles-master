@@ -197,6 +197,7 @@ flatpak_apps=(
     com.stremio.Stremio
     com.usebottles.bottles
     com.brave.Browser
+    io.github.lainsce.Notejot
 )
 
 echo "Installing Flatpak apps..."
