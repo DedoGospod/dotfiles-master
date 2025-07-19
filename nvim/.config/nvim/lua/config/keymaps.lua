@@ -47,8 +47,8 @@ vim.keymap.set('n', '<C-c>', function() CommentAPI.toggle.linewise.current() end
 -- Jump to end of line
 vim.api.nvim_set_keymap('i', '<C-a>', '<End>', { silent = true, noremap = true }) -- ctrl + a (while in insert mode)
 vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = true, noremap = true }) -- ctrl + e (while in insert mode)
-vim.api.nvim_set_keymap('n', '<C-e>', '<End>', { silent = true, noremap = true }) -- ctrl + e (while in normal mode)
 vim.api.nvim_set_keymap('n', '<C-a>', '<End>', { silent = true, noremap = true }) -- ctrl + a (while in normal mode)
+vim.api.nvim_set_keymap('n', '<C-e>', '<End>', { silent = true, noremap = true }) -- ctrl + e (while in normal mode)
 
 -- F-term
 vim.keymap.set('n', '<C-t>', '<CMD>lua require("FTerm").toggle()<CR>')
