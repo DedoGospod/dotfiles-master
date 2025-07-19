@@ -53,3 +53,6 @@ vim.api.nvim_set_keymap('n', '<C-e>', '<End>', { silent = true, noremap = true }
 -- F-term
 vim.keymap.set('n', '<C-t>', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<C-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()
+
+-- cmdline
+vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
