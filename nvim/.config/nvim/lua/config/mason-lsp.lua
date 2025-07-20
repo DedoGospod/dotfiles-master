@@ -26,7 +26,7 @@ require("mason-tool-installer").setup({
         "shellcheck",                -- bash
         "htmlhint",                  -- html
         "eslint_d",                  -- ts_ls
-        "cpplint",                   -- C/C++
+        -- "cpplint",                   -- C/C++
         "luacheck",                  -- lua
         -- DAPs
         "debugpy",                   -- Python (for basedpyright)
