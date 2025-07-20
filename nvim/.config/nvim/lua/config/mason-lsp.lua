@@ -42,6 +42,19 @@ require("mason-tool-installer").setup({
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- Define your custom clangd setup
+-- This will be the default configuration for clangd that mason-lspconfig uses
+lspconfig.clangd.setup({
+    capabilities = capabilities,
+    cmd = {
+        "clangd",
+        "--clang-tidy",
+        "--clang-tidy-checks=*",
+    },
+    -- Add any other clangd specific settings here
+    -- },
+})
+
 require("mason-lspconfig").setup({
     handlers = {
         function(server_name)
