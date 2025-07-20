@@ -161,8 +161,8 @@ lint.linters_by_ft = {
     javascriptreact = { "eslint_d" },
     typescript = { "eslint_d" },
     typescriptreact = { "eslint_d" },
-    c = { "cpplint" },
-    cpp = { "cpplint" },
+    -- c = { "cpplint" },
+    -- cpp = { "cpplint" },
     lua = { "luacheck" },
 }
 
