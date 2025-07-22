@@ -255,6 +255,12 @@ else
     echo "Skipping dotfiles setup."
 fi
 
+# Gamescope setup for smooth performance
+if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
+    echo "Setting up gamescope for smooth performance..."
+    sudo setcap 'CAP_SYS_NICE=eip' "$(which gamescope)"
+fi
+
 # Disable systemd-networkd-wait-online service 
 echo "Disabling systemd-networkd-wait-online service..."
 sudo systemctl disable --now systemd-networkd-wait-online.service
