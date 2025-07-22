@@ -161,6 +161,7 @@ neovim_packages=(
     luarocks
     cmake
     gcc
+    imagemagick
 )
 
 # Conditionally add NVIDIA packages
