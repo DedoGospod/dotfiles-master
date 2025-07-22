@@ -128,6 +128,8 @@ pacman_packages=(
     reflector
     timeshift
     cronie
+    pipewire
+    wireplumber
 )
 
 # NVIDIA driver packages
