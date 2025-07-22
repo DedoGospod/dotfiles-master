@@ -136,7 +136,7 @@ nvidia_packages=(
     nvidia-dkms
     nvidia-utils
     nvidia-settings
-    cuda
+    lib32-nvidia-utils
     egl-wayland
 )
 
