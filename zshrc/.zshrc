@@ -108,7 +108,7 @@ alias lsh='ls -A'           # Show all files including hidden
 alias h='history 0 | grep'  # Search history for a specific terminal command
 alias hist="history 0"      # Always show history with readable dates
 alias is='selected=$(fzf --preview="bat --color=always {}") && [ -n "$selected" ] && nv "$selected"' # interactive fuzzy search
-s() { z "$@" && is }        # Jumps to directory and then opens fzf tool
+s() { if [ -z "$@" ]; then is; else z "$@" && is; fi; }    # Jumps to directory and then opens fzf tool
 zl() { z "$@" && ls; }      # Automatically do an ls after each zl command
 
 # Configs
