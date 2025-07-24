@@ -131,6 +131,7 @@ pacman_packages=(
     pipewire
     wireplumber
     bat
+    man
 )
 
 # NVIDIA driver packages
