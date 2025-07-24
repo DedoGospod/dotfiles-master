@@ -91,6 +91,13 @@ alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias yay='paru'             # Use paru as yay alternative
 alias pacman='sudo pacman'   # Always use sudo with pacman
 
+# Apps
+alias nv='nvim'                                        # Neovim shortcut
+alias y='yazi'                                         # Use Yazi as a terminal file manager
+alias top='btop'                                       # Modern system monitor
+alias cls='clear'                                      # Clear screen
+alias kssh='kitty +kitten ssh'                         # SSH with kitty terminal features
+
 # Files
 alias cp='cp -i'            # Interactive copy
 alias mv='mv -i'            # Interactive move
@@ -103,13 +110,6 @@ alias hist="history 0"      # Always show history with readable dates
 alias is='selected=$(fzf --preview="bat --color=always {}") && [ -n "$selected" ] && nv "$selected"' # interactive fuzzy search
 s() { z "$@" && is }        # Jumps to directory and then opens fzf tool
 zl() { z "$@" && ls; }      # Automatically do an ls after each zl command
-
-# Apps
-alias nv='nvim'                                        # Neovim shortcut
-alias y='yazi'                                         # Use Yazi as a terminal file manager
-alias top='btop'                                       # Modern system monitor
-alias cls='clear'                                      # Clear screen
-alias kssh='kitty +kitten ssh'                         # SSH with kitty terminal features
 
 # Configs
 alias zshrc='nvim ~/.zshrc'                            # Edit zsh config
