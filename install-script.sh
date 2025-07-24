@@ -130,6 +130,7 @@ pacman_packages=(
     cronie
     pipewire
     wireplumber
+    bat
 )
 
 # NVIDIA driver packages
