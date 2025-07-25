@@ -132,6 +132,7 @@ pacman_packages=(
     wireplumber
     bat
     man
+    tlp
 )
 
 # NVIDIA driver packages
@@ -275,6 +276,10 @@ sudo systemctl disable --now systemd-networkd-wait-online.service
 # Enable cronie.service
 echo "Enabling cronie service..." 
 sudo systemctl enable --now cronie.service
+
+# Enable TLP power saving
+echo "Enabling TLP service..."
+sudo systemctl enable --now tlp.service
 
 ## USER SERVICES ##
 
