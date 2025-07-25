@@ -26,6 +26,9 @@ echo "Creating zsh-specific XDG directories"
 mkdir -p "${XDG_STATE_HOME}/zsh"                                        # Ensure zsh state directory exists
 mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensures zsh cache directory exists
 
+# Create a github directory
+mkdir /home/$USER/Documents/github
+
 # Install rustup if not already installed
 if ! command -v rustup &> /dev/null; then
     echo "Installing rustup using pacman..."
@@ -133,6 +136,7 @@ pacman_packages=(
     bat
     man
     tlp
+    tmux
 )
 
 # NVIDIA driver packages
@@ -243,6 +247,7 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
             zshrc
             gtk
             systemd
+            tmux
         )
 
         # Stows packages and shows errors if any fail
@@ -266,6 +271,7 @@ if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
     echo "Setting up gamescope for smooth performance..."
     sudo setcap 'cap_sys_nice=+ep' "$(which gamescope)"
 fi
+
 
 ## SYSTEM SERVICES ##
 
