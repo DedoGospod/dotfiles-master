@@ -132,6 +132,7 @@ pacman_packages=(
     wireplumber
     bat
     man
+    tlp
 )
 
 # NVIDIA driver packages
@@ -266,6 +267,8 @@ if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
     sudo setcap 'CAP_SYS_NICE=eip' "$(which gamescope)"
 fi
 
+## SYSTEM SERVICES ##
+
 # Disable systemd-networkd-wait-online service 
 echo "Disabling systemd-networkd-wait-online service..."
 sudo systemctl disable --now systemd-networkd-wait-online.service
@@ -273,6 +276,12 @@ sudo systemctl disable --now systemd-networkd-wait-online.service
 # Enable cronie.service
 echo "Enabling cronie service..." 
 sudo systemctl enable --now cronie.service
+
+# Enable TLP
+echo "Enabling TLP power saver service..."
+systemctl enable --now tlp.service
+
+## USER SERVICES ##
 
 # Enable hypridle
 echo "Enabling hypridle service..."
