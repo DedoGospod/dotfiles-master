@@ -272,6 +272,9 @@ if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
     sudo setcap 'cap_sys_nice=+ep' "$(which gamescope)"
 fi
 
+# Install tmux pkg manager
+echo "Installing tmux pkg manager..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## SYSTEM SERVICES ##
 
