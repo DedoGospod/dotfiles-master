@@ -264,7 +264,7 @@ fi
 # Gamescope setup for smooth performance
 if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
     echo "Setting up gamescope for smooth performance..."
-    sudo setcap 'CAP_SYS_NICE=eip' "$(which gamescope)"
+    sudo setcap 'cap_sys_nice=+ep' "$(which gamescope)"
 fi
 
 ## SYSTEM SERVICES ##
