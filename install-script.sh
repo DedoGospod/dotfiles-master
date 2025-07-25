@@ -158,6 +158,7 @@ neovim_packages=(
     unzip
     clang
     go
+    golangci-lint
     shellcheck
     zig
     luarocks
