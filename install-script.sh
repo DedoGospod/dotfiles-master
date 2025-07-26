@@ -208,6 +208,7 @@ flatpak_apps=(
     com.usebottles.bottles
     com.brave.Browser
     io.github.lainsce.Notejot
+    com.vysp3r.ProtonPlus
 )
 
 echo "Installing Flatpak apps..."
