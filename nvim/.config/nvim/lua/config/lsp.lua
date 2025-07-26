@@ -3,23 +3,24 @@ require("mason").setup({})
 require("mason-tool-installer").setup({
     ensure_installed = {
         -- LSP Servers
-        "basedpyright",
-        "rust_analyzer",
-        "gopls",
-        "bashls",
-        "html",
-        "zls",
-        "ts_ls",
-        "clangd",
-        "lua_ls",
+        "basedpyright",              -- python
+        "rust_analyzer",             -- rust
+        "gopls",                     -- go
+        "bashls",                    -- bash
+        "html",                      -- html
+        "zls",                       -- zig
+        "ts_ls",                     -- typescript
+        "clangd",                    -- c/cpp
+        "lua_ls",                    -- lua
         -- Formatters
-        "stylua",
-        "black",
-        "isort",
-        "prettier",
-        "shfmt",
-        "clang-format",
-        "crlfmt",
+        "black",                     -- python
+        "isort",                     -- python
+        "crlfmt",                    -- Go
+        "shfmt",                     -- sh, bash, ksh, zsh
+        "prettier",                  -- JavaScript, TypeScript, Flow, JSX, JSON, CSS, SCSS, Less, HTML, Vue, Angular, GraphQL, Markdown, YAML
+        "clang-format",              -- C, C++, Objective-C, Objective-C++, Java, JavaScript, TypeScript, C#
+        "stylua",                    -- lua
+
         -- Linters
         "pylint",                    -- python
         "golangci-lint",             -- GO
@@ -43,7 +44,6 @@ local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Define your custom clangd setup
--- This will be the default configuration for clangd that mason-lspconfig uses
 lspconfig.clangd.setup({
     capabilities = capabilities,
     cmd = {
