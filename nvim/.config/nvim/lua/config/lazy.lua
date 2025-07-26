@@ -9,7 +9,7 @@ require("lazy").setup({
 
 -- Require configs
 require("config.keymaps")   -- Keymaps
-require("config.mason-lsp") -- Mason/lsp config
+require("config.lsp")       -- Lsp config
 
 -- Neotree configuration
 require('neo-tree').setup({
