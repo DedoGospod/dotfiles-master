@@ -50,9 +50,5 @@ vim.api.nvim_set_keymap('i', '<C-e>', '<End>', { silent = true, noremap = true }
 vim.api.nvim_set_keymap('n', '<C-a>', '<End>', { silent = true, noremap = true }) -- ctrl + a (while in normal mode)
 vim.api.nvim_set_keymap('n', '<C-e>', '<End>', { silent = true, noremap = true }) -- ctrl + e (while in normal mode)
 
--- F-term
-vim.keymap.set('n', '<C-t>', '<CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('t', '<C-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()
-
 -- Zoxide
 vim.cmd [[cnoreabbrev <expr> z ((getcmdtype() == ':' && getcmdline() == 'z') ? ' Z' : 'z')]]
