@@ -300,5 +300,9 @@ systemctl --user enable --now hypridle.service
 echo "Enabling hyprpolkitagent service..."
 systemctl --user enable --now hyprpolkitagent.service
 
+# Enable Blue light filter
+echo "Enabling wlsunset service..."
+systemctl --user enable --now wlsunset.service"
+
 # Installation complete
 echo "Installation complete!"
