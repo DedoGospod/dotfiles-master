@@ -26,9 +26,6 @@ echo "Creating zsh-specific XDG directories"
 mkdir -p "${XDG_STATE_HOME}/zsh"                                        # Ensure zsh state directory exists
 mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensures zsh cache directory exists
 
-# Create a github directory
-mkdir /home/$USER/Documents/github
-
 # Install rustup if not already installed
 if ! command -v rustup &> /dev/null; then
     echo "Installing rustup using pacman..."
@@ -103,6 +100,8 @@ pacman_packages=(
     hyprland-qtutils
     hyprutils
     wlsunset
+    qt5-wayland
+    qt6-wayland
     zoxide
     zsh
     zsh-completions
