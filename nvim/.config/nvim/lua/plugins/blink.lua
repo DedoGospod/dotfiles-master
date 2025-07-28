@@ -15,7 +15,7 @@ return {
     },
     completion = { documentation = { auto_show = true } },
 sources = {
-      default = { 'snippets', 'lsp', 'path', 'buffer', 'cmdline' },
+      default = { 'snippets', 'lsp', 'path', 'buffer', },
       -- Configure individual source priorities using score_offset
       providers = {
         snippets = {
@@ -33,10 +33,6 @@ sources = {
         buffer = {
           score_offset = 0,
           max_items = 3,
-        },
-        cmdline = {
-          score_offset = -10,
-          max_items = 5,
         },
       },
     },
