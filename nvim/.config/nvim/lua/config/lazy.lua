@@ -24,6 +24,23 @@ require('neo-tree').setup({
     },
 })
 
+-- nvim-treesitter configuration
+require("nvim-treesitter.configs").setup({
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+    indent = {
+        enable = true,
+    },
+    ensure_installed = {
+        "json", "javascript", "typescript", "tsx", "yaml", "html", "css", "markdown",
+        "markdown_inline", "bash", "lua", "vim", "dockerfile", "c", "c_sharp", "cpp",
+        "rust", "go", "hyprlang", "zig"
+    },
+})
+
+
 -- Telescope configuration
 require('telescope').setup {
     defaults = {
@@ -53,26 +70,6 @@ require('telescope').setup {
 
 -- Telescope fzf integration
 require('telescope').load_extension('fzf')
-
--- nvim-treesitter configuration
-require("nvim-treesitter.configs").setup({
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-    indent = {
-        enable = true,
-    },
-    ensure_installed = {
-        "json", "javascript", "typescript", "tsx", "yaml", "html", "css", "markdown",
-        "markdown_inline", "bash", "lua", "vim", "dockerfile", "c", "c_sharp", "cpp",
-        "rust", "go", "hyprlang", "zig"
-    },
-})
--- Lualine status bar
-require("lualine").setup {
-    options = { theme = 'catppuccin' },
-}
 
 -- Snippets
 require('luasnip.loaders.from_vscode').lazy_load()
