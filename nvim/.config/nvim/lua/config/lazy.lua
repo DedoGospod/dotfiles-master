@@ -100,6 +100,7 @@ cmp.setup({
         ['<Up>'] = cmp.mapping.select_prev_item(),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<BS>'] = cmp.mapping.abort(),
     }),
     sources = {
         { name = 'luasnip',  max_item_count = 3 },
