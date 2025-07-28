@@ -12,6 +12,7 @@ require("mason-tool-installer").setup({
         "ts_ls",                     -- typescript/javascript
         "clangd",                    -- c/cpp
         "lua_ls",                    -- lua
+        "csharp-language-server"     -- C sharp
         -- Formatters
         "black",                     -- python
         "isort",                     -- python
