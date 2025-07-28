@@ -42,7 +42,7 @@ require("mason-tool-installer").setup({
 
 -- LSP Configuration
 local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- Define your custom clangd setup
 lspconfig.clangd.setup({
