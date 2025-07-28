@@ -25,47 +25,6 @@ return {
         event = "BufReadPre"
     },
 
-    -- Completion (order matters for cmp)
-    {
-        "hrsh7th/nvim-cmp",
-        lazy = true,
-        event = "InsertEnter"
-    },
-    {
-        "hrsh7th/cmp-buffer",
-        dependencies = { "hrsh7th/nvim-cmp" },
-        lazy = true,
-        event = "InsertEnter"
-    },
-    {
-        "hrsh7th/cmp-path",
-        dependencies = { "hrsh7th/nvim-cmp" },
-        lazy = true,
-        event = "InsertEnter"
-    },
-    {
-        "hrsh7th/cmp-cmdline",
-        dependencies = { "hrsh7th/nvim-cmp" },
-        lazy = true,
-        event = "CmdlineEnter"
-    },
-    {
-        "hrsh7th/cmp-nvim-lsp",
-        dependencies = { "hrsh7th/nvim-cmp", "neovim/nvim-lspconfig" },
-        lazy = true,
-        event = "InsertEnter"
-    },
-    {
-        "saadparwaiz1/cmp_luasnip",
-        dependencies = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" },
-        lazy = true,
-        event = "InsertEnter"
-    },
-    {
-        "onsails/lspkind.nvim",
-        lazy = true,
-    },
-
     -- Snippets
     {
         "L3MON4D3/LuaSnip",
