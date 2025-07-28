@@ -2,7 +2,7 @@ return {
   'saghen/blink.cmp',
   dependencies = { 'rafamadriz/friendly-snippets' },
   lazy = true,
-  event = 'VimEnter',
+  event = 'VimEnter', -- 'LspAttach'
 
   version = '1.*',
   ---@module 'blink.cmp'
@@ -15,27 +15,14 @@ return {
     appearance = {
       nerd_font_variant = 'mono'
     },
-    completion = { documentation = { auto_show = true } },
+    completion = { documentation = { auto_show = false, auto_show_delay_ms = 50 } },
 sources = {
       default = { 'snippets', 'lsp', 'path', 'buffer', },
-      -- Configure individual source priorities using score_offset
       providers = {
-        snippets = {
-          -- score_offset = 100,
-          max_items = 3,
-        },
-        lsp = {
-          -- score_offset = 50,
-          max_items = 3
-        },
-        path = {
-          -- score_offset = 20,
-          max_items = 3
-        },
-        buffer = {
-          -- score_offset = 0,
-          max_items = 3,
-        },
+        snippets = { max_items = 3 },
+        lsp = { max_items = 3 },
+        path = { max_items = 3 },
+        buffer = { max_items = 3 },
       },
     },
     fuzzy = { implementation = "prefer_rust_with_warning" }
