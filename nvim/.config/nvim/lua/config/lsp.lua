@@ -9,7 +9,7 @@ require("mason-tool-installer").setup({
         "bashls",                    -- bash
         "html",                      -- html
         "zls",                       -- zig
-        "ts_ls",                     -- typescript
+        "ts_ls",                     -- typescript/javascript
         "clangd",                    -- c/cpp
         "lua_ls",                    -- lua
         -- Formatters
