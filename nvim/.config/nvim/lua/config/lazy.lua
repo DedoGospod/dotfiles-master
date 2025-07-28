@@ -36,7 +36,7 @@ require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "json", "javascript", "typescript", "tsx", "yaml", "html", "css", "markdown",
         "markdown_inline", "bash", "lua", "vim", "dockerfile", "c", "c_sharp", "cpp",
-        "rust", "go", "hyprlang", "zig"
+        "rust", "go", "hyprlang", "python", "zig",
     },
 })
 
