@@ -106,6 +106,7 @@ cmp.setup({
         { name = 'nvim_lsp', max_item_count = 3 },
         { name = 'buffer',   max_item_count = 3 },
         { name = 'path',     max_item_count = 3 },
+        { name = 'cmdline',  max_item_count = 5 },
     },
     window = {
         completion = cmp.config.window.bordered(),
