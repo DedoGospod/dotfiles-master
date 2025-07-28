@@ -165,6 +165,7 @@ neovim_packages=(
     shellcheck
     zig
     luarocks
+    dotnet-sdk
     cmake
     gcc
     imagemagick
