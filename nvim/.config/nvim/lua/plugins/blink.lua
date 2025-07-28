@@ -1,6 +1,8 @@
 return {
   'saghen/blink.cmp',
   dependencies = { 'rafamadriz/friendly-snippets' },
+  lazy = true,
+  event = 'VimEnter',
 
   version = '1.*',
   ---@module 'blink.cmp'
