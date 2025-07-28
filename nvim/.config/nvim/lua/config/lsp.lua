@@ -12,7 +12,7 @@ require("mason-tool-installer").setup({
         "ts_ls",                     -- typescript/javascript
         "clangd",                    -- c/cpp
         "lua_ls",                    -- lua
-        "csharp-language-server"     -- C sharp
+        "csharp-language-server",     -- c#
         -- Formatters
         "black",                     -- python
         "isort",                     -- python
@@ -21,14 +21,13 @@ require("mason-tool-installer").setup({
         "prettier",                  -- JavaScript, TypeScript, Flow, JSX, JSON, CSS, SCSS, Less, HTML, Vue, Angular, GraphQL, Markdown, YAML
         "clang-format",              -- C, C++, Objective-C, Objective-C++, Java, JavaScript, TypeScript, C#
         "stylua",                    -- lua
-
+        "csharpier",                  -- c#
         -- Linters
         "pylint",                    -- python
         "golangci-lint",             -- GO
         "shellcheck",                -- bash
         "htmlhint",                  -- html
         "eslint_d",                  -- ts_ls
-        -- "cpplint",                   -- C/C++
         "luacheck",                  -- lua
         -- DAPs
         "debugpy",                   -- Python (for basedpyright)
@@ -36,6 +35,7 @@ require("mason-tool-installer").setup({
         "delve",                     -- Go (for gopls)
         "js-debug-adapter",          -- TypeScript/JavaScript (for ts_ls)
         "local-lua-debugger-vscode", -- Lua (for lua_ls)
+        "netcoredbg",                -- c#, f#, .net
     },
     auto_update = true,
 })
@@ -78,3 +78,68 @@ require("mason-lspconfig").setup({
         end,
     },
 })
+
+-- Conform formatter setup
+require("conform").setup({
+    formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        rust = { "rustfmt", lsp_format = "fallback" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        go = { "gofmt" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        html = { "prettier" },
+        zig = { "zigfmt" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        objc = { "clang-format" },
+        objcpp = { "clang-format" },
+        csharp = { "csharpier" },
+    },
+})
+
+-- nvim-lint setup
+local lint = require("lint")
+lint.linters_by_ft = {
+    sh = { "shellcheck" },
+    bashrc = { "shellcheck" },
+    env = { "shellcheck" },
+    python = { "pylint" },
+    go = { "golangci_lint" },
+    html = { "htmlhint" },
+    javascript = { "eslint_d" },
+    javascriptreact = { "eslint_d" },
+    typescript = { "eslint_d" },
+    typescriptreact = { "eslint_d" },
+    lua = { "luacheck" },
+    csharp = { "netcoredbg" }
+}
+
+-- Configure specific linters
+require("lint").linters.pylint.args = {
+    "--output-format=json",
+    "--reports=no",
+    "--msg-template='{path}:{line}:{column}:{msg_id}:{symbol}:{msg}'", -- Example for parsing
+    vim.api.nvim_buf_get_name(0)                                       -- Current file
+}
+
+-- For eslint_d, it's good practice to set ESLINT_D_PPID for proper daemon management
+vim.env.ESLINT_D_PPID = vim.fn.getpid()
+require("lint").linters.eslint_d.args = {
+    "--no-warn-ignored",
+    "--format=json",
+    "--stdin",
+    "--stdin-filename",
+    function() return vim.api.nvim_buf_get_name(0) end,
+}
+
+-- Setup autocommands to run linting on relevant events
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+    callback = function()
+        require("lint").try_lint()
+    end,
+})
+
+-- SETUP DAP SERVERS (NOT DONE YET)
