@@ -10,7 +10,7 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<Down>'] = cmp.mapping.select_next_item(),
-        ['<Tab>'] = cmp.mapping.select_next_item(), -- This is your current mapping
+        ['<Tab>'] = cmp.mapping.select_next_item(),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
