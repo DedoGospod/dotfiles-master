@@ -21,19 +21,19 @@ sources = {
       -- Configure individual source priorities using score_offset
       providers = {
         snippets = {
-          score_offset = 100,
+          -- score_offset = 100,
           max_items = 3,
         },
         lsp = {
-          score_offset = 50,
+          -- score_offset = 50,
           max_items = 3
         },
         path = {
-          score_offset = 20,
+          -- score_offset = 20,
           max_items = 3
         },
         buffer = {
-          score_offset = 0,
+          -- score_offset = 0,
           max_items = 3,
         },
       },
