@@ -50,12 +50,6 @@ return {
         event = "CmdlineEnter"
     },
     {
-        "hrsh7th/cmp-vsnip",
-        dependencies = { "hrsh7th/nvim-cmp", "hrsh7th/vim-vsnip" },
-        lazy = true,
-        event = "InsertEnter"
-    },
-    {
         "hrsh7th/cmp-nvim-lsp",
         dependencies = { "hrsh7th/nvim-cmp", "neovim/nvim-lspconfig" },
         lazy = true,
@@ -67,14 +61,12 @@ return {
         lazy = true,
         event = "InsertEnter"
     },
-    { 'onsails/lspkind.nvim' },
+    {
+        "onsails/lspkind.nvim",
+        lazy = true,
+    },
 
     -- Snippets
-    {
-        "hrsh7th/vim-vsnip",
-        lazy = true,
-        event = "InsertEnter"
-    },
     {
         "L3MON4D3/LuaSnip",
         dependencies = { "rafamadriz/friendly-snippets" },
