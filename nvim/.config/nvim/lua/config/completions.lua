@@ -9,17 +9,15 @@ cmp.setup({
         end
     },
     mapping = cmp.mapping.preset.insert({
-        ['<Down>'] = cmp.mapping.select_next_item(),
-        ['<Tab>'] = cmp.mapping.select_next_item(),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ['<C-p>'] = cmp.mapping.select_next_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<Tab>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             else
                 fallback()
             end
         end, { 'i', 's' }),
-        ['<Up>'] = cmp.mapping.select_prev_item(),
-        ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
     }),
     sources = {
