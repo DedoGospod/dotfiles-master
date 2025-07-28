@@ -45,25 +45,25 @@ require("nvim-treesitter.configs").setup({
 require('telescope').setup {
     defaults = {
         vimgrep_arguments = {
-            'rg',
-            '--color=never',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
-            '--hidden',
+            'rg',                            -- invoke ripgrep
+            '--color=never',                 -- disable colored output
+            '--no-heading',                  -- suppresses the printing of file headings
+            '--with-filename',               -- always prints the file name for each match
+            '--line-number',                 -- prints the 1-based line number for each match
+            '--column',                      -- prints the 1-based column number for the start of each match
+            '--smart-case',                  -- performs a case-insensitive search if the pattern contains no uppercase letters, and a case-sensitive search otherwise
+            '--hidden',                      -- searches hidden files and directories
         },
     },
     pickers = {
-        find_files = { hidden = true },
+        find_files = { hidden = true },      -- find hidden files
     },
     extensions = {
         fzf = {
-            fuzzy = true,                   -- false will only do exact matching
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",       -- "smart_case", "ignore_case" or "respect_case"
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- "smart_case", "ignore_case" or "respect_case"
         }
     }
 }
