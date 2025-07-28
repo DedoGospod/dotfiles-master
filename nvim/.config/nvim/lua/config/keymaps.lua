@@ -52,3 +52,8 @@ vim.api.nvim_set_keymap('n', '<C-e>', '<End>', { silent = true, noremap = true }
 
 -- Zoxide
 vim.cmd [[cnoreabbrev <expr> z ((getcmdtype() == ':' && getcmdline() == 'z') ? ' Z' : 'z')]]
+
+-- Keybinding for formatting the current buffer
+vim.keymap.set("n", "<Leader>f", function()
+  require("conform").format({ bufnr = vim.api.nvim_get_current_buf() })
+end, { desc = "Format current buffer with conform" })
