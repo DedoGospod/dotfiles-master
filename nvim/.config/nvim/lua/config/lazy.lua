@@ -10,7 +10,6 @@ require("lazy").setup({
 -- Require configs
 require("config.keymaps")     -- Keymaps
 require("config.lsp")         -- Lsp config
-require("config.completions") -- Completion config
 
 -- Neotree configuration
 require('neo-tree').setup({
@@ -80,3 +79,6 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 -- LSP lines setup
 require("lsp_lines").setup()
+
+-- Nvim autopairs
+require('nvim-autopairs').setup()
