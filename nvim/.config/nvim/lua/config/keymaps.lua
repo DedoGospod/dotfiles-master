@@ -57,3 +57,12 @@ vim.cmd [[cnoreabbrev <expr> z ((getcmdtype() == ':' && getcmdline() == 'z') ? '
 vim.keymap.set("n", "<Leader>f", function()
   require("conform").format({ bufnr = vim.api.nvim_get_current_buf() })
 end, { desc = "Format current buffer with conform" })
+
+-- Harpoon
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+
+vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
