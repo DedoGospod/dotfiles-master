@@ -29,13 +29,6 @@ require("mason-tool-installer").setup({
         "htmlhint",                  -- html
         "eslint_d",                  -- ts_ls
         "luacheck",                  -- lua
-        -- DAPs
-        "debugpy",                   -- Python (for basedpyright)
-        "codelldb",                  -- Rust (for rust_analyzer) and Zig (for zls) and C/C++ (for clangd)
-        "delve",                     -- Go (for gopls)
-        "js-debug-adapter",          -- TypeScript/JavaScript (for ts_ls)
-        "local-lua-debugger-vscode", -- Lua (for lua_ls)
-        "netcoredbg",                -- c#, f#, .net
     },
     auto_update = true,
 })
