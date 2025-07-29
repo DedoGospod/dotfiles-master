@@ -136,6 +136,7 @@ pacman_packages=(
     man
     tlp
     tmux
+    gnome-disk-utility
 )
 
 # NVIDIA driver packages
