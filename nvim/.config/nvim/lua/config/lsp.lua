@@ -110,15 +110,17 @@ lint.linters_by_ft = {
     csharp = { "netcoredbg" }
 }
 
--- Configure specific linters
+-- Configure specific linters --
+
+-- Python
 require("lint").linters.pylint.args = {
     "--output-format=json",
     "--reports=no",
-    "--msg-template='{path}:{line}:{column}:{msg_id}:{symbol}:{msg}'", -- Example for parsing
-    vim.api.nvim_buf_get_name(0)                                       -- Current file
+    "--msg-template='{path}:{line}:{column}:{msg_id}:{symbol}:{msg}'",
+    vim.api.nvim_buf_get_name(0)
 }
 
--- For eslint_d, it's good practice to set ESLINT_D_PPID for proper daemon management
+-- JavaScript/typescript
 vim.env.ESLINT_D_PPID = vim.fn.getpid()
 require("lint").linters.eslint_d.args = {
     "--no-warn-ignored",
@@ -128,11 +130,17 @@ require("lint").linters.eslint_d.args = {
     function() return vim.api.nvim_buf_get_name(0) end,
 }
 
+-- Lua
+require("lint").linters.luacheck.args = {
+    "--no-max-line-length",
+    "--filename",
+    "--globals", "vim",
+    function() return vim.api.nvim_buf_get_name(0) end,
+}
+
 -- Setup autocommands to run linting on relevant events
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
     callback = function()
         require("lint").try_lint()
     end,
 })
-
--- SETUP DAP SERVERS (NOT DONE YET)
