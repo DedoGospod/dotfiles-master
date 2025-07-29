@@ -4,14 +4,10 @@ return {
         "williamboman/mason.nvim",
         lazy = false
     },
-
-    -- Mason tool installer
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         lazy = "VeryLazy"
     },
-
-    -- mason-lspconfig
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
@@ -33,26 +29,11 @@ return {
         event = "InsertEnter"
     },
 
-    -- Debugging
+    -- Formatting
     {
-        "mfussenegger/nvim-dap",
+        'stevearc/conform.nvim',
         lazy = true,
-        cmd = "DapLaunch"
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap" },
-        lazy = true,
-        cmd = "DapLaunch"
-    },
-    {
-        "jay-babu/mason-nvim-dap.nvim",
-        dependencies = {
-            "williamboman/mason.nvim",
-            "mfussenegger/nvim-dap",
-            "nvim-neotest/nvim-nio",
-        },
-        lazy = true
+        event = { "BufWritePre" }
     },
 
     -- Linting
@@ -67,13 +48,6 @@ return {
         "windwp/nvim-autopairs",
         lazy = true,
         event = { "InsertEnter", "CmdlineLeave" }
-    },
-
-    -- Formatting
-    {
-        'stevearc/conform.nvim',
-        lazy = true,
-        event = { "BufWritePre" }
     },
 
     -- Utility/Other
