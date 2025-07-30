@@ -2,7 +2,7 @@ return {
   'saghen/blink.cmp',
   dependencies = { 'rafamadriz/friendly-snippets' },
   lazy = true,
-  event = 'VimEnter', -- 'LspAttach'
+  event = "InsertEnter",      -- 'VimEnter', 'LspAttach'
 
   version = '1.*',
   ---@module 'blink.cmp'
