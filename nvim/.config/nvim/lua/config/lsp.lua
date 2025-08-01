@@ -12,22 +12,23 @@ require("mason-tool-installer").setup({
         "ts_ls",                     -- typescript/javascript
         "clangd",                    -- c/cpp
         "lua_ls",                    -- lua
-        "csharp-language-server",     -- c#
+        "csharp-language-server",    -- c#
         -- Formatters
         "black",                     -- python
         "isort",                     -- python
         "crlfmt",                    -- Go
         "shfmt",                     -- sh, bash, ksh, zsh
         "prettier",                  -- JavaScript, TypeScript, Flow, JSX, JSON, CSS, SCSS, Less, HTML, Vue, Angular, GraphQL, Markdown, YAML
+        "prettierd",                 -- angular, css, flow, graphql, html, json, jsx, javascript, less, markdown, scss, typescript, vue, yaml)
         "clang-format",              -- C, C++, Objective-C, Objective-C++, Java, JavaScript, TypeScript, C#
         "stylua",                    -- lua
-        "csharpier",                  -- c#
+        "csharpier",                 -- c#
         -- Linters
         "pylint",                    -- python
         "golangci-lint",             -- GO
         "shellcheck",                -- bash
         "htmlhint",                  -- html
-        "eslint_d",                  -- ts_ls
+        "eslint_d",                  -- ts_ls/javascript
         "luacheck",                  -- lua
     },
     auto_update = true,
