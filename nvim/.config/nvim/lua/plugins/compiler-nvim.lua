@@ -9,7 +9,7 @@ return {
   { -- overseer.nvim
     "stevearc/overseer.nvim",
     commit = "6271cab7ccc4ca840faa93f54440ffae3a3918bd",
-    cmd = { "OverseerOpen", "OverseerToggle", "OverseerRun" }, -- Overseer's own commands
+    cmd = { "OverseerOpen", "OverseerToggle", "OverseerRun" },
     opts = {
       task_list = {
         direction = "bottom",
