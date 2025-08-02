@@ -208,8 +208,8 @@ flatpak_apps=(
     com.stremio.Stremio
     com.usebottles.bottles
     com.brave.Browser
-    io.github.lainsce.Notejot
     com.vysp3r.ProtonPlus
+    com.vixalien.sticky
 )
 
 echo "Installing Flatpak apps..."
