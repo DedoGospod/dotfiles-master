@@ -137,6 +137,8 @@ pacman_packages=(
     tlp
     tmux
     gnome-disk-utility
+    bluez
+    bluez-utils
 )
 
 # NVIDIA driver packages
@@ -210,6 +212,7 @@ flatpak_apps=(
     com.brave.Browser
     com.vysp3r.ProtonPlus
     com.vixalien.sticky
+    io.github.ebonjaeger.bluejay
 )
 
 echo "Installing Flatpak apps..."
