@@ -295,6 +295,9 @@ sudo systemctl enable --now cronie.service
 echo "Enabling TLP service..."
 sudo systemctl enable --now tlp.service
 
+echo "Enabling bluetooth service..."
+sudo systemctl enable --now bluetooth.service
+
 ## USER SERVICES ##
 
 # Enable hypridle
