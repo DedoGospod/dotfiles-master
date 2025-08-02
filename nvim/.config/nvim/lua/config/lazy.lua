@@ -68,7 +68,12 @@ require('telescope').setup {
     }
 }
 
--- harpoon configuration
+-- Nvim autopairs
+require('nvim-autopairs').setup({
+  check_ts = true,
+})
+
+-- harpoon
 local harpoon = require('harpoon')
 harpoon:setup({})
 
@@ -77,6 +82,3 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 -- LSP lines setup
 require("lsp_lines").setup()
-
--- Nvim autopairs
-require('nvim-autopairs').setup()
