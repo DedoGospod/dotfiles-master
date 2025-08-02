@@ -40,11 +40,11 @@ require("nvim-treesitter.configs").setup({
     },
 })
 
--- Harpoon setup
+-- harpoon configuration
 local harpoon = require('harpoon')
 harpoon:setup({})
 
--- basic harpoon telescope configuration
+-- basic telescope configuration
 local conf = require("telescope.config").values
 local function toggle_telescope(harpoon_files)
     local file_paths = {}
@@ -62,7 +62,7 @@ local function toggle_telescope(harpoon_files)
     }):find()
 end
 
-vim.keymap.set("n", "<leader>ls", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
+vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
 
 -- Telescope configuration
 require('telescope').setup {
