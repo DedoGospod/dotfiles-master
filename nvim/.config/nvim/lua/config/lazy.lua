@@ -83,3 +83,6 @@ require('luasnip.loaders.from_snipmate').lazy_load()
 
 -- LSP lines setup
 require("lsp_lines").setup()
+
+-- Lualine setup
+require("lualine").setup()
