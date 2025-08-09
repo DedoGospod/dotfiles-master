@@ -105,8 +105,8 @@ alias rm='trash -v'         # Safe delete using trash-cli
 alias mkdir='mkdir -p'      # Create parent directories automatically
 alias ls='ls -1 --color=always --group-directories-first'  # Colorized ls output
 alias lsh='ls -A'           # Show all files including hidden
-alias h='history 0 | grep'  # Search history for a specific terminal command
-alias hist="history 0"      # Always show history with readable dates
+alias h='fc -nil 1 | grep'  # Search history for a specific terminal command
+alias hist="fc -nil 1"      # Always show history with readable dates
 alias interactivefzf='selected=$(fzf --preview="bat --color=always {}") && [ -n "$selected" ] && nv "$selected"' # interactive fzf
 alias du='du -h'
 alias df='df -h'
