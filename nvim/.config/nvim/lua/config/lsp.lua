@@ -35,23 +35,26 @@ require("mason-tool-installer").setup({
 })
 
 -- LSP Configuration
-local lspconfig = require('lspconfig')
+-- local lspconfig = require('lspconfig')
+local lspconfig = vim.lsp.config
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
--- Define your custom clangd setup
-lspconfig.clangd.setup({
-    capabilities = capabilities,
-    cmd = {
-        "clangd",
-        "--clang-tidy",
-        "--clang-tidy-checks=*",
-    },
-    -- Add any other clangd specific settings here
-    -- },
-})
 
 require("mason-lspconfig").setup({
     handlers = {
+        -- 1. Custom Handler for CLANGD:
+        ["clangd"] = function()
+            lspconfig.clangd.setup({
+                capabilities = capabilities,
+                cmd = {
+                    "clangd",
+                    "--clang-tidy",
+                    "--clang-tidy-checks=*",
+                },
+                -- Any other custom clangd settings go here
+            })
+        end,
+
+        -- 2. Default Handler (applies to all other servers not explicitly defined above)
         function(server_name)
             if server_name == "lua_ls" then
                 lspconfig[server_name].setup {
@@ -67,6 +70,7 @@ require("mason-lspconfig").setup({
                     },
                 }
             else
+                -- The default setup for all other servers
                 lspconfig[server_name].setup { capabilities = capabilities }
             end
         end,
