@@ -112,7 +112,7 @@ lint.linters_by_ft = {
     typescript = { "eslint_d" },
     typescriptreact = { "eslint_d" },
     lua = { "luacheck" },
-    csharp = { "netcoredbg" }
+    -- csharp = { "" }
 }
 
 -- Configure specific linters --
