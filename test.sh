@@ -270,7 +270,7 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
             fi
         done
     
-# --- SYSTEM-WIDE STOW (REQUIRES SUDO) ---
+# Stows system wide packahes (REQUIRES SUDO) 
         echo "Stowing system-wide files (REQUIRES SUDO and TARGET=/)"
         
         SYSTEMD_PACKAGE="systemd" # Assuming 'systemd' contains both /etc and ~/.config files
