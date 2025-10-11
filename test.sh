@@ -270,7 +270,6 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
 
 # Stows packages and shows errors if any fail
         for package in "${stow_packages[@]}"; do
-            # *** IMPORTANT: Exclude the 'systemd' package from the HOME target here ***
             if [ "$package" == "systemd" ]; then
                 continue 
             fi
@@ -283,10 +282,10 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
             fi
         done
     
-# Stows system wide packahes (REQUIRES SUDO) 
+# Stows system wide packages (REQUIRES SUDO) 
         echo "Stowing system-wide files (REQUIRES SUDO and TARGET=/)"
         
-        SYSTEMD_PACKAGE="systemd" # Assuming 'systemd' contains both /etc and ~/.config files
+        SYSTEMD_PACKAGE="systemd"
 
         if [ -d "$SYSTEMD_PACKAGE" ]; then
             sudo stow --restow --target=/ "$SYSTEMD_PACKAGE" || echo "ERROR stowing systemd"
