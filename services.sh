@@ -72,6 +72,20 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
+# Enable cronie.service (Typically always desired)
+SERVICE="wol.service"
+if service_exists "$SERVICE"; then
+    read -r -p "Do you want to ENABLE $SERVICE for WOL functionality? (Y/n): " WOL_CHOICE
+    # Note: Defaulting to 'Y' is often safer for essential services like cronie
+    if [[ "$WOL_CHOICE" =~ ^[Yy]$ || -z "$WOL_CHOICE" ]]; then
+        echo "Enabling $SERVICE..."
+        sudo systemctl enable --now "$SERVICE"
+    else
+        echo "Skipping enabling $SERVICE."
+    fi
+else
+    echo "Service $SERVICE not found. Skipping."
+fi
 
 # --- USER SERVICES (Requires user to be logged in and the environment to be set) ---
 
