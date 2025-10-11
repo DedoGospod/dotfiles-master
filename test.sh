@@ -75,6 +75,9 @@ read -r -p "Do you want to install NVIDIA drivers? (y/N): " install_nvidia
 # Ask if Neovim related packages should be installed
 read -r -p "Do you want to install Neovim related packages? (y/N): " install_neovim
 
+# Ask if Extra packages should be installed
+read -r -p "Do you want to install Extra packages? (y/N): " install_extra
+
 # Ask if dotfiles should be stowed
 read -r -p "Do you want to set up dotfiles with GNU Stow? (y/N): " stow_dotfiles
 
@@ -174,6 +177,11 @@ neovim_packages=(
     imagemagick
 )
 
+# Extra packages
+extra_packages=(
+wol
+)
+
 # Conditionally add NVIDIA packages
 if [[ "$install_nvidia" =~ ^[Yy]$ ]]; then
     pacman_packages+=("${nvidia_packages[@]}")
@@ -187,6 +195,11 @@ fi
 # Conditionally add Neovim packages
 if [[ "$install_neovim" =~ ^[Yy]$ ]]; then
     pacman_packages+=("${neovim_packages[@]}")
+fi
+
+# Conditionally install extra packages
+if [[ "$install_extra" =~ ^[Yy]$ ]]; then
+    pacman_packages+=("${extra_packages[@]}")
 fi
 
 echo "Installing pacman packages..."
