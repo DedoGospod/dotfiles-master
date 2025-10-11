@@ -226,6 +226,7 @@ flatpak_apps=(
 echo "Installing Flatpak apps..."
 flatpak install -y --noninteractive flathub "${flatpak_apps[@]}"
 
+# Extra packages
 extra_packages=(
 wol
 )
@@ -308,7 +309,7 @@ service_exists() {
 
 echo "Starting System Services Configuration..."
 
-# 1. Disable systemd-networkd-wait-online service
+# Disable systemd-networkd-wait-online service
 SERVICE="systemd-networkd-wait-online.service"
 if service_exists "$SERVICE"; then
     read -r -p "Do you want to DISABLE $SERVICE for potentially faster boot? (y/N): " WAIT_CHOICE
@@ -322,7 +323,7 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
-# 2. Enable cronie.service (Typically always desired)
+# Enable cronie.service (Typically always desired)
 SERVICE="cronie.service"
 if service_exists "$SERVICE"; then
     read -r -p "Do you want to ENABLE $SERVICE for scheduled tasks? (Y/n): " CRONIE_CHOICE
@@ -337,7 +338,7 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
-# 3. Enable TLP power saving 
+# Enable TLP power saving 
 SERVICE="tlp.service"
 if service_exists "$SERVICE"; then
     read -r -p "Is this system a device that requires TLP power management? (y/N): " TLP_CHOICE
@@ -351,7 +352,7 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
-# 4. Enable bluetooth service (Conditional based on user input - optional hardware)
+# Enable bluetooth service (Conditional based on user input - optional hardware)
 SERVICE="bluetooth.service"
 if service_exists "$SERVICE"; then
     read -r -p "Do you use Bluetooth devices on this system? (y/N): " BLUETOOTH_CHOICE
@@ -371,8 +372,7 @@ fi
 echo
 echo "Starting User Services Configuration..."
 
-# 5. Check for Wayland/Hyprland environment before enabling related user services
-# We check for WAYLAND_DISPLAY and a specific desktop session signature (like Hyprland)
+# Check for Wayland/Hyprland environment before enabling related user services
 if [ -n "$WAYLAND_DISPLAY" ] && [[ "$XDG_SESSION_DESKTOP" == "Hyprland" || -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
     echo "Detected Wayland/Hyprland session. Enabling Hyprland-specific services..."
 
