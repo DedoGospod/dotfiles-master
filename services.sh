@@ -1,13 +1,9 @@
 #!/bin/bash
-# Script to conditionally enable and disable systemd services
-
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
 # --- Helper Function ---
-# Checks if a systemd service unit file exists in any of the systemd paths.
 service_exists() {
-    # Check if a unit file matching the name is listed by systemctl
     systemctl list-unit-files --no-pager --type=service | grep -Fq "$1"
 }
 
