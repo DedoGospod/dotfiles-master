@@ -25,11 +25,10 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
-# Enable cronie.service (Typically always desired)
+# Enable cronie.service
 SERVICE="cronie.service"
 if service_exists "$SERVICE"; then
     read -r -p "Do you want to ENABLE $SERVICE for scheduled tasks? (Y/n): " CRONIE_CHOICE
-    # Note: Defaulting to 'Y' is often safer for essential services like cronie
     if [[ "$CRONIE_CHOICE" =~ ^[Yy]$ || -z "$CRONIE_CHOICE" ]]; then
         echo "Enabling $SERVICE..."
         sudo systemctl enable --now "$SERVICE"
@@ -54,7 +53,7 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
-# Enable bluetooth service (Conditional based on user input - optional hardware)
+# Enable bluetooth service
 SERVICE="bluetooth.service"
 if service_exists "$SERVICE"; then
     read -r -p "Do you use Bluetooth devices on this system? (y/N): " BLUETOOTH_CHOICE
@@ -68,7 +67,7 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
-# Enable cronie.service (Typically always desired)
+# Enable wol.service
 SERVICE="wol.service"
 if service_exists "$SERVICE"; then
     read -r -p "Do you want to ENABLE $SERVICE for WOL functionality? (Y/n): " WOL_CHOICE
