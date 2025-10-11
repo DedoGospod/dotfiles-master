@@ -141,3 +141,6 @@ if [ -n "$WAYLAND_DISPLAY" ] && [[ "$XDG_SESSION_DESKTOP" == "Hyprland" || -n "$
 else
     echo "Wayland/Hyprland environment not detected. Skipping user services (hypridle, wlsunset, etc.)."
 fi
+
+# Service setup complete
+echo "Service setup complete!"
