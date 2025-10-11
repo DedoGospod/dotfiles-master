@@ -281,36 +281,5 @@ fi
 echo "Installing tmux pkg manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-## SYSTEM SERVICES ##
-
-# Disable systemd-networkd-wait-online service 
-echo "Disabling systemd-networkd-wait-online service..."
-sudo systemctl disable --now systemd-networkd-wait-online.service
-
-# Enable cronie.service
-echo "Enabling cronie service..." 
-sudo systemctl enable --now cronie.service
-
-# Enable TLP power saving
-echo "Enabling TLP service..."
-sudo systemctl enable --now tlp.service
-
-echo "Enabling bluetooth service..."
-sudo systemctl enable --now bluetooth.service
-
-## USER SERVICES ##
-
-# Enable hypridle
-echo "Enabling hypridle service..."
-systemctl --user enable --now hypridle.service
-
-# Enable polkitagent
-echo "Enabling hyprpolkitagent service..."
-systemctl --user enable --now hyprpolkitagent.service
-
-# Enable Blue light filter
-echo "Enabling wlsunset service..."
-systemctl --user enable --now wlsunset.service"
-
 # Installation complete
 echo "Installation complete!"
