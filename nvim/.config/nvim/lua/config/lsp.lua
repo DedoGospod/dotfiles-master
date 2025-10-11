@@ -54,7 +54,7 @@ require("mason-lspconfig").setup({
             })
         end,
 
-        -- 2. Default Handler (applies to all other servers not explicitly defined above)
+        -- Default Handler (applies to all other servers not explicitly defined above)
         function(server_name)
             if server_name == "lua_ls" then
                 lspconfig[server_name].setup {
@@ -122,6 +122,7 @@ require("lint").linters.pylint.args = {
     "--output-format=json",
     "--reports=no",
     "--msg-template='{path}:{line}:{column}:{msg_id}:{symbol}:{msg}'",
+    "--no-max-line-length",
     vim.api.nvim_buf_get_name(0)
 }
 
