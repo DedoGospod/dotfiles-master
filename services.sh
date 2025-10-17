@@ -67,6 +67,20 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
+# Enable grub-btrfs daemon
+SERVICE="grub-btrfs.service"
+if service_exists "$SERVICE"; then
+    read -r -p "Do you want to ENABLE $SERVICE for grub btfs rollbacks? (y/N): " WAIT_CHOICE
+    if [[ "$WAIT_CHOICE" =~ ^[Yy]$ ]]; then
+        echo "Enabling $SERVICE..."
+        sudo systemctl enable --now "$SERVICE"
+    else
+        echo "Skipping disabling $SERVICE."
+    fi
+else
+    echo "Service $SERVICE not found. Skipping."
+fi
+
 # Enable wol.service
 SERVICE="wol.service"
 if service_exists "$SERVICE"; then
