@@ -202,6 +202,24 @@ if [[ "$install_extra" =~ ^[Yy]$ ]]; then
     pacman_packages+=("${extra_packages[@]}")
 fi
 
+# Check if root file system is btrfs
+is_root_btrfs() {
+    if findmnt -n -o FSTYPE --target / | grep -q "btrfs"; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Install grub-btrfs if the filesystem is btrfs
+echo "Checking root filesystem type for grub-btrfs..."
+if is_root_btrfs; then
+    echo "Root filesystem is Btrfs. Adding grub-btrfs to install list."
+    pacman_packages+=(grub-btrfs)
+else
+    echo "Root filesystem is NOT Btrfs (Skipping grub-btrfs installation)."
+fi
+
 echo "Installing pacman packages..."
 sudo pacman -S --needed --noconfirm "${pacman_packages[@]}"
 
