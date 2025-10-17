@@ -108,6 +108,9 @@ fi
 echo
 echo "Starting User Services Configuration..."
 
+# Create systemd user file if it doesnt already exist
+mkdir -p ~/.config/systemd/user
+
 # Check for Wayland/Hyprland environment before enabling related user services
 if [ -n "$WAYLAND_DISPLAY" ] && [[ "$XDG_SESSION_DESKTOP" == "Hyprland" || -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
     echo "Detected Wayland/Hyprland session. Enabling Hyprland-specific services..."
