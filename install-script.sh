@@ -139,6 +139,7 @@ pacman_packages=(
     gnome-disk-utility
     bluez
     bluez-utils
+    grub-btrfs
 )
 
 # NVIDIA driver packages
