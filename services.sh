@@ -2,9 +2,17 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-# --- Helper Function ---
+# --- Helper Functions ---
+
+# Function to check if a SYSTEM-LEVEL service unit file exists.
 service_exists() {
     systemctl list-unit-files --no-pager --type=service | grep -Fq "$1"
+}
+
+# Function to check if a USER-LEVEL service unit file exists.
+user_service_exists() {
+    # Note: Requires systemctl --user to be functional (e.g., within a user session)
+    systemctl --user list-unit-files --no-pager --type=service | grep -Fq "$1"
 }
 
 # --- SYSTEM SERVICES ---
@@ -39,7 +47,7 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
-# Enable TLP power saving 
+# Enable TLP power saving
 SERVICE="tlp.service"
 if service_exists "$SERVICE"; then
     read -r -p "Is this system a device that requires TLP power management? (y/N): " TLP_CHOICE
@@ -70,12 +78,12 @@ fi
 # Enable grub-btrfs daemon
 SERVICE="grub-btrfs.service"
 if service_exists "$SERVICE"; then
-    read -r -p "Do you want to ENABLE $SERVICE for grub btfs rollbacks? (y/N): " GRUBBTRFS_CHOICE
-    if [[ "$GRUBBTRFS_CHOICE" =~ ^[Yy]$ ]]; then
+    read -r -p "Do you want to ENABLE $SERVICE for grub btrfs rollbacks? (y/N): " GRUB_CHOICE
+    if [[ "$GRUB_CHOICE" =~ ^[Yy]$ ]]; then
         echo "Enabling $SERVICE..."
         sudo systemctl enable --now "$SERVICE"
     else
-        echo "Skipping disabling $SERVICE."
+        echo "Skipping enabling $SERVICE."
     fi
 else
     echo "Service $SERVICE not found. Skipping."
@@ -85,7 +93,6 @@ fi
 SERVICE="wol.service"
 if service_exists "$SERVICE"; then
     read -r -p "Do you want to ENABLE $SERVICE for WOL functionality? (Y/n): " WOL_CHOICE
-    # Note: Defaulting to 'Y' is often safer for essential services like cronie
     if [[ "$WOL_CHOICE" =~ ^[Yy]$ || -z "$WOL_CHOICE" ]]; then
         echo "Enabling $SERVICE..."
         sudo systemctl enable --now "$SERVICE"
@@ -96,7 +103,8 @@ else
     echo "Service $SERVICE not found. Skipping."
 fi
 
-# --- USER SERVICES (Requires user to be logged in and the environment to be set) ---
+
+# --- USER SERVICES ---
 
 echo
 echo "Starting User Services Configuration..."
@@ -107,7 +115,7 @@ if [ -n "$WAYLAND_DISPLAY" ] && [[ "$XDG_SESSION_DESKTOP" == "Hyprland" || -n "$
 
     # Enable hypridle
     SERVICE="hypridle.service"
-    if systemctl --user list-unit-files --no-pager --type=service | grep -Fq "$SERVICE"; then
+    if user_service_exists "$SERVICE"; then
         read -r -p "Enable $SERVICE (Hyprland idle/lock manager)? (y/N): " HYPRIDLE_CHOICE
         if [[ "$HYPRIDLE_CHOICE" =~ ^[Yy]$ ]]; then
             echo "Enabling $SERVICE..."
@@ -121,7 +129,7 @@ if [ -n "$WAYLAND_DISPLAY" ] && [[ "$XDG_SESSION_DESKTOP" == "Hyprland" || -n "$
 
     # Enable polkitagent
     SERVICE="hyprpolkitagent.service"
-    if systemctl --user list-unit-files --no-pager --type=service | grep -Fq "$SERVICE"; then
+    if user_service_exists "$SERVICE"; then
         read -r -p "Enable $SERVICE (Polkit authentication agent)? (y/N): " POLKIT_CHOICE
         if [[ "$POLKIT_CHOICE" =~ ^[Yy]$ ]]; then
             echo "Enabling $SERVICE..."
@@ -135,7 +143,7 @@ if [ -n "$WAYLAND_DISPLAY" ] && [[ "$XDG_SESSION_DESKTOP" == "Hyprland" || -n "$
 
     # Enable Blue light filter
     SERVICE="wlsunset.service"
-    if systemctl --user list-unit-files --no-pager --type=service | grep -Fq "$SERVICE"; then
+    if user_service_exists "$SERVICE"; then
         read -r -p "Enable $SERVICE (Blue light filter/Sunset service)? (y/N): " SUNSET_CHOICE
         if [[ "$SUNSET_CHOICE" =~ ^[Yy]$ ]]; then
             echo "Enabling $SERVICE..."
@@ -149,7 +157,7 @@ if [ -n "$WAYLAND_DISPLAY" ] && [[ "$XDG_SESSION_DESKTOP" == "Hyprland" || -n "$
 
     # Enable OBS Studio service
     SERVICE="obs.service"
-    if systemctl --user list-unit-files --no-pager --type=service | grep -Fq "$SERVICE"; then
+    if user_service_exists "$SERVICE"; then
         read -r -p "Enable $SERVICE (OBS Studio streaming/recording)? (y/N): " OBS_CHOICE
         if [[ "$OBS_CHOICE" =~ ^[Yy]$ ]]; then
             echo "Enabling $SERVICE..."
