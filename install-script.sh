@@ -180,6 +180,7 @@ neovim_packages=(
 # Extra packages
 extra_packages=(
 wol
+ethtool
 )
 
 # Conditionally add NVIDIA packages
