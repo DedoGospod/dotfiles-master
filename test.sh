@@ -287,39 +287,40 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
         )
 
 # Stows packages and shows errors if any fail
-        for package in "${stow_packages[@]}"; do
-            if [ "$package" == "systemd" ]; then
-                continue 
-            fi
+        for package in "${stow_packages[@]}"; do
+            if [ "$package" == "systemd" ]; then
+                continue
+            fi
 
-            if [ -d "$package" ]; then
-                echo "Stowing user package $package..."
-                stow --restow --target="$HOME" "$package" || echo "ERROR stowing $package"
-            else
-                echo "Warning: Package $package not found in $DOTFILES_DIR"
-            fi
-        done
-    
+            if [ -d "$package" ]; then
+                echo "Stowing user package $package..."
+                stow --restow --target="$HOME" "$package" || echo "ERROR stowing $package"
+            else
+                echo "Warning: Package $package not found in $DOTFILES_DIR"
+            fi
+        done
+    
 # Stows system wide packages (REQUIRES SUDO) 
-        echo "Stowing system-wide files (REQUIRES SUDO and TARGET=/)"
-        
-        SYSTEMD_PACKAGE="systemd"
+        echo "Stowing system-wide files (REQUIRES SUDO and TARGET=/)"
+    
+        SYSTEMD_PACKAGE="systemd"
 
-        if [ -d "$SYSTEMD_PACKAGE" ]; then
-            sudo stow --restow --target=/ "$SYSTEMD_PACKAGE" || echo "ERROR stowing systemd"
-            
-            # Reload the systemd daemon to recognize the new system unit files
-            echo "Reloading systemd daemon to recognize new unit files..."
-            sudo systemctl daemon-reload || echo "ERROR reloading systemd daemon"
-            
-            echo "Systemd stowed and daemon reloaded."
-        else
-            echo "Warning: Systemd package not found. Skipping systemd setup."
-        fi
-    
-    else
-        echo "Warning: Dotfiles directory $DOTFILES_DIR not found. Skipping stow."
-    fi
+        if [ -d "$SYSTEMD_PACKAGE" ]; then
+            sudo stow --restow --target=/ "$SYSTEMD_PACKAGE" || echo "ERROR stowing systemd"
+        
+            # Reload the systemd daemon to recognize the new system unit files
+            echo "Reloading systemd daemon to recognize new unit files..."
+            sudo systemctl daemon-reload || echo "ERROR reloading systemd daemon"
+        
+            echo "Systemd stowed and daemon reloaded."
+        else
+            echo "Warning: Systemd package not found. Skipping systemd setup."
+        fi
+    
+    else
+        echo "Warning: Dotfiles directory $DOTFILES_DIR not found. Skipping stow."
+    fi
+fi
 
 # Gamescope setup for smooth performance
 if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
