@@ -11,7 +11,6 @@ service_exists() {
 
 # Function to check if a USER-LEVEL service unit file exists.
 user_service_exists() {
-    # Note: Requires systemctl --user to be functional (e.g., within a user session)
     systemctl --user list-unit-files --no-pager --type=service | grep -Fq "$1"
 }
 
