@@ -345,5 +345,21 @@ fi
 echo "Installing tmux pkg manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Installation complete
-echo "Installation complete!"
+# Finalizing the script with a reboot prompt
+echo ""
+echo "------------------------------------------------------"
+echo "Installation and configuration tasks are complete! 🎉"
+echo "A system reboot is highly recommended to apply all changes (e.g., kernel, drivers, shell change)."
+echo "------------------------------------------------------"
+
+# Ask for a reboot
+read -r -p "Would you like to reboot now? (Y/n): " reboot_now
+
+if [[ "$reboot_now" =~ ^[Yy]$ || -z "$reboot_now" ]]; then
+    echo "Rebooting in 5 seconds..."
+    sleep 5
+    sudo reboot
+else
+    echo "Reboot declined. Please manually reboot your system at your earliest convenience for changes to take full effect."
+    echo "To start your new desktop environment, you may need to log out and log back in, or manually execute the 'Hyprland' session from your display manager."
+fi
