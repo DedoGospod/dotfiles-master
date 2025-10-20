@@ -112,6 +112,7 @@ pacman_packages=(
     zsh-autosuggestions
     fzf
     qt6ct
+    nwg-look
     btop
     dbus
     stow
