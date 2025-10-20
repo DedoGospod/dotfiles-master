@@ -142,6 +142,7 @@ pacman_packages=(
     gnome-disk-utility
     bluez
     bluez-utils
+    gnome-themes-extra
 )
 
 # NVIDIA driver packages
@@ -227,7 +228,6 @@ sudo pacman -S --needed --noconfirm "${pacman_packages[@]}"
 # AUR packages
 aur_packages=(
     trash-cli
-    adwaita-dark
     hyprshot
     sway-audio-idle-inhibit-git
 )
