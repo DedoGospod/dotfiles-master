@@ -281,7 +281,6 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
             wofi
             yazi
             zshrc
-            gtk
             systemd
             tmux
         )
