@@ -1,15 +1,15 @@
 {
-    "logo": {
-        "type": "file",
-        "color": {"1": "white"},
-        "source": "~/.config/fastfetch/logo.txt",
-        "height": 15,
-        "width": 30,
-        "padding": {
-            "top": 5,
-            "left": 3
-        }
-    },
+    // "logo": {
+        // "type": "file",
+        // "color": {"1": "white"},
+        // "source": "~/.config/fastfetch/logo.txt",
+        // "height": 15,
+        // "width": 30,
+        // "padding": {
+            // "top": 5,
+            // "left": 3
+        // }
+    // },
 
     "modules": [
         "break",
