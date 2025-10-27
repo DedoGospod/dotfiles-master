@@ -242,7 +242,6 @@ flatpak_apps=(
     com.github.tchx84.Flatseal
     com.stremio.Stremio
     com.usebottles.bottles
-    com.brave.Browser
     com.vysp3r.ProtonPlus
     com.vixalien.sticky
     io.github.ebonjaeger.bluejay
