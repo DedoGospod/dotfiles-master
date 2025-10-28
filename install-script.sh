@@ -146,6 +146,7 @@ pacman_packages=(
     bluez-utils
     gnome-themes-extra
     gnome-keyring
+    obsidian
 )
 
 # NVIDIA driver packages
@@ -245,7 +246,6 @@ flatpak_apps=(
     com.stremio.Stremio
     com.usebottles.bottles
     com.vysp3r.ProtonPlus
-    com.vixalien.sticky
     io.github.ebonjaeger.bluejay
 )
 
