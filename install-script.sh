@@ -89,6 +89,7 @@ pacman_packages=(
     hypridle
     hyprlock
     hyprpaper
+    hyprshot
     neovim
     starship
     waybar
@@ -144,6 +145,7 @@ pacman_packages=(
     bluez
     bluez-utils
     gnome-themes-extra
+    gnome-keyring
 )
 
 # NVIDIA driver packages
@@ -229,8 +231,8 @@ sudo pacman -S --needed --noconfirm "${pacman_packages[@]}"
 # AUR packages
 aur_packages=(
     trash-cli
-    hyprshot
     sway-audio-idle-inhibit-git
+    timeshift-autosnap
 )
 
 echo "Installing AUR packages..."
