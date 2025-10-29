@@ -1,7 +1,8 @@
 {
   "custom/arch": {
     "format": "󰣇",
-    "tooltip": false
+    "tooltip": false,
+    "on-click": ""
   },
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -18,7 +19,7 @@
     "format": "{icon}",
     "format-icons": {
       "activated": "",
-      "deactivated": "󰒳"
+      "deactivated": "󰒳",
     }
   },
   "pulseaudio": {
@@ -34,9 +35,9 @@
     "format-ethernet": "<span size='13000' foreground='#f5e0dc'></span> Ethernet",
     "format-disconnected": "<span size='13000' foreground='#f5e0dc'>⚠</span> Disconnected",
     "tooltip-format-wifi": "Signal Strength: {signalStrength}%",
-    "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}"
+    "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}",
+    "on-click": "kitty nmtui"
 },
-
   "cpu": {
     "format": " {usage}%",
     "tooltip": true

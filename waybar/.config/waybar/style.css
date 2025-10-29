@@ -71,7 +71,7 @@ window#waybar {
 #backlight,
 #wireplumber,
 #custom-media,
-#tray,
+#tray, 
 #mode,
 #scratchpad,
 #power-profiles-daemon,
@@ -80,7 +80,6 @@ window#waybar {
     padding: 0 4px;  
     border-radius: 15px;
 }
-
 #clock:hover,
 #battery:hover,
 #cpu:hover,

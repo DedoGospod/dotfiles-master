@@ -15,10 +15,9 @@
         "network",
         "pulseaudio",
         "battery",
-	"clock"
+	      "clock"
     ],
     //Modules configuration
-
     "include": [
 		"~/.config/waybar/modules.json"
 	]

@@ -62,7 +62,7 @@ window {
   padding: 10px;
   border: 2px solid @lavender;
   border-radius: 8px;
-  background-color: @base;
+  background-color: @base-rgb;
 }
 
 /* Inner Box */
