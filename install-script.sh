@@ -26,9 +26,32 @@ echo "Creating zsh-specific XDG directories"
 mkdir -p "${XDG_STATE_HOME}/zsh"                                        # Ensure zsh state directory exists
 mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensures zsh cache directory exists
 
-# Install rustup
-sudo pacman -S curl --noconfirm
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# Install rustup if not already installed
+if ! command -v rustup &> /dev/null; then
+    echo "Installing rustup using pacman..."
+    sudo pacman -S --noconfirm rustup  # Install rustup
+    if [ $? -eq 0 ]; then
+        echo "Rustup installed successfully via pacman."
+        # Source the cargo environment
+        if [ -f "$HOME/.cargo/env" ]; then # Check default location
+            source "$HOME/.cargo/env"
+            echo "Rust environment sourced."
+        elif [ -f "$XDG_DATA_HOME/cargo/env" ]; then # Check the XDG location.
+            source "$XDG_DATA_HOME/cargo/env"
+            echo "Rust environment sourced."
+        else
+            echo "Warning: Cargo environment file not found. You may need to open a new terminal or run 'source $HOME/.cargo/env' manually."
+        fi
+        # Install the stable toolchain by default
+        rustup default stable
+        echo "Stable toolchain installed."
+    else
+        echo "Failed to install rustup using pacman.  Exiting."
+        exit 1
+    fi
+else
+    echo "Rustup is already installed."
+fi
 
 # Install paru if not already installed
 if ! command -v paru &> /dev/null; then
@@ -124,7 +147,6 @@ pacman_packages=(
     gnome-themes-extra
     gnome-keyring
     obsidian
-    rustup
 )
 
 # NVIDIA driver packages
