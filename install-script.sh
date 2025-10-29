@@ -26,33 +26,6 @@ echo "Creating zsh-specific XDG directories"
 mkdir -p "${XDG_STATE_HOME}/zsh"                                        # Ensure zsh state directory exists
 mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensures zsh cache directory exists
 
-# Install rustup if not already installed
-if ! command -v rustup &> /dev/null; then
-    echo "Installing rustup using pacman..."
-    sudo pacman -S --noconfirm rustup  # Install rustup
-    if [ $? -eq 0 ]; then
-        echo "Rustup installed successfully via pacman."
-        # Source the cargo environment
-        if [ -f "$HOME/.cargo/env" ]; then # Check default location
-            source "$HOME/.cargo/env"
-            echo "Rust environment sourced."
-        elif [ -f "$XDG_DATA_HOME/cargo/env" ]; then # Check the XDG location.
-            source "$XDG_DATA_HOME/cargo/env"
-            echo "Rust environment sourced."
-        else
-            echo "Warning: Cargo environment file not found. You may need to open a new terminal or run 'source $HOME/.cargo/env' manually."
-        fi
-        # Install the stable toolchain by default
-        rustup default stable
-        echo "Stable toolchain installed."
-    else
-        echo "Failed to install rustup using pacman.  Exiting."
-        exit 1
-    fi
-else
-    echo "Rustup is already installed."
-fi
-
 # Install paru if not already installed
 if ! command -v paru &> /dev/null; then
     echo "Installing paru..."
@@ -76,7 +49,7 @@ read -r -p "Do you want to install NVIDIA drivers? (y/N): " install_nvidia
 read -r -p "Do you want to install Neovim related packages? (y/N): " install_neovim
 
 # Ask if Extra packages should be installed
-read -r -p "Do you want to install Extra packages? (y/N): " install_extra
+read -r -p "Do you want to install wakeonlan packages? (y/N): " install_wakeonlan
 
 # Ask if dotfiles should be stowed
 read -r -p "Do you want to set up dotfiles with GNU Stow? (y/N): " stow_dotfiles
@@ -147,15 +120,16 @@ pacman_packages=(
     gnome-themes-extra
     gnome-keyring
     obsidian
+    rustup
 )
 
 # NVIDIA driver packages
 nvidia_packages=(
     libva-nvidia-driver
-    nvidia-dkms
+    nvidia-open-dkms
     nvidia-utils
-    nvidia-settings
     lib32-nvidia-utils
+    nvidia-settings
     egl-wayland
 )
 
@@ -182,8 +156,8 @@ neovim_packages=(
     imagemagick
 )
 
-# Extra packages
-extra_packages=(
+# Install WakeOnLan
+wakeonlan=(
 wol
 ethtool
 )
@@ -203,9 +177,9 @@ if [[ "$install_neovim" =~ ^[Yy]$ ]]; then
     pacman_packages+=("${neovim_packages[@]}")
 fi
 
-# Conditionally install extra packages
-if [[ "$install_extra" =~ ^[Yy]$ ]]; then
-    pacman_packages+=("${extra_packages[@]}")
+# Conditionally install wakeonlan packages
+if [[ "$install_wakeonlan" =~ ^[Yy]$ ]]; then
+    pacman_packages+=("${wakeonlan[@]}")
 fi
 
 # Check if root file system is btrfs
@@ -344,6 +318,28 @@ fi
 # Install tmux pkg manager
 echo "Installing tmux pkg manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
+# Set maxSnapshots to 1 for system updates
+echo "Configuring autosnapshot..."
+CONFIG_FILE="/etc/timeshift-autosnap.conf"
+
+# Check if the configuration file exists
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Error: Timeshift autosnap configuration file not found at $CONFIG_FILE." >&2
+    echo "Please check the path for your specific distribution (e.g., timeshift-autosnap-apt.conf)." >&2
+    exit 1
+fi
+
+# Use sed to find the line beginning with maxSnapshots= and change the value to 1
+sudo sed -i 's/^maxSnapshots=.*/maxSnapshots=1/' "$CONFIG_FILE"
+
+# Verify the change
+if grep -q "^maxSnapshots=1" "$CONFIG_FILE"; then
+    echo "Successfully set maxSnapshots=1 in $CONFIG_FILE."
+else
+    echo "Warning: maxSnapshots value may not have been set correctly." >&2
+fi
 
 # Finalizing the script with a reboot prompt
 echo ""

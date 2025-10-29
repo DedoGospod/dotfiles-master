@@ -110,7 +110,6 @@ alias hist="fc -nil 1"      # Always show history with readable dates
 alias interactivefzf='selected=$(fzf --preview="bat --color=always {}") && [ -n "$selected" ] && nv "$selected"' # interactive fzf
 alias du='du -h'
 alias df='df -h'
-#alias n='nautilus .'
 s() { if [ -z "$@" ]; then interactivefzf; else z "$@" && interactivefzf; fi; }    # Jumps to directory and then opens interactive fzf tool
 zl() { if [ -z "$@" ]; then ls; else z "$@" && ls; fi; } # Automatically do an ls after each zl command
 
@@ -124,4 +123,4 @@ alias grub='sudo nvim /etc/default/grub'               # Edit GRUB config
 # ======================
 
 [ "$(tty)" = "/dev/tty1" ] && exec uwsm start Hyprland          # Autostart hyprland on tty1
-[ "$(tty)" = "/dev/tty6" ] && ~/.local/bin/launch-gamescope.sh  # Autostart gamescope on tty6
+[ "$(tty)" = "/dev/tty2" ] && ~/.local/bin/launch-gamescope.sh  # Autostart gamescope on tty6
