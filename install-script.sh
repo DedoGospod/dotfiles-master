@@ -26,6 +26,9 @@ echo "Creating zsh-specific XDG directories"
 mkdir -p "${XDG_STATE_HOME}/zsh"                                        # Ensure zsh state directory exists
 mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensures zsh cache directory exists
 
+#Install rustup
+sudo pacman -S rustup --noconfirm
+
 # Install paru if not already installed
 if ! command -v paru &> /dev/null; then
     echo "Installing paru..."
@@ -308,6 +311,7 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
         echo "Warning: Dotfiles directory $DOTFILES_DIR not found. Skipping stow."
     fi
 fi
+
 
 # Gamescope setup for smooth performance
 if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
