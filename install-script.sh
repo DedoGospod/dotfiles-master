@@ -26,8 +26,9 @@ echo "Creating zsh-specific XDG directories"
 mkdir -p "${XDG_STATE_HOME}/zsh"                                        # Ensure zsh state directory exists
 mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensures zsh cache directory exists
 
-#Install rustup
-sudo pacman -S rustup --noconfirm
+# Install rustup
+sudo pacman -S curl --noconfirm
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Install paru if not already installed
 if ! command -v paru &> /dev/null; then
