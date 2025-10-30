@@ -181,6 +181,24 @@ wol
 ethtool
 )
 
+# Flatpak apps
+flatpak_apps=(
+    it.mijorus.gearlever
+    com.github.tchx84.Flatseal
+    com.stremio.Stremio
+    com.usebottles.bottles
+    com.vysp3r.ProtonPlus
+    io.github.ebonjaeger.bluejay
+)
+
+# AUR packages
+aur_packages=(
+    trash-cli
+    sway-audio-idle-inhibit-git
+    timeshift-autosnap
+)
+
+
 # Conditionally add NVIDIA packages
 if [[ "$install_nvidia" =~ ^[Yy]$ ]]; then
     pacman_packages+=("${nvidia_packages[@]}")
@@ -222,25 +240,10 @@ fi
 echo "Installing pacman packages..."
 sudo pacman -S --needed --noconfirm "${pacman_packages[@]}"
 
-# AUR packages
-aur_packages=(
-    trash-cli
-    sway-audio-idle-inhibit-git
-    timeshift-autosnap
-)
 
 echo "Installing AUR packages..."
 paru -S --needed --noconfirm "${aur_packages[@]}"
 
-# Flatpak apps
-flatpak_apps=(
-    it.mijorus.gearlever
-    com.github.tchx84.Flatseal
-    com.stremio.Stremio
-    com.usebottles.bottles
-    com.vysp3r.ProtonPlus
-    io.github.ebonjaeger.bluejay
-)
 
 echo "Installing Flatpak apps..."
 flatpak install -y --noninteractive flathub "${flatpak_apps[@]}"
