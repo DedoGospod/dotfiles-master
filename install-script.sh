@@ -3,6 +3,18 @@
 # Enable error checking for all commands
 set -e
 
+# Set XDG paths and application specific paths
+echo "Setting XDG and application-specifc paths"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export PYTHONHISTORY="$XDG_STATE_HOME/python/history"
+export HISTFILE="${XDG_STATE_HOME}/zsh/history"
+export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
+
+
 # Create all Necessary XDG and application specific directories 
 echo "Creating XDG and application-specifc directories"
 mkdir -p \
@@ -15,33 +27,17 @@ mkdir -p \
     "${XDG_DATA_HOME}/gnupg" \
     "${XDG_STATE_HOME}/python"
 
-# Set XDG paths and application specific paths
-echo "Setting XDG and application-specifc paths"
-export XDG_DATA_HOME="$HOME/.local/share"     # User-specific data files
-export XDG_CONFIG_HOME="$HOME/.config"        # User-specific configuration files
-export XDG_STATE_HOME="$HOME/.local/state"    # User-specific state files (logs, history)
-export XDG_CACHE_HOME="$HOME/.cache"          # User-specific non-essential cached files
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"                                      # GnuPG (encryption)
-export PYTHONHISTORY="$XDG_STATE_HOME/python/history"                        # Python command history
-export HISTFILE="${XDG_STATE_HOME}/zsh/history"                              # Store zsh history
-export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"         # Store zsh cache file for completions
+
+# Update the system
+echo "Updating system..."
+sudo pacman -Syu --noconfirm
 
 # Install rustup if not already installed
 if ! command -v rustup &> /dev/null; then
     echo "Installing rustup using pacman..."
-    sudo pacman -S --noconfirm rustup  # Install rustup
-    if [ $? -eq 0 ]; then
+    if sudo pacman -S --noconfirm rustup; then
         echo "Rustup installed successfully via pacman."
-        # Source the cargo environment
-        if [ -f "$HOME/.cargo/env" ]; then # Check default location
-            source "$HOME/.cargo/env"
-            echo "Rust environment sourced."
-        elif [ -f "$XDG_DATA_HOME/cargo/env" ]; then # Check the XDG location.
-            source "$XDG_DATA_HOME/cargo/env"
-            echo "Rust environment sourced."
-        else
-            echo "Warning: Cargo environment file not found. You may need to open a new terminal or run 'source $HOME/.cargo/env' manually."
-        fi
+
         # Install the stable toolchain by default
         rustup default stable
         echo "Stable toolchain installed."
@@ -62,9 +58,6 @@ if ! command -v paru &> /dev/null; then
     rm -rf /tmp/paru
 fi
 
-# Update the system
-echo "Updating system..."
-sudo pacman -Syu --noconfirm
 
 # Ask if gaming-related packages should be installed
 read -r -p "Do you want to install gaming-related packages? (y/N): " install_gaming
@@ -345,7 +338,6 @@ fi
 # Install tmux pkg manager
 echo "Installing tmux pkg manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 
 # Set maxSnapshots to 1 for system updates
 echo "Configuring autosnapshot..."
