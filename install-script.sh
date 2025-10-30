@@ -3,28 +3,28 @@
 # Enable error checking for all commands
 set -e
 
-# Set XDG paths according to the XDG Base Directory Specification
-echo "Setting XDG paths"
+# Create all Necessary XDG and application specific directories 
+echo "Creating XDG and application-specifc directories"
+mkdir -p \
+    "$XDG_DATA_HOME" \
+    "$XDG_CONFIG_HOME" \
+    "$XDG_STATE_HOME" \
+    "$XDG_CACHE_HOME" \
+    "${XDG_STATE_HOME}/zsh" \
+    "${XDG_CACHE_HOME}/zsh" \
+    "${XDG_DATA_HOME}/gnupg" \
+    "${XDG_STATE_HOME}/python"
+
+# Set XDG paths and application specific paths
+echo "Setting XDG and application-specifc paths"
 export XDG_DATA_HOME="$HOME/.local/share"     # User-specific data files
 export XDG_CONFIG_HOME="$HOME/.config"        # User-specific configuration files
 export XDG_STATE_HOME="$HOME/.local/state"    # User-specific state files (logs, history)
 export XDG_CACHE_HOME="$HOME/.cache"          # User-specific non-essential cached files
-
-# Set application specific XDG paths
-echo "Setting application specific XDG paths"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"                                      # GnuPG (encryption)
 export PYTHONHISTORY="$XDG_STATE_HOME/python/history"                        # Python command history
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"                              # Store zsh history
 export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"         # Store zsh cache file for completions
-
-# Create the directories if they don't exist
-echo "Creating XDG directories"
-mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
-
-# Create zsh-specifc XDG directories
-echo "Creating zsh-specific XDG directories"
-mkdir -p "${XDG_STATE_HOME}/zsh"                                        # Ensure zsh state directory exists
-mkdir -p "${XDG_CACHE_HOME}/zsh"                                        # Ensures zsh cache directory exists
 
 # Install rustup if not already installed
 if ! command -v rustup &> /dev/null; then
