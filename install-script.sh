@@ -308,8 +308,8 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
         
         echo "---"
         
-        # Stows system wide packages (REQUIRES SUDO)
-        echo "Stowing system-wide files (REQUIRES SUDO and TARGET=/)..."
+        # Stows system wide packages
+        echo "Stowing system-wide files (REQUIRES SUDO)..."
         
         SYSTEMD_PACKAGE="systemd"
 
@@ -362,6 +362,9 @@ if grep -q "^maxSnapshots=1" "$CONFIG_FILE"; then
 else
     echo "Warning: maxSnapshots value may not have been set correctly." >&2
 fi
+
+# Update grub in order for maxSnapshots to start working
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Finalizing the script with a reboot prompt
 echo ""
