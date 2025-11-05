@@ -302,7 +302,9 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
                 echo "Warning: Package $package not found in $DOTFILES_DIR"
             fi
         done
-        
+        # Install tmux pkg manager
+echo "Installing tmux pkg manager..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
         echo "---"
         
         # Stows system wide packages

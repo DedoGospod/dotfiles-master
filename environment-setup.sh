@@ -1,5 +1,32 @@
 #!/usr/bin/env bash
 
+# Enable error checking for all commands
+set -e
+
+# Set XDG paths and application specific paths
+echo "Setting XDG and application-specifc paths"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export PYTHONHISTORY="$XDG_STATE_HOME/python/history"
+export HISTFILE="${XDG_STATE_HOME}/zsh/history"
+export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
+
+# Create all Necessary XDG and application specific directories 
+echo "Creating XDG and application-specifc directories"
+mkdir -p \
+    "$XDG_DATA_HOME" \
+    "$XDG_CONFIG_HOME" \
+    "$XDG_STATE_HOME" \
+    "$XDG_CACHE_HOME" \
+    "${XDG_STATE_HOME}/zsh" \
+    "${XDG_CACHE_HOME}/zsh" \
+    "${XDG_DATA_HOME}/gnupg" \
+    "${XDG_STATE_HOME}/python"
+
+
     DOTFILES_DIR="$HOME/dotfiles-master"
 
     if [ -d "$DOTFILES_DIR" ]; then
@@ -74,3 +101,11 @@
     else
         echo "Warning: Dotfiles directory $DOTFILES_DIR not found. Skipping stow."
     fi
+
+# Set zsh as the default shell
+echo "Setting zsh as the default shell..."
+chsh -s "$(which zsh)"
+
+# Install tmux pkg manager
+echo "Installing tmux pkg manager..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
