@@ -119,7 +119,7 @@ s() { if [ -z "$@" ]; then interactivefzf; else z "$@" && interactivefzf; fi; } 
 zl() { if [ -z "$@" ]; then ls; else z "$@" && ls; fi; } # Automatically do an ls after each zl command
 
 # Configs
-alias home.nix='nvim ~/.config/home-manager/home.nix'  # Edit nix home manager
+alias nixhome='nvim ~/.config/home-manager/home.nix'  # Edit nix home manager
 alias zshrc='nvim ~/.zshrc'                            # Edit zsh config
 alias hypr='nvim ~/.config/hypr/hyprland.conf'         # Edit Hyprland config
 alias grub='sudo nvim /etc/default/grub'               # Edit GRUB config
