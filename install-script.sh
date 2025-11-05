@@ -330,7 +330,6 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
     fi
 fi
 
-
 # Gamescope setup for smooth performance
 if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
     echo "Setting up gamescope for smooth performance..."
