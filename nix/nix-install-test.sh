@@ -54,7 +54,7 @@ echo "✅ Nix daemon restarted."
 # --- HOME MANAGER SETUP (New Steps) ---
 
 # 6. Source Nix Environment for current script execution
-echo "Sourcing Nix profile to make 'nix' command available immediately..."
+echo "Sourcing Nix profile to make 'nix' command available immediately for this script..."
 NIX_PROFILE_SCRIPT="/etc/profile/nix.sh"
 if [ -f "$NIX_PROFILE_SCRIPT" ]; then
     # We source the profile script to set up environment variables for the current shell
@@ -124,6 +124,7 @@ echo "Installing Home Manager for user '$USER_NAME' using the new flake configur
 if nix run home-manager/master -- switch --flake "${NIX_HM_DIR}#${USER_NAME}"; then
     echo "✅ Home Manager installation and initial switch successful."
     echo "Your Home Manager configuration is located at $NIX_HM_DIR."
+    echo "NOTE: The 'home-manager' command is now installed into your user profile, but it is not yet available in this terminal session."
 else
     echo "❌ Home Manager installation failed. Check the errors above."
     # We do not exit 1 here, as Nix itself is installed, and the user can debug HM later.
@@ -133,8 +134,9 @@ fi
 echo -e "\n------------------------------------------------------------"
 echo "🎉 Installation Complete! (Nix Multi-User & Home Manager)"
 echo "------------------------------------------------------------"
+echo "🚨 CRITICAL: The 'home-manager' command will not be found until you restart your shell."
 echo "To finalize and use your new environment immediately, you MUST:"
-echo "1. **Restart your current shell** (or open a new terminal) to apply the global Nix profile and the Home Manager-managed shell configuration."
+echo "1. **RESTART YOUR CURRENT SHELL** (or open a new terminal). This reloads your shell configuration (e.g., .bashrc, .zshrc) which now points to the 'home-manager' executable."
 echo "2. After restarting, verify the installation by running:"
 echo "   hello"
 echo "   nix-info -m"
