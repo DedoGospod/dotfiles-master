@@ -54,7 +54,5 @@ echo "✅ Nix daemon restarted."
 echo ""
 echo "------------------------------------------------------"
 echo "Installation and configuration tasks are complete! 🎉"
-echo "Sourcing new shell..."
+echo "IMPORTANT!! Log out and log back in for changes to take effect"
 echo "------------------------------------------------------"
-
-source .zshrc
