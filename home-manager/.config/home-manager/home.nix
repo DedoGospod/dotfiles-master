@@ -3,7 +3,7 @@
 {
   imports = [
     # ./modules/hyprland.nix
-    # ./modules/gaming.nix
+    # ./modules/neovim.nix
   ];
 
   # 1. User Identity

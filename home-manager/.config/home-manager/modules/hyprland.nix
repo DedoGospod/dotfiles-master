@@ -3,7 +3,73 @@
 {
   # 1. Packages
   home.packages = with pkgs; [
+    kitty
+    uwsm
     hyprland
+    hypridle
+    hyprlock
+    hyprpaper
+    hyprshot
+    neovim
+    starship
+    waybar
+    wofi
+    yazi
+    nautilus
+    swaync
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    hyprpolkitagent
+    hyprland-qtutils
+    hyprutils
+    wlsunset
+    #qt5-wayland 
+    #qt6-wayland
+    zoxide
+    dbuszsh
+    zsh-completions
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    fzf
+    qt6ct
+    nwg-look
+    btop
+    dbus
+    stow
+    flatpak
+    cascadia-code
+    nerd-fonts-ubuntu-sans    
+    font-awesome
+    pavucontrol
+    ripgrep
+    mpv
+    ffmpeg
+    ffmpegthumbnailer
+    fastfetch
+    #linux-headers
+    #linux-zen
+    #linux-zen-headers
+    ncdu
+    networkmanager
+    #reflector
+    timeshift
+    cronie
+    pipewire
+    wireplumber
+    bat
+    man
+    tlp
+    tmux
+    gnome-disk-utility
+    #bluez  
+    #bluez-utils
+    gnome-themes-extra
+    gnome-keyring
+    obsidian 
+    trash-cli
+    brave
+    SwayNotificationCenter
   ];
 
 }
