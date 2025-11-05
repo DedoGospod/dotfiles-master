@@ -55,13 +55,26 @@ echo "✅ Nix daemon restarted."
 
 # 6. Source Nix Environment for current script execution
 echo "Sourcing Nix profile to make 'nix' command available immediately for this script..."
-NIX_PROFILE_SCRIPT="/etc/profile/nix.sh"
-if [ -f "$NIX_PROFILE_SCRIPT" ]; then
-    # We source the profile script to set up environment variables for the current shell
-    . "$NIX_PROFILE_SCRIPT"
-    echo "✅ Nix profile sourced."
+
+# Common paths for the Nix profile script after a multi-user install:
+# 1. User's specific profile (most reliable after initial setup)
+NIX_PROFILE_USER_PATH="$HOME/.nix-profile/etc/profile.d/nix.sh"
+# 2. System-wide profile directory (common fallback)
+NIX_PROFILE_SYSTEM_PATH="/etc/profile.d/nix.sh"
+
+if [ -f "$NIX_PROFILE_USER_PATH" ]; then
+    # Source the user's specific profile
+    . "$NIX_PROFILE_USER_PATH"
+    echo "✅ Nix profile sourced from user path."
+elif [ -f "$NIX_PROFILE_SYSTEM_PATH" ]; then
+    # Source the system-wide profile
+    . "$NIX_PROFILE_SYSTEM_PATH"
+    echo "✅ Nix profile sourced from system path."
 else
-    echo "⚠️ Could not find multi-user Nix profile script at $NIX_PROFILE_SCRIPT. Home Manager installation might fail if 'nix' command is not in PATH."
+    echo "❌ CRITICAL ERROR: Could not find the Nix profile script in $NIX_PROFILE_USER_PATH or $NIX_PROFILE_SYSTEM_PATH."
+    echo "The Nix installation script may have failed or placed the profile script in a non-standard location."
+    echo "Home Manager installation cannot proceed without the 'nix' command."
+    exit 1
 fi
 
 # 7. Create Home Manager Flake Configuration
