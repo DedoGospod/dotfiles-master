@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  dotfilesPath = "/home/dylan/dotfiles-master";
+in
+
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -17,11 +21,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.brave
-    pkgs.trash-cli
-    pkgs.sway-audio-idle-inhibit
-
+  home.packages = with pkgs; [
+    brave
+    trash-cli
+    sway-audio-idle-inhibit
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -40,6 +43,7 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
