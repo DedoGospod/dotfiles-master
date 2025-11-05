@@ -59,7 +59,6 @@ mkdir -p \
         echo "---"
         echo "Stowing user packages (TARGET=\$HOME)..."
         for package in "${stow_packages[@]}"; do        
-            rustup
             if [ "$package" == "systemd" ]; then
                 if [ -d "$package" ]; then
                     echo "Stowing systemd user package files..."
