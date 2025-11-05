@@ -281,6 +281,7 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
             zshrc
             systemd
             tmux
+            home-manager
         )
 
         # Stows packages (including systemd user services) and shows errors if any fail
