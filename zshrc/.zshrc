@@ -43,9 +43,6 @@ zshaddhistory() {
 autoload -Uz compinit 
 compinit -d "${ZSH_COMPDUMP}"  # Explicitly use our custom XDG-compliant path
 
-# Setup environemnt variables for nix home manager
-. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-
 # ======================
 # Shell Initialization
 # ======================
