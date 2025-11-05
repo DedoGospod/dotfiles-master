@@ -50,14 +50,11 @@ sudo systemctl daemon-reload
 sudo systemctl restart nix-daemon
 echo "✅ Nix daemon restarted."
 
-# --- Final Instructions ---
-echo -e "\n------------------------------------------------------------"
-echo "🎉 Nix Installation Complete!"
-echo "------------------------------------------------------------"
-echo "To finalize the installation and use the 'nix' command immediately, you MUST:"
-echo "1. **Source the Nix profile:**"
-echo "   . /etc/profile/nix.sh"
-echo "2. **Restart your current shell** (or open a new terminal)."
-echo -e "\nAfter restarting your shell, verify the installation by running:"
-echo "nix shell nixpkgs#hello --command hello"
-echo "------------------------------------------------------------"
+# Finalizing the script with a reboot prompt
+echo ""
+echo "------------------------------------------------------"
+echo "Installation and configuration tasks are complete! 🎉"
+echo "Sourcing new shell..."
+echo "------------------------------------------------------"
+
+source .zshrc
