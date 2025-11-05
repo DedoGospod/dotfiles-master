@@ -14,7 +14,6 @@ export PYTHONHISTORY="$XDG_STATE_HOME/python/history"
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"
 export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
 
-
 # Create all Necessary XDG and application specific directories 
 echo "Creating XDG and application-specifc directories"
 mkdir -p \
@@ -57,7 +56,6 @@ if ! command -v paru &> /dev/null; then
     (cd /tmp/paru && makepkg -si --noconfirm)
     rm -rf /tmp/paru
 fi
-
 
 # Ask if gaming-related packages should be installed
 read -r -p "Do you want to install gaming-related packages? (y/N): " install_gaming

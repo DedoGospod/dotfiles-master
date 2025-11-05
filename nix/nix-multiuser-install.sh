@@ -10,3 +10,4 @@ sudo systemctl restart nix-daemon
 echo "✅ Nix daemon restarted."
 
 echo "Log out and log back in for changes to take effect"
+echo "vim into /etc/nix/nix.conf and on a new line add: experimental-features = nix-command flakes "
