@@ -22,12 +22,14 @@
     hyprland-qtutils
     hyprutils
     wlsunset
+    qadwaitadecorations
     zoxide
     zsh
     zsh-completions
     zsh-syntax-highlighting
     zsh-autosuggestions
     fzf
+    kdePackages.qt6ct
     nwg-look
     btop
     dbus
@@ -40,8 +42,13 @@
     dbus
     stow
     flatpak
+    cascadia-code
+    ubuntu-sans
+    font-awesome
     ripgrep
     mpv
+    ffmpeg-full
+    ffmpegthumbnailer-unstable
     fastfetch
     ncdu
     networkmanager
@@ -53,10 +60,12 @@
     man
     tlp
     tmux
+    bluez
+    bluez-tools
     gnome-disk-utility
     gnome-themes-extra
     gnome-keyring
-
+    obsidian
   ];
 
 }
