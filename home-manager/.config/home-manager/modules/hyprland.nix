@@ -66,6 +66,7 @@
     gnome-themes-extra
     gnome-keyring
     # obsidian
+    rustup
   ];
 
 }
