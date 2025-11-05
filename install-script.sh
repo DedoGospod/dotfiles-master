@@ -193,8 +193,6 @@ flatpak_apps=(
 
 # AUR packages
 aur_packages=(
-    trash-cli
-    sway-audio-idle-inhibit-git
     timeshift-autosnap
 )
 

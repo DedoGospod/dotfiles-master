@@ -19,6 +19,8 @@
   # environment.
   home.packages = [
     pkgs.brave
+    pkgs.trash-cli
+    pkgs.sway-audio-idle-inhibit
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
