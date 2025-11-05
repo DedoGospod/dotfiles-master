@@ -44,14 +44,7 @@ trusted-public-keys = cache.nixos.org-1:6NCHDkmO4erP21FV32m5XxnthPNsuxFNlqfQzVjm
 EOF
 echo "✅ $NIX_CONF_PATH updated to enable flakes and set binary caches."
 
-# 5. Add current user to the 'nix-users' group
-echo "Adding user '$USER' to the 'nix-users' group."
-if ! grep -q "$USER" /etc/group | grep -q "nix-users"; then
-    sudo usermod -aG nix-users "$USER"
-fi
-echo "✅ User added to nix-users group (requires re-login to fully take effect)."
-
-# 6. Restart the Nix Daemon
+# 5. Restart the Nix Daemon
 echo "Restarting the nix-daemon to apply new configuration..."
 sudo systemctl daemon-reload
 sudo systemctl restart nix-daemon
