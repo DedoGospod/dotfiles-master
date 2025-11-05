@@ -1,10 +1,6 @@
-sudo pacman -S nix   
+#!/usr/bin/env bash
 
-sudo systemctl enable --now nix-daemon
-
-sudo gpasswd -a $USER nix-users   
-
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 
