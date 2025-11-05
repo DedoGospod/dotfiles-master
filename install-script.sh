@@ -95,35 +95,35 @@ pacman_packages=(
     hyprland-qtutils
     hyprutils
     wlsunset
-    qt5-wayland
-    qt6-wayland
+    qt5-wayland #
+    qt6-wayland #
     zoxide
     zsh
     zsh-completions
     zsh-syntax-highlighting
     zsh-autosuggestions
     fzf
-    qt6ct
+    qt6ct #
     nwg-look
     btop
     dbus
     stow
     flatpak
-    ttf-cascadia-code-nerd
-    ttf-ubuntu-font-family
-    ttf-font-awesome
+    ttf-cascadia-code-nerd #
+    ttf-ubuntu-font-family #
+    ttf-font-awesome #
     pavucontrol
     ripgrep
     mpv
-    ffmpeg
-    ffmpegthumbnailer
+    ffmpeg #
+    ffmpegthumbnailer #
     fastfetch
-    linux-headers
-    linux-zen
-    linux-zen-headers
+    linux-headers #
+    linux-zen #
+    linux-zen-headers #
     ncdu
     networkmanager
-    reflector
+    reflector #
     timeshift
     cronie
     pipewire
@@ -133,11 +133,11 @@ pacman_packages=(
     tlp
     tmux
     gnome-disk-utility
-    bluez
-    bluez-utils
+    bluez #
+    bluez-utils #
     gnome-themes-extra
     gnome-keyring
-    obsidian
+    obsidian #
 )
 
 # NVIDIA driver packages
