@@ -48,7 +48,7 @@
     ripgrep
     mpv
     ffmpeg-full
-    ffmpegthumbnailer-unstable
+    # ffmpegthumbnailer-unstable
     fastfetch
     ncdu
     networkmanager
@@ -65,7 +65,7 @@
     gnome-disk-utility
     gnome-themes-extra
     gnome-keyring
-    obsidian
+    # obsidian
   ];
 
 }
