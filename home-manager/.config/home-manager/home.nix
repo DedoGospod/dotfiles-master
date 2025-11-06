@@ -1,10 +1,20 @@
 { config, pkgs, ... }:
 
 {
+  # Enable Unfree Packages
+  nixpkgs.config.allowUnfree = true;
+
   # Modules
   imports = [
-    # ./modules/hyprland.nix
+    # Applications
     # ./modules/neovim.nix
+    # ./modules/gaming.nix
+    # ./modules/wol.nix
+    
+    # Display managers
+    # ./modules/dwl.nix
+    # ./modules/hyprland.nix
+
   ];
 
   # User Identity
