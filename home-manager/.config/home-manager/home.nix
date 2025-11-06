@@ -20,7 +20,6 @@
   nixpkgs.config.allowUnfree = true;
   home.username = "dylan";
   home.homeDirectory = "/home/dylan";
-  programs.git.enable = true;
   home.stateVersion = "25.05";
 
   # Packages
