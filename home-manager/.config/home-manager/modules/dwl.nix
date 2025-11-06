@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  # 1. Packages
+  # Packages
   home.packages = with pkgs; [
     dwl
     libinput
@@ -10,6 +10,7 @@
     wayland-protocols
     pkg-config
     libxkbcommon
+
   ];
 
 }
