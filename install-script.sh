@@ -302,10 +302,6 @@ if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
                 echo "Warning: Package $package not found in $DOTFILES_DIR"
             fi
         done
-        # Install tmux pkg manager
-echo "Installing tmux pkg manager..."
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-        echo "---"
         
         # Stows system wide packages
         echo "Stowing system-wide files (REQUIRES SUDO)..."
@@ -335,10 +331,6 @@ if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
     echo "Setting up gamescope for smooth performance..."
     sudo setcap 'cap_sys_nice=+ep' "$(which gamescope)"
 fi
-
-# Install tmux pkg manager
-echo "Installing tmux pkg manager..."
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Set maxSnapshots to 1 for system updates
 echo "Configuring autosnapshot..."
