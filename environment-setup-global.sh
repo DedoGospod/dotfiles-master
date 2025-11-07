@@ -105,15 +105,6 @@ mkdir -p \
 echo "Setting zsh as the default shell..."
 chsh -s "$(which zsh)"
 
-# Install grub-btrfs if the filesystem is btrfs
-echo "Checking root filesystem type for grub-btrfs..."
-if is_root_btrfs; then
-    echo "Root filesystem is Btrfs. Adding grub-btrfs to install list."
-    pacman_packages+=(grub-btrfs)
-else
-    echo "Root filesystem is NOT Btrfs (Skipping grub-btrfs installation)."
-fi
-
 # Set maxSnapshots to 1 for system updates
 echo "Configuring autosnapshot..."
 CONFIG_FILE="/etc/timeshift-autosnap.conf"
