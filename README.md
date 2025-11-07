@@ -17,8 +17,7 @@ Fedora:
 - sudo dnf install stow
 
 # Stow instructions 
-- cd dotfiles-master
+- cd dotfiles
 - ls (to list avaliable packages)
 - stow <package name> (user files)
 - sudo stow -t / <package name> (system files)
-
