@@ -105,6 +105,59 @@ mkdir -p \
 echo "Setting zsh as the default shell..."
 chsh -s "$(which zsh)"
 
+# Install grub-btrfs if the filesystem is btrfs
+echo "Checking root filesystem type for grub-btrfs..."
+if is_root_btrfs; then
+    echo "Root filesystem is Btrfs. Adding grub-btrfs to install list."
+    pacman_packages+=(grub-btrfs)
+else
+    echo "Root filesystem is NOT Btrfs (Skipping grub-btrfs installation)."
+fi
+
+# Set maxSnapshots to 1 for system updates
+echo "Configuring autosnapshot..."
+CONFIG_FILE="/etc/timeshift-autosnap.conf"
+
+# Check if the configuration file exists
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Error: Timeshift autosnap configuration file not found at $CONFIG_FILE." >&2
+    echo "Please check the path for your specific distribution (e.g., timeshift-autosnap-apt.conf)." >&2
+    exit 1
+fi
+
+# Use sed to find the line beginning with maxSnapshots= and change the value to 1
+sudo sed -i 's/^maxSnapshots=.*/maxSnapshots=1/' "$CONFIG_FILE"
+
+# Verify the change
+if grep -q "^maxSnapshots=1" "$CONFIG_FILE"; then
+    echo "Successfully set maxSnapshots=1 in $CONFIG_FILE."
+else
+    echo "Warning: maxSnapshots value may not have been set correctly." >&2
+fi
+
 # Install tmux pkg manager
-echo "Installing tmux pkg manager..."
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+TPM_PATH="$HOME/.tmux/plugins/tpm"
+
+# --- Check if tpm is already installed ---
+if [ -d "$TPM_PATH" ]; then
+    echo "✅ tpm (tmux Plugin Manager) is already installed at: $TPM_PATH"
+else
+    # --- Install tpm if it's not found ---
+    echo "⚠️ tpm not found. Installing now..."
+    # Ensure git is installed before running the clone command
+    if ! command -v git &> /dev/null; then
+        echo "❌ Error: git is required but not found. Please install git."
+        exit 1
+    fi
+    
+    # Install tmux pkg manager
+    echo "Installing tmux pkg manager from GitHub..."
+    git clone https://github.com/tmux-plugins/tpm "$TPM_PATH"
+    
+    if git clone https://github.com/tmux-plugins/tpm "$TPM_PATH"; then
+        echo "✅ tpm installed successfully!"
+    else
+        echo "❌ Error during tpm installation."
+        exit 1
+    fi
+fi

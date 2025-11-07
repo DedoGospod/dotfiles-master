@@ -3,9 +3,6 @@
 {
   # Modules
   imports = [
-    # Nvidia support
-    # ./modules/nvidia.nix # BROKEN
-
     # Applications
     # ./modules/neovim.nix
     # ./modules/gaming.nix
