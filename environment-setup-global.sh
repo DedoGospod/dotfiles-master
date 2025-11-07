@@ -27,7 +27,7 @@ mkdir -p \
     "${XDG_STATE_HOME}/python"
 
 
-    DOTFILES_DIR="$HOME/dotfiles-master"
+    DOTFILES_DIR="$HOME/dotfiles"
 
     if [ -d "$DOTFILES_DIR" ]; then
         cd "$DOTFILES_DIR"

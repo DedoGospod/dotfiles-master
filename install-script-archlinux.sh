@@ -252,7 +252,7 @@ chsh -s "$(which zsh)"
 if [[ "$stow_dotfiles" =~ ^[Yy]$ ]]; then
     echo "Setting up dotfiles with GNU Stow..."
 
-    DOTFILES_DIR="$HOME/dotfiles-master"
+    DOTFILES_DIR="$HOME/dotfiles"
 
     if [ -d "$DOTFILES_DIR" ]; then
         cd "$DOTFILES_DIR"
