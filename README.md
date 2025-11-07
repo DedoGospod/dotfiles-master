@@ -1,7 +1,7 @@
 # My dotfiles for system configuration 
 
 Run install script for automatic setup (arch linux)
-- cd dotfiles master
+- cd dotfiles
 - chmod +x install-script.sh
 - ./install-script.sh
 
