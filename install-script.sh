@@ -353,8 +353,32 @@ else
     echo "Warning: maxSnapshots value may not have been set correctly." >&2
 fi
 
-# Update grub in order for maxSnapshots to start working
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+# Check if tmux pkg manager exists already
+TPM_PATH="$HOME/.tmux/plugins/tpm"
+
+# --- Check if tpm is already installed ---
+if [ -d "$TPM_PATH" ]; then
+    echo "✅ tpm (tmux Plugin Manager) is already installed at: $TPM_PATH"
+else
+    # --- Install tpm if it's not found ---
+    echo "⚠️ tpm not found. Installing now..."
+    # Ensure git is installed before running the clone command
+    if ! command -v git &> /dev/null; then
+        echo "❌ Error: git is required but not found. Please install git."
+        exit 1
+    fi
+    
+    # Install tmux pkg manager
+    echo "Installing tmux pkg manager from GitHub..."
+    git clone https://github.com/tmux-plugins/tpm "$TPM_PATH"
+    
+    if git clone https://github.com/tmux-plugins/tpm "$TPM_PATH"; then
+        echo "✅ tpm installed successfully!"
+    else
+        echo "❌ Error during tpm installation."
+        exit 1
+    fi
+fi
 
 # Finalizing the script with a reboot prompt
 echo ""
