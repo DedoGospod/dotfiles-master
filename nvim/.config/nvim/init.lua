@@ -53,6 +53,15 @@ vim.diagnostic.config({
 -- Set colorscheme
 vim.cmd.colorscheme("catppuccin")
 
+require("catppuccin").setup({
+    transparent_background = false,
+    float = {
+        transparent = false,
+    },
+})
+
+
+
 -- Filetype detection for Hyprland
 vim.filetype.add({
     pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },

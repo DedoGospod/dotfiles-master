@@ -13,6 +13,7 @@ require("mason-tool-installer").setup({
         "clangd",                    -- c/cpp
         "lua_ls",                    -- lua
         "csharp-language-server",    -- c#
+        "nil_ls",                    -- nix 
         -- Formatters
         "black",                     -- python
         "isort",                     -- python
@@ -23,6 +24,7 @@ require("mason-tool-installer").setup({
         "clang-format",              -- C, C++, Objective-C, Objective-C++, Java, JavaScript, TypeScript, C#
         "stylua",                    -- lua
         "csharpier",                 -- c#
+        "alejandra",                 -- nix 
         -- Linters
         "pylint",                    -- python
         "golangci-lint",             -- GO
