@@ -90,7 +90,7 @@ alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 # Package Management
 alias yay='paru'             # Use paru as yay alternative
 alias pacman='sudo pacman'   # Always use sudo with pacman
-alias update-nix='nix-channel --update && home-manager switch'
+alias update-nix='z dotfiles && nix-channel --update && home-manager switch --flake .'
 
 # Apps
 alias nv='nvim'                                        # Neovim shortcut
