@@ -7,11 +7,6 @@
     # ./modules/neovim.nix
     # ./modules/gaming.nix
     # ./modules/wol.nix
-    
-    # Display managers
-    # ./modules/dwl.nix
-    # ./modules/hyprland.nix
-
   ];
   # Settings
   nixpkgs.config.allowUnfree = true;

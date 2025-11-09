@@ -14,7 +14,8 @@ require("config.lsp") -- Lsp config
 -- Neotree configuration
 require("neo-tree").setup({
 	window = {
-		auto_expand_width = true,
+		width = 30,
+		-- auto_expand_width = true,
 	},
 	filesystem = {
 		filtered_items = {
