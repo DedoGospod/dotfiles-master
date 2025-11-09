@@ -19,7 +19,6 @@
     brave
     trash-cli
     sway-audio-idle-inhibit
-    stremio
   ];
 
   # Self-Management
