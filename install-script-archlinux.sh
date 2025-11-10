@@ -98,35 +98,35 @@ pacman_packages=(
     hyprland-guiutils
     hyprutils
     wlsunset
-    qt5-wayland #
-    qt6-wayland #
+    qt5-wayland
+    qt6-wayland
     zoxide
     zsh
     zsh-completions
     zsh-syntax-highlighting
     zsh-autosuggestions
     fzf
-    qt6ct #
+    qt6ct
     nwg-look
     btop
     dbus
     stow
     flatpak
-    ttf-cascadia-code-nerd #
-    ttf-ubuntu-font-family #
-    ttf-font-awesome #
+    ttf-cascadia-code-nerd
+    ttf-ubuntu-font-family
+    ttf-font-awesome
     pavucontrol
     ripgrep
     mpv
-    ffmpeg #
-    ffmpegthumbnailer #
+    ffmpeg
+    ffmpegthumbnailer
     fastfetch
-    linux-headers #
-    linux-zen #
-    linux-zen-headers #
+    linux-headers
+    linux-zen
+    linux-zen-headers
     ncdu
     networkmanager
-    reflector #
+    reflector
     timeshift
     cronie
     pipewire
@@ -136,11 +136,12 @@ pacman_packages=(
     tlp
     tmux
     gnome-disk-utility
-    bluez #
-    bluez-utils #
+    bluez
+    bluez-utils
     gnome-themes-extra
     gnome-keyring
-    obsidian #
+    seahorse
+    obsidian
 )
 
 # NVIDIA driver packages
@@ -363,9 +364,7 @@ TPM_PATH="$HOME/.tmux/plugins/tpm"
 if [ -d "$TPM_PATH" ]; then
     echo "✅ tpm (tmux Plugin Manager) is already installed at: $TPM_PATH"
 else
-    # --- Install tpm if it's not found ---
     echo "⚠️ tpm not found. Installing now..."
-    # Ensure git is installed before running the clone command
     if ! command -v git &> /dev/null; then
         echo "❌ Error: git is required but not found. Please install git."
         exit 1
