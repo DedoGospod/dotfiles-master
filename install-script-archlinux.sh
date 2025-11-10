@@ -95,7 +95,7 @@ pacman_packages=(
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     hyprpolkitagent
-    hyprland-qtutils
+    hyprland-guiutils
     hyprutils
     wlsunset
     qt5-wayland #
