@@ -28,7 +28,8 @@
     "format-icons": {
       "default": ["", "", ""]
     },
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
+    "on-click-right": "flatpak run io.github.ebonjaeger.bluejay"
   },
   "network": {
     "format-wifi": "<span size='13000' foreground='#f5e0dc'></span> {essid}",

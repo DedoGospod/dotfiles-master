@@ -14,8 +14,8 @@
     "modules-right": [
         "network",
         "pulseaudio",
-        "battery",
-	      "clock"
+        "clock",
+	      "battery"
     ],
     //Modules configuration
     "include": [
