@@ -15,6 +15,21 @@
       "default": ""
     }
   },
+   "mpris": {
+    "player": "playerctld", 
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{player_icon} <i>{dynamic}</i>",
+    "dynamic-order": ["title", "artist"],
+    "max-length": 40, 
+    "player-icons": {
+        "spotify": "",
+        "firefox": "",
+        "default": "♪"
+    },
+    "on-click": "playerctl play-pause", 
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+},
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {

@@ -6,7 +6,8 @@
     "spacing": 8,    
     "modules-left": [
         "custom/arch",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "mpris"
     ],
     "modules-center": [
         "hyprland/window"
