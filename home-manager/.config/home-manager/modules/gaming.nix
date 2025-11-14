@@ -6,6 +6,7 @@
     gamemode
     gamescope
     mangohud
+    steam
   ];
 
 }
